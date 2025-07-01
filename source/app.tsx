@@ -38,11 +38,14 @@ export default function App() {
 		);
 
 	return (
-		<Box flexDirection="column">
-			<Box>
+		<>
+		<Box flexDirection="column" padding={1}>
+			<Box padding={1}>
 				<Box
 					borderStyle={focusedElement === 'category' ? 'bold' : 'single'}
 					borderColor={focusedElement === 'category' ? 'whiteBright' : 'white'}
+					padding={1}
+ 					paddingRight={2}
 				>
 					<SelectInput
 						items={options}
@@ -65,6 +68,7 @@ export default function App() {
 				<Box
 					borderStyle={focusedElement === 'content' ? 'bold' : 'single'}
 					borderColor={focusedElement === 'content' ? 'whiteBright' : 'white'}
+					padding={1}
 					flexGrow={1}
 				>
 					<TextInput
@@ -87,5 +91,6 @@ export default function App() {
 				))}
 			</Box>
 		</Box>
+		</>
 	);
 }
