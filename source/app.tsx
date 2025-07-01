@@ -3,8 +3,8 @@ import {Box, Text} from 'ink';
 
 export default function App() {
 	return (
-		<Box borderColor="redBright" borderStyle="bold">
-			<Text>Test</Text>
+		<Box flexDirection='column' borderColor="redBright" borderStyle="bold">
+			<Text>Add</Text>
 		</Box>
 	);
 }
