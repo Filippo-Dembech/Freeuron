@@ -1,0 +1,20 @@
+{
+    "categories": [
+        {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+        },
+        {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+        },
+        {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+        },
+        {
+            "name": "Language",
+            "placeholder": "Enter your language syntax..."
+        }
+    ]
+}

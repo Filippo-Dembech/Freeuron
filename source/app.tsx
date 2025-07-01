@@ -1,95 +1,88 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import {Box, Text, useInput} from 'ink';
 import SelectInput from 'ink-select-input';
 import TextInput from 'ink-text-input';
+import {Option} from './types.js';
+import {getConfig} from './getConfig.js';
+import { reducer } from './reducer.js';
 
-type Category = 'todo' | 'question' | 'insight';
-type Option = {
-	label: string;
-	value: Category;
-};
-
-type Item = {
-	category: Category;
-	content: string;
-};
 
 export default function App() {
-	const [category, setCategory] = useState<Category>('todo');
-	const [content, setContent] = useState<string>('');
-	const [items, setItems] = useState<Item[]>([]);
-	const [focus, setFocus] = useState<'category' | 'content'>('content');
-	const [error, setError] = useState("");
+	const config = getConfig();
+	const [{category, content, error, focusedElement, thoughts}, dispatch] =
+		useReducer(reducer, {
+			category: config.categories[0],
+			content: '',
+			focusedElement: 'content',
+			thoughts: [],
+			error: '',
+		});
 
-	const handleSelect = (option: Option) => {
-		setCategory(option.value);
-		switchFocus();
-	}
-	const syncContent = (value: string) => {
-		setError("");
-		setContent(value);
-	}
-	const createNewItem = () => {
-		if (!content) return setError("Content can't be empty.")
-		setItems(curr => [...curr, {category, content}]);
-		setContent("");
-	}
-	const switchFocus = () =>
-		setFocus(curr => (curr === 'category' ? 'content' : 'category'));
-		
 	useInput((_, key) => {
 		if (key.tab) {
-			switchFocus();
+			dispatch({type: 'switchFocus'});
 		}
-	})
+	});
 
-	const options: Option[] = [
-		{
-			label: 'Todo',
-			value: 'todo',
-		},
-		{
-			label: 'Question',
-			value: 'question',
-		},
-		{
-			label: 'Insight',
-			value: 'insight',
-		},
-	];
+	const options: Option[] | undefined = config?.categories.map(category => ({
+		label: category.name,
+		value: category.placeholder,
+	}));
 
-	const getPlaceholder: () => string = () => {
-		if (category === 'insight') return 'Enter your insight...';
-		if (category === 'todo') return 'Enter what you have to do...';
-		return 'Enter your question...';
-	};
+	if (!category)
+		return (
+			<Text color="yellow">
+				No category has been found in 'freeuron.config.json' file. Press Ctrl +
+				C to exit.
+			</Text>
+		);
 
 	return (
 		<Box flexDirection="column">
 			<Box>
-				<Box borderStyle="round">
+				<Box
+					borderStyle={focusedElement === 'category' ? 'bold' : 'single'}
+					borderColor={focusedElement === 'category' ? 'whiteBright' : 'white'}
+				>
 					<SelectInput
 						items={options}
 						initialIndex={0}
-						onSelect={handleSelect}
-						isFocused={focus == 'category'}
+						onHighlight={item => {
+							dispatch({
+								type: 'syncCategory',
+								payload: {name: item.label, placeholder: item.value},
+							});
+						}}
+						onSelect={item => {
+							dispatch({
+								type: 'selectCategory',
+								payload: {name: item.label, placeholder: item.value},
+							});
+						}}
+						isFocused={focusedElement === 'category'}
 					/>
 				</Box>
-				<Box borderStyle="round" flexGrow={1}>
+				<Box
+					borderStyle={focusedElement === 'content' ? 'bold' : 'single'}
+					borderColor={focusedElement === 'content' ? 'whiteBright' : 'white'}
+					flexGrow={1}
+				>
 					<TextInput
-						placeholder={getPlaceholder()}
+						placeholder={category.placeholder}
 						value={content}
-						onChange={syncContent}
-						onSubmit={createNewItem}
-						focus={focus === 'content'}
+						onChange={value => dispatch({type: 'syncContent', payload: value})}
+						onSubmit={() => dispatch({type: 'addThough'})}
+						focus={focusedElement === 'content'}
 					/>
 				</Box>
 			</Box>
-			<Text color="red" bold>{error}</Text>
-			<Box borderStyle="bold" borderColor="gray" flexDirection="column">
-				{items.map((item, i) => (
-					<Text key={`${item.content}-${i}`}>
-						{item.category} - {item.content}
+			<Text color="red" bold>
+				{error}
+			</Text>
+			<Box borderColor="gray" flexDirection="column">
+				{thoughts.map((thought, i) => (
+					<Text key={`${thought.content}-${i}`}>
+						{thought.category?.name} - {thought.content}
 					</Text>
 				))}
 			</Box>
