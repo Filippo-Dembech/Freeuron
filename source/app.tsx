@@ -1,12 +1,12 @@
 import React, {useReducer, useRef} from 'react';
 import {Box, Text, useInput} from 'ink';
 import SelectInput from 'ink-select-input';
-import TextInput from 'ink-text-input';
 import {Option} from './types.js';
 import {getConfig} from './getConfig.js';
 import {reducer} from './reducer.js';
 import Title from './components/Title.js';
 import BoxFocus from './components/BoxFocus.js';
+import TextField from './components/TextField.js';
 
 export default function App() {
 	const config = getConfig();
@@ -21,14 +21,10 @@ export default function App() {
 
 	const deleteRef = useRef(false);
 
-	useInput((input, key) => {
+	useInput((_, key) => {
 		deleteRef.current = false;
 		if (key.tab) {
 			dispatch({type: 'switchFocus'});
-		}
-		if (key.ctrl && input === 'w') {
-			deleteRef.current = true;
-			dispatch({type: 'deleteContentWord'});
 		}
 	});
 
@@ -70,15 +66,14 @@ export default function App() {
 						/>
 					</BoxFocus>
 					<BoxFocus isFocused={focusedElement === 'content'} flexGrow={1}>
-						<TextInput
+						<TextField
 							placeholder={category.placeholder}
 							value={content}
-							onChange={value => {
-								if (deleteRef.current) return
-								dispatch({type: 'syncContent', payload: value});
-							}}
+							onChange={value =>
+								dispatch({type: 'syncContent', payload: value})
+							}
 							onSubmit={() => dispatch({type: 'addThough'})}
-							focus={focusedElement === 'content'}
+							isFocused={focusedElement === 'content'}
 						/>
 					</BoxFocus>
 				</Box>
