@@ -27,6 +27,7 @@
 	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "^3.0.1",
+		"@types/lowdb": "^1.0.15",
 		"@types/node": "^24.0.8",
 		"@types/react": "^18.0.32",
 		"@vdemedes/prettier-config": "^2.0.1",
