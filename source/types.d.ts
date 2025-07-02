@@ -12,3 +12,8 @@ export type Thought = {
 	category?: Category;	// undefined because categories are loaded asyncronously from 'config' file
 	content: string;
 };
+
+export type DayType = {
+	date: string;
+	thoughts: Thought[];
+}
