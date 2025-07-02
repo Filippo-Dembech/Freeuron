@@ -7,6 +7,7 @@ import {reducer} from './reducer.js';
 import Title from './components/Title.js';
 import BoxFocus from './components/BoxFocus.js';
 import TextField from './components/TextField.js';
+import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
 
 export default function App() {
 	const config = getConfig();
@@ -30,38 +31,7 @@ export default function App() {
 		value: category.placeholder,
 	}));
 
-	if (!category)
-		return (
-			<>
-				<Text color="yellow">
-					No category has been found in 'freeuron.config.json' file. 
-				</Text>
-				<Text color="yellow">Please populate it with categories. For example:</Text>
-				<Text>
-					{`
-{
-    "categories": [
-        {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-        },
-        {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-        },
-        {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-        }
-    ]
-}
-
-					`}
-				</Text>
-				<Text color="yellow">Press <Text bold>'Ctrl + C'</Text> to exit.</Text>
-			</>
-
-		);
+	if (!category) return <NoCategoryFoundError />;
 
 	return (
 		<>
