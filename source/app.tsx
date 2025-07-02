@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useRef} from 'react';
 import {Box, Text, useInput} from 'ink';
 import SelectInput from 'ink-select-input';
 import TextInput from 'ink-text-input';
@@ -19,9 +19,16 @@ export default function App() {
 			error: '',
 		});
 
-	useInput((_, key) => {
+	const deleteRef = useRef(false);
+
+	useInput((input, key) => {
+		deleteRef.current = false;
 		if (key.tab) {
 			dispatch({type: 'switchFocus'});
+		}
+		if (key.ctrl && input === 'w') {
+			deleteRef.current = true;
+			dispatch({type: 'deleteContentWord'});
 		}
 	});
 
@@ -66,9 +73,10 @@ export default function App() {
 						<TextInput
 							placeholder={category.placeholder}
 							value={content}
-							onChange={value =>
-								dispatch({type: 'syncContent', payload: value})
-							}
+							onChange={value => {
+								if (deleteRef.current) return
+								dispatch({type: 'syncContent', payload: value});
+							}}
 							onSubmit={() => dispatch({type: 'addThough'})}
 							focus={focusedElement === 'content'}
 						/>

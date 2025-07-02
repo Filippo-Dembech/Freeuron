@@ -14,7 +14,8 @@ export type Action =
 	| {type: 'setError'; payload: string}
 	| {type: 'syncContent'; payload: string}
 	| {type: 'syncCategory'; payload: Category}
-	| {type: 'selectCategory'; payload: Category};
+	| {type: 'selectCategory'; payload: Category}
+	| {type: "deleteContentWord" }
 
 export function reducer(state: State, action: Action): State {
 	if (action.type === 'addThough')
@@ -67,6 +68,12 @@ export function reducer(state: State, action: Action): State {
 			focusedElement:
 				state.focusedElement === 'category' ? 'content' : 'category',
 		};
+		
+	if (action.type === "deleteContentWord")
+		return {
+			...state,
+			content: state.content.trim().split(" ").slice(0, -1).join(" ")
+		}
 			
 	return state;
 }
