@@ -11,10 +11,6 @@
         {
             "name": "Insight",
             "placeholder": "Enter your discovery..."
-        },
-        {
-            "name": "Language",
-            "placeholder": "Enter your language syntax..."
         }
     ]
 }

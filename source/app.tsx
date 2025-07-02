@@ -1,4 +1,4 @@
-import React, {useReducer, useRef} from 'react';
+import React, {useReducer} from 'react';
 import {Box, Text, useInput} from 'ink';
 import SelectInput from 'ink-select-input';
 import {Option} from './types.js';
@@ -19,10 +19,7 @@ export default function App() {
 			error: '',
 		});
 
-	const deleteRef = useRef(false);
-
 	useInput((_, key) => {
-		deleteRef.current = false;
 		if (key.tab) {
 			dispatch({type: 'switchFocus'});
 		}
@@ -35,10 +32,35 @@ export default function App() {
 
 	if (!category)
 		return (
-			<Text color="yellow">
-				No category has been found in 'freeuron.config.json' file. Press Ctrl +
-				C to exit.
-			</Text>
+			<>
+				<Text color="yellow">
+					No category has been found in 'freeuron.config.json' file. 
+				</Text>
+				<Text color="yellow">Please populate it with categories. For example:</Text>
+				<Text>
+					{`
+{
+    "categories": [
+        {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+        },
+        {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+        },
+        {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+        }
+    ]
+}
+
+					`}
+				</Text>
+				<Text color="yellow">Press <Text bold>'Ctrl + C'</Text> to exit.</Text>
+			</>
+
 		);
 
 	return (
