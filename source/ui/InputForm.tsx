@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import {Box, Text, useInput} from 'ink';
 import SelectInput from 'ink-select-input';
-import {Option} from '../types.js';
+import {Category, Option} from '../types.js';
 import {getConfig} from '../getConfig.js';
 import {reducer} from '../reducer.js';
 import BoxFocus from '../components/BoxFocus.js';
@@ -9,7 +9,7 @@ import TextField from '../components/TextField.js';
 import NoCategoryFoundError from '../ui/NoCategoryFoundError.js';
 
 interface InputFormProps {
-    onSubmit: (category: string, content: string) => void
+    onSubmit: (category: Category, content: string) => void
 }
 
 export default function InputForm({ onSubmit }: InputFormProps) {
@@ -66,7 +66,7 @@ export default function InputForm({ onSubmit }: InputFormProps) {
 							onChange={value =>
 								dispatch({type: 'syncContent', payload: value})
 							}
-							onSubmit={() => onSubmit(category.name, content)}
+							onSubmit={() => onSubmit(category, content)}
 							isFocused={focusedElement === 'content'}
 						/>
 					</BoxFocus>
