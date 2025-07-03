@@ -17,11 +17,11 @@ function DayProvider({children}: {children: React.ReactNode}) {
 	const [day, setDay] = useState<DayType>(today);
 
 	function setPreviousDay() {
-		setDay(getPreviousDay(day.date) || today);
+		setDay(currDay => getPreviousDay(day.date) || currDay);
 	}
 
 	function setNextDay() {
-		setDay(getNextDay(day.date) || today);
+		setDay(currDay => getNextDay(day.date) || currDay);
 	}
 
 	return (
