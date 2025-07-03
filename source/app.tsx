@@ -23,6 +23,9 @@ export default function App() {
 		if (key.ctrl && input === 'o') {
 			focus(Focus.categorySelect);
 		}
+		if (key.ctrl && input === "d") {
+			focus(Focus.day)
+		}
 	});
 
 	if (config.categories.length === 0) return <NoCategoryFoundError />;
