@@ -7,12 +7,12 @@ import {DayType} from '../types.js';
 import { Key } from 'ink';
 import { getNextDay, getPreviousDay } from '../db.js';
 
-type DaysScrollerProps = {
+type DayScrollerProps = {
 	currentDay: DayType;
 	setDay: Dispatch<SetStateAction<DayType>>;
 };
 
-export default function DaysScroller({currentDay, setDay}: DaysScrollerProps) {
+export default function DayScroller({currentDay, setDay}: DayScrollerProps) {
 	
 	const handleInput = (input: string, _: Key) => {
 		if(input === "k" || input === "l") {
@@ -25,7 +25,7 @@ export default function DaysScroller({currentDay, setDay}: DaysScrollerProps) {
 
 	return (
 		<BoxFocus
-			id={Focus.day}
+			id={Focus.dayScroller}
 			flexGrow={1}
 			alignItems="center"
 			gap={3}

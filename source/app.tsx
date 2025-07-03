@@ -7,7 +7,7 @@ import {Thought} from './types.js';
 import Heading from './ui/Heading.js';
 import {useFocusManager, useInput} from 'ink';
 import {Focus} from './Focus.js';
-import DaysScroller from './ui/DaysScroller.js';
+import DayScroller from './ui/DayScroller.js';
 
 export default function App() {
 	const config = getConfig();
@@ -24,7 +24,7 @@ export default function App() {
 			focus(Focus.categorySelect);
 		}
 		if (key.ctrl && input === "d") {
-			focus(Focus.day)
+			focus(Focus.dayScroller)
 		}
 	});
 
@@ -39,7 +39,7 @@ export default function App() {
 					createThought(currentDay.date, {category, content});
 				}}
 			/>
-			<DaysScroller currentDay={currentDay} setDay={setCurrentDay}/>
+			<DayScroller currentDay={currentDay} setDay={setCurrentDay}/>
 		</>
 	);
 }
