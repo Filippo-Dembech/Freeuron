@@ -22,7 +22,6 @@ export default function InputForm({onSubmit}: InputFormProps) {
 	const [{category, content, error}, dispatch] = useReducer(reducer, {
 		category: config.categories[0],
 		content: '',
-		thoughts: [],
 		error: '',
 	});
 

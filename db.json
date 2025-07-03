@@ -77,7 +77,15 @@
     },
     {
       "date": "03/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "Super question"
+        }
+      ]
     }
   ]
 }

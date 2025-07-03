@@ -1,14 +1,12 @@
-import {Category, Thought} from './types.js';
+import {Category} from './types.js';
 
 export type State = {
 	category: Category | undefined;
 	content: string;
-	thoughts: Thought[];
 	error: string;
 };
 
 export type Action =
-	| {type: 'addThough'}
 	| {type: 'setError'; payload: string}
 	| {type: 'syncContent'; payload: string}
 	| {type: 'syncCategory'; payload: Category}
@@ -16,20 +14,6 @@ export type Action =
 	| {type: "deleteContentWord" }
 
 export function reducer(state: State, action: Action): State {
-	if (action.type === 'addThough')
-		return state.content
-			? {
-					...state,
-					thoughts: [
-						...state.thoughts,
-						{category: state.category, content: state.content},
-					],
-					content: '',
-			  }
-			: {
-					...state,
-					error: "Content can't be empty.",
-			  };
 	if (action.type === 'syncContent')
 		return {
 			...state,
