@@ -22,6 +22,11 @@ export default function Day({day}: {day: DayType}) {
 			<BigText text={day.date} font="tiny" />
 			<Box flexDirection="column" gap={1}>
 				<Tabs
+					keyMap={{
+						useNumbers: true,
+						previous: ['j'],
+						next: ['k']
+					}}
 					onChange={handleTabChange}
 					colors={{activeTab: {color: 'blue', backgroundColor: 'black'}}}
 					isFocused={isFocused}

@@ -91,6 +91,20 @@
             "placeholder": "Enter your discovery..."
           },
           "content": "This is a super Insight"
+        },
+        {
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Here we are mate!"
+        },
+        {
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "This is an amazing enterering todo"
         }
       ]
     }
