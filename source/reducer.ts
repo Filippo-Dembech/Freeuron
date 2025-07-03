@@ -4,13 +4,11 @@ export type State = {
 	category: Category | undefined;
 	content: string;
 	thoughts: Thought[];
-	focusedElement: 'category' | 'content';
 	error: string;
 };
 
 export type Action =
 	| {type: 'addThough'}
-	| {type: 'switchFocus'}
 	| {type: 'setError'; payload: string}
 	| {type: 'syncContent'; payload: string}
 	| {type: 'syncCategory'; payload: Category}
@@ -43,12 +41,6 @@ export function reducer(state: State, action: Action): State {
 			...state,
 			error: action.payload,
 		};
-	if (action.type === 'switchFocus')
-		return {
-			...state,
-			focusedElement:
-				state.focusedElement === 'category' ? 'content' : 'category',
-		};
 	if (action.type === 'syncCategory')
 		return {
 			...state,
@@ -65,8 +57,6 @@ export function reducer(state: State, action: Action): State {
 				name: action.payload.name,
 				placeholder: action.payload.placeholder,
 			},
-			focusedElement:
-				state.focusedElement === 'category' ? 'content' : 'category',
 		};
 		
 	if (action.type === "deleteContentWord")

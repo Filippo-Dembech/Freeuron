@@ -8,72 +8,76 @@
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
           },
-          "content": "first"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "io"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "second"
+          "content": "check email"
         },
         {
           "category": {
             "name": "Question",
             "placeholder": "Enter your question..."
           },
-          "content": "third"
+          "content": "how the fuck"
         },
         {
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
           },
-          "content": "super mate"
-        },
-        {
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "This is new"
+          "content": "blq bla"
         },
         {
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
           },
-          "content": "super"
-        },
-        {
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "Mate how are you doing?"
+          "content": "s"
         },
         {
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
           },
-          "content": "super mate"
+          "content": "s"
         },
         {
           "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
           },
-          "content": "What's going on???"
+          "content": "s"
+        },
+        {
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "s"
+        },
+        {
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "s"
+        },
+        {
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "s"
+        },
+        {
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "s"
         }
       ]
+    },
+    {
+      "date": "03/07/2025",
+      "thoughts": []
     }
   ]
 }

@@ -1,22 +1,24 @@
-import {Box, BoxProps} from 'ink';
+import {Box, BoxProps, useFocus} from 'ink';
 import React from 'react';
 
 interface BoxFocusProps {
 	isFocused?: boolean;
-    children: React.ReactNode
+	renderFocusable: (isFocused: boolean) => React.ReactNode
+    //children: React.ReactNode
 }
 
 export default function BoxFocus({
-	isFocused,
-    children,
+    //children,
+	renderFocusable,
 	...props
 }: BoxFocusProps & BoxProps) {
+	const {isFocused} = useFocus();
 	return (
 		<Box
 			borderStyle={isFocused ? 'bold' : 'single'}
 			borderColor={isFocused ? 'whiteBright' : 'white'}
             padding={1}
 			{...props}
-		>{children}</Box>
+		>{renderFocusable(isFocused)}</Box>
 	);
 }

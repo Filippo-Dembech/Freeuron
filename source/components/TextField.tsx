@@ -6,17 +6,17 @@ import {useRef, useState} from 'react';
 interface TextFieldProps {
 	placeholder: string;
 	value: string;
+	isFocused: boolean;
 	onChange: (value: string) => void;
 	onSubmit: (value: string) => void;
-	isFocused: boolean;
 }
 
 export default function TextField({
 	placeholder,
+	isFocused,
 	value,
 	onChange,
 	onSubmit,
-	isFocused,
 }: TextFieldProps) {
 	const [content, setContent] = useState(value);
 	const deleteMode = useRef(false);

@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import {Box, Text, useInput} from 'ink';
+import {Box, Text} from 'ink';
 import SelectInput from 'ink-select-input';
 import {Category, Option} from '../types.js';
 import {getConfig} from '../getConfig.js';
@@ -14,20 +14,14 @@ interface InputFormProps {
 
 export default function InputForm({ onSubmit }: InputFormProps) {
 	const config = getConfig();
-	const [{category, content, error, focusedElement, thoughts}, dispatch] =
+	const [{category, content, error, thoughts}, dispatch] =
 		useReducer(reducer, {
 			category: config.categories[0],
 			content: '',
-			focusedElement: 'content',
 			thoughts: [],
 			error: '',
 		});
 
-	useInput((_, key) => {
-		if (key.tab) {
-			dispatch({type: 'switchFocus'});
-		}
-	});
 
 	const options: Option[] | undefined = config?.categories.map(category => ({
 		label: category.name,
@@ -40,7 +34,7 @@ export default function InputForm({ onSubmit }: InputFormProps) {
 		<>
 			<Box flexDirection="column" paddingLeft={1} paddingRight={1}>
 				<Box>
-					<BoxFocus isFocused={focusedElement === 'category'} paddingRight={2}>
+					<BoxFocus paddingRight={2} renderFocusable={(isFocused) => (
 						<SelectInput
 							items={options}
 							initialIndex={0}
@@ -56,10 +50,11 @@ export default function InputForm({ onSubmit }: InputFormProps) {
 									payload: {name: item.label, placeholder: item.value},
 								});
 							}}
-							isFocused={focusedElement === 'category'}
+							isFocused={isFocused}
 						/>
+					)}>
 					</BoxFocus>
-					<BoxFocus isFocused={focusedElement === 'content'} flexGrow={1}>
+					<BoxFocus flexGrow={1} renderFocusable={(isFocused) => (
 						<TextField
 							placeholder={category.placeholder}
 							value={content}
@@ -67,8 +62,9 @@ export default function InputForm({ onSubmit }: InputFormProps) {
 								dispatch({type: 'syncContent', payload: value})
 							}
 							onSubmit={() => onSubmit(category, content)}
-							isFocused={focusedElement === 'content'}
+							isFocused={isFocused}
 						/>
+					)}>
 					</BoxFocus>
 				</Box>
 				<Text color="red" bold>
