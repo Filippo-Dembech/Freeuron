@@ -1,23 +1,14 @@
 import {useInput} from 'ink';
-import TextInput from 'ink-text-input';
+import TextInput, { Props as TextInputProps } from 'ink-text-input';
 import React, {useEffect} from 'react';
 import {useRef, useState} from 'react';
 
-interface TextFieldProps {
-	placeholder: string;
-	value: string;
-	isFocused: boolean;
-	onChange: (value: string) => void;
-	onSubmit: (value: string) => void;
-}
-
 export default function TextField({
-	placeholder,
-	isFocused,
 	value,
 	onChange,
 	onSubmit,
-}: TextFieldProps) {
+	...props
+}: TextInputProps) {
 	const [content, setContent] = useState(value);
 	const deleteMode = useRef(false);
 	const isDeleteMode = () => deleteMode.current;
@@ -43,18 +34,17 @@ export default function TextField({
 
 	return (
 		<TextInput
-			placeholder={placeholder}
-			value={content}
+			{...props}
+			value={value}
 			onChange={value => {
 				if (isDeleteMode()) return;
 				setContent(value);
 			}}
 			onSubmit={() => {
-				onSubmit(content);
+				onSubmit?.(content);
                 deactivateDeleteMode();
                 resetContent();
 			}}
-			focus={isFocused}
 		/>
 	);
 }
