@@ -80,31 +80,24 @@
       "thoughts": [
         {
           "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
           },
-          "content": "Super question"
+          "content": "io"
         },
         {
           "category": {
             "name": "Insight",
             "placeholder": "Enter your discovery..."
           },
-          "content": "This is a super Insight"
+          "content": "New insight"
         },
         {
           "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
+            "name": "Question",
+            "placeholder": "Enter your question..."
           },
-          "content": "Here we are mate!"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "This is an amazing enterering todo"
+          "content": "New question"
         }
       ]
     }

@@ -3,6 +3,7 @@ export interface Category {
 	placeholder?: string,
 }
 
+
 export type Thought = {
 	category?: Category;	// undefined because categories are loaded asyncronously from 'config' file
 	content: string;

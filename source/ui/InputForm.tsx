@@ -7,6 +7,7 @@ import {reducer} from '../reducer.js';
 import BoxFocus from '../components/BoxFocus.js';
 import TextField from '../components/TextField.js';
 import NoCategoryFoundError from '../ui/NoCategoryFoundError.js';
+import { Focus } from '../Focus.js';
 
 export type Option = {
 	label: string;
@@ -39,7 +40,7 @@ export default function InputForm({onSubmit}: InputFormProps) {
 			<Box flexDirection="column" paddingLeft={1} paddingRight={1}>
 				<Box>
 					<BoxFocus
-						id="0"
+						id={Focus.categorySelect}
 						paddingRight={2}
 						renderFocusable={({isFocused}) => (
 							<SelectInput
@@ -62,14 +63,14 @@ export default function InputForm({onSubmit}: InputFormProps) {
 											placeholder: item.value.placeholder,
 										},
 									});
-									focus("1")
+									focus(Focus.textField)
 								}}
 								isFocused={isFocused}
 							/>
 						)}
 					></BoxFocus>
 					<BoxFocus
-						id='1'
+						id={Focus.textField}
 						flexGrow={1}
 						autoFocus
 						renderFocusable={({isFocused}) => (
@@ -79,7 +80,10 @@ export default function InputForm({onSubmit}: InputFormProps) {
 								onChange={value =>
 									dispatch({type: 'syncContent', payload: value})
 								}
-								onSubmit={() => onSubmit(category, content)}
+								onSubmit={() => {
+									if (!content) dispatch({type: "setError", payload: "Text field content can't be empty."})
+									else onSubmit(category, content)
+								}}
 								focus={isFocused}
 							/>
 						)}
