@@ -79,6 +79,13 @@
             "placeholder": "Enter your question..."
           },
           "content": "New question in 02"
+        },
+        {
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "Old insight"
         }
       ]
     },

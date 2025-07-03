@@ -2,24 +2,20 @@ import BoxFocus from '../components/BoxFocus.js';
 import {Focus} from '../Focus.js';
 import Arrow from '../components/Arrow.js';
 import Day from './Day.js';
-import React, {Dispatch, SetStateAction} from 'react';
-import {DayType} from '../types.js';
+import React from 'react';
 import { Key } from 'ink';
-import { getNextDay, getPreviousDay } from '../db.js';
+import { useDay } from '../context/DayContext.js';
 
-type DayScrollerProps = {
-	currentDay: DayType;
-	setDay: Dispatch<SetStateAction<DayType>>;
-};
-
-export default function DayScroller({currentDay, setDay}: DayScrollerProps) {
+export default function DayScroller() {
+	
+	const { setPreviousDay, setNextDay } = useDay();
 	
 	const handleInput = (input: string, _: Key) => {
 		if(input === "k" || input === "l") {
-			setDay(getNextDay(currentDay.date) || currentDay);
+			setNextDay();
 		}
 		if(input === "h" || input === "j") {
-			setDay(getPreviousDay(currentDay.date) || currentDay);
+			setPreviousDay();
 		}
 	}
 
@@ -33,7 +29,7 @@ export default function DayScroller({currentDay, setDay}: DayScrollerProps) {
 			renderFocusable={({}) => (
 				<>
 					<Arrow toThe="left" />
-					<Day flexGrow={1} day={currentDay} />
+					<Day flexGrow={1} />
 					<Arrow toThe="right" />
 				</>
 			)}

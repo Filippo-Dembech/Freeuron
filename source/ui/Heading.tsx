@@ -1,18 +1,16 @@
 import {Box} from 'ink';
-import {DayType} from '../types.js';
 import React from 'react';
 import Title from '../components/Title.js';
+import { useDay } from '../context/DayContext.js';
 
-interface HeadingProps {
-	day: DayType;
-}
-
-export default function Heading({day}: HeadingProps) {
+export default function Heading() {
+	
+	const { today } = useDay();
 	return (
 		<Box alignItems="flex-end">
 			<Title color="blue">Freeuron</Title>
 			<Title> - </Title>
-			<Title>{day.date}</Title>
+			<Title>{today.date}</Title>
 		</Box>
 	);
 }

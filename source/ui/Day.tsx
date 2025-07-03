@@ -1,12 +1,13 @@
 import {Box, BoxProps, Text, useFocus} from 'ink';
-import {DayType} from '../types.js';
 import React, {useState} from 'react';
 import BigText from 'ink-big-text';
 import {Tab, Tabs} from 'ink-tab';
 import {Focus} from '../Focus.js';
 import {Task, TaskList} from 'ink-task-list';
+import { useDay } from '../context/DayContext.js';
 
-export default function Day({day, ...props}: {day: DayType} & BoxProps) {
+export default function Day({...props}: BoxProps) {
+	const { day } = useDay();
 	const [activeTabName, setActiveTabName] = useState<string>();
 
 	const {isFocused} = useFocus({id: Focus.dayTabs});
