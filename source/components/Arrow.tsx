@@ -1,17 +1,20 @@
-import {Text} from 'ink';
+import {Text, TextProps} from 'ink';
 import React from 'react';
 
 type ArrowProps = {
 	toThe: 'left' | 'right';
+	label?: string;
 };
 
 export default function Arrow({
 	toThe,
-}: ArrowProps) {
+	label,
+	...props
+}: ArrowProps & TextProps) {
 
 	return (
-		<Text>
-			{toThe === 'left' ? `<` : `>`}
+		<Text {...props}>
+			{toThe === 'left' ? `< ${label}` : `${label} >`}
 		</Text>
 	);
 }

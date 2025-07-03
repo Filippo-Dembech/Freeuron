@@ -3,7 +3,7 @@ import {Focus} from '../Focus.js';
 import Arrow from '../components/Arrow.js';
 import Day from './Day.js';
 import React from 'react';
-import { Key } from 'ink';
+import { Box, Key } from 'ink';
 import { useDay } from '../context/DayContext.js';
 
 export default function DayScroller() {
@@ -23,14 +23,15 @@ export default function DayScroller() {
 		<BoxFocus
 			id={Focus.dayScroller}
 			flexGrow={1}
-			alignItems="center"
-			gap={3}
+			flexDirection='column'
             onInput={handleInput}
-			renderFocusable={({}) => (
+			renderFocusable={({isFocused}) => (
 				<>
-					<Arrow toThe="left" />
+					<Box gap={3} justifyContent='space-between'>
+						<Arrow toThe="left" label='PREVIOUS' bold={isFocused} underline={isFocused} />
+						<Arrow toThe="right" label="NEXT" bold={isFocused} underline={isFocused}/>
+					</Box>
 					<Day flexGrow={1} />
-					<Arrow toThe="right" />
 				</>
 			)}
 		/>
