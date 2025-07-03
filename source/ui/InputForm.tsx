@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import {Box, Text} from 'ink';
+import {Box, Text, useFocusManager} from 'ink';
 import SelectInput from 'ink-select-input';
 import {Category} from '../types.js';
 import {getConfig} from '../getConfig.js';
@@ -19,6 +19,7 @@ interface InputFormProps {
 
 export default function InputForm({onSubmit}: InputFormProps) {
 	const config = getConfig();
+	const {focus} = useFocusManager();
 	const [{category, content, error}, dispatch] = useReducer(reducer, {
 		category: config.categories[0],
 		content: '',
@@ -38,8 +39,9 @@ export default function InputForm({onSubmit}: InputFormProps) {
 			<Box flexDirection="column" paddingLeft={1} paddingRight={1}>
 				<Box>
 					<BoxFocus
+						id="0"
 						paddingRight={2}
-						renderFocusable={isFocused => (
+						renderFocusable={({isFocused}) => (
 							<SelectInput
 								items={options}
 								initialIndex={0}
@@ -60,15 +62,17 @@ export default function InputForm({onSubmit}: InputFormProps) {
 											placeholder: item.value.placeholder,
 										},
 									});
+									focus("1")
 								}}
 								isFocused={isFocused}
 							/>
 						)}
 					></BoxFocus>
 					<BoxFocus
+						id='1'
 						flexGrow={1}
 						autoFocus
-						renderFocusable={(isFocused) => (
+						renderFocusable={({isFocused}) => (
 							<TextField
 								placeholder={category.placeholder || ''}
 								value={content}

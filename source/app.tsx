@@ -6,11 +6,22 @@ import { createThought, createToday } from './db.js';
 import Day from './ui/Day.js';
 import { Thought } from './types.js';
 import Heading from './ui/Heading.js';
+import { useFocusManager, useInput } from 'ink';
 
 export default function App() {
 	const config = getConfig();
 
 	const [_, setThought] = useState<Thought>();
+	const {focus} = useFocusManager()
+	
+	useInput((input, key) => {
+		if (key.ctrl && input === "e") {
+			focus("1")
+		}
+		if (key.ctrl && input === "o") {
+			focus("0")
+		}
+	})
 
 	const today = createToday();
 	

@@ -84,6 +84,13 @@
             "placeholder": "Enter your question..."
           },
           "content": "Super question"
+        },
+        {
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "This is a super Insight"
         }
       ]
     }
