@@ -67,7 +67,8 @@ export default function InputForm({onSubmit}: InputFormProps) {
 					></BoxFocus>
 					<BoxFocus
 						flexGrow={1}
-						renderFocusable={isFocused => (
+						autoFocus
+						renderFocusable={(isFocused) => (
 							<TextField
 								placeholder={category.placeholder || ''}
 								value={content}
@@ -75,7 +76,7 @@ export default function InputForm({onSubmit}: InputFormProps) {
 									dispatch({type: 'syncContent', payload: value})
 								}
 								onSubmit={() => onSubmit(category, content)}
-								isFocused={isFocused}
+								focus={isFocused}
 							/>
 						)}
 					></BoxFocus>

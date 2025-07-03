@@ -3,20 +3,22 @@ import React from 'react';
 
 interface BoxFocusProps {
 	isFocused?: boolean;
-	renderFocusable: (isFocused: boolean) => React.ReactNode
+	autoFocus?: boolean;
+	renderFocusable: (isFocused: boolean, autoFocus: boolean) => React.ReactNode
 }
 
 export default function BoxFocus({
 	renderFocusable,
+	autoFocus = false,
 	...props
 }: BoxFocusProps & BoxProps) {
-	const {isFocused} = useFocus();
+	const {isFocused} = useFocus({ autoFocus });
 	return (
 		<Box
 			borderStyle={isFocused ? 'bold' : 'single'}
 			borderColor={isFocused ? 'whiteBright' : 'white'}
             padding={1}
 			{...props}
-		>{renderFocusable(isFocused)}</Box>
+		>{renderFocusable(isFocused, autoFocus)}</Box>
 	);
 }
