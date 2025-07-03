@@ -11,9 +11,9 @@ import DaysScroller from './ui/DaysScroller.js';
 
 export default function App() {
 	const config = getConfig();
-
+	const today = createToday();
 	const [_, setThought] = useState<Thought>();
-	const [currentDay, setCurrentDay] = useState(() => createToday());
+	const [currentDay, setCurrentDay] = useState(today);
 	const {focus} = useFocusManager();
 
 	useInput((input, key) => {
@@ -29,7 +29,7 @@ export default function App() {
 
 	return (
 		<>
-			<Heading day={currentDay} />
+			<Heading day={today} />
 			<InputForm
 				onSubmit={(category, content) => {
 					setThought({category, content});

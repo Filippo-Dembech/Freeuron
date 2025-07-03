@@ -72,6 +72,13 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "s"
+        },
+        {
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "New question in 02"
         }
       ]
     },
@@ -98,6 +105,13 @@
             "placeholder": "Enter your question..."
           },
           "content": "New question"
+        },
+        {
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "new todo 03"
         }
       ]
     }
