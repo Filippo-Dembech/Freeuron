@@ -1,7 +1,7 @@
 import {JSONFilePreset} from 'lowdb/node';
 import {DayType, Thought} from './types.js';
 import {Low} from 'lowdb';
-import { dateToString } from './utils/dateToString.js';
+import { dateToString, getNextDayDateString, getPreviousDayDateString } from './utils/date.js';
 import { areDatesEqual } from './utils/areDateEquals.js';
 
 type Data = {
@@ -28,6 +28,18 @@ export function createThought(date: string, thought: Thought) {
 		day.date === date ? day.thoughts.push(thought) : day,
 	);
 	db.write();
+}
+
+export function getPreviousDay(date: string): DayType | undefined {
+	const previousDay = getPreviousDayDateString(date);
+	const result = db.data.days.find(day => day.date === previousDay);
+	return result;
+}
+
+export function getNextDay(date: string): DayType | undefined {
+	const nextDay = getNextDayDateString(date);
+	const result = db.data.days.find(day => day.date === nextDay);
+	return result;
 }
 
 export default db;
