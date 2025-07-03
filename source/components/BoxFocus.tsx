@@ -4,11 +4,9 @@ import React from 'react';
 interface BoxFocusProps {
 	isFocused?: boolean;
 	renderFocusable: (isFocused: boolean) => React.ReactNode
-    //children: React.ReactNode
 }
 
 export default function BoxFocus({
-    //children,
 	renderFocusable,
 	...props
 }: BoxFocusProps & BoxProps) {

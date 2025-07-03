@@ -27,7 +27,7 @@ export default function Day({day}: {day: DayType}) {
 					isFocused={isFocused}
 				>
 					{categoryNames.map((categoryName, i) => (
-						<Tab key={`${categoryName}-${i}`} name={categoryName || ''}>
+						<Tab key={`category-${i}`} name={categoryName || ''}>
 							{categoryName}
 						</Tab>
 					))}
@@ -36,7 +36,7 @@ export default function Day({day}: {day: DayType}) {
 					{day.thoughts
 						.filter(thought => thought.category?.name === activeTabName)
 						.map((thought, i) => (
-							<Text key={`${thought}-${i}`}>
+							<Text key={`thought-${i}`}>
 								{thought.category?.name} - {thought.content}
 							</Text>
 						))}
