@@ -1,13 +1,13 @@
 import React, {useReducer} from 'react';
-import {Box, Text, useFocusManager} from 'ink';
+import {Box, Text} from 'ink';
 import SelectInput from 'ink-select-input';
 import {Category} from '../types.js';
 import {getConfig} from '../getConfig.js';
 import {reducer} from '../reducer.js';
-import BoxFocus from '../components/BoxFocus.js';
 import TextField from '../components/TextField.js';
 import NoCategoryFoundError from '../ui/NoCategoryFoundError.js';
-import { Focus } from '../Focus.js';
+import {Focus} from '../Focus.js';
+import Focusable from '../components/Focusable.js';
 
 export type Option = {
 	label: string;
@@ -20,7 +20,7 @@ interface InputFormProps {
 
 export default function InputForm({onSubmit}: InputFormProps) {
 	const config = getConfig();
-	const {focus} = useFocusManager();
+	//const {focus} = useFocusManager();
 	const [{category, content, error}, dispatch] = useReducer(reducer, {
 		category: config.categories[0],
 		content: '',
@@ -39,55 +39,69 @@ export default function InputForm({onSubmit}: InputFormProps) {
 		<>
 			<Box flexDirection="column" paddingLeft={1} paddingRight={1}>
 				<Box>
-					<BoxFocus
+					<Focusable
 						id={Focus.categorySelect}
-						paddingRight={2}
-						renderFocusable={({isFocused}) => (
-							<SelectInput
-								items={options}
-								initialIndex={0}
-								onHighlight={item => {
-									dispatch({
-										type: 'syncCategory',
-										payload: {
-											name: item.label,
-											placeholder: item.value.placeholder,
-										},
-									});
-								}}
-								onSelect={item => {
-									dispatch({
-										type: 'selectCategory',
-										payload: {
-											name: item.label,
-											placeholder: item.value.placeholder,
-										},
-									});
-									focus(Focus.textField)
-								}}
-								isFocused={isFocused}
-							/>
+						nextFocus={[
+							{
+								to: Focus.textField,
+								when: (_, key) => key.return,
+							},
+						]}
+						renderComponent={({isFocused}) => (
+							<Box borderStyle={isFocused ? "bold" : "single"} padding={1}>
+								<SelectInput
+									items={options}
+									initialIndex={0}
+									onHighlight={item => {
+										dispatch({
+											type: 'syncCategory',
+											payload: {
+												name: item.label,
+												placeholder: item.value.placeholder,
+											},
+										});
+									}}
+									onSelect={item => {
+										dispatch({
+											type: 'selectCategory',
+											payload: {
+												name: item.label,
+												placeholder: item.value.placeholder,
+											},
+										});
+									}}
+									isFocused={isFocused}
+								/>
+							</Box>
 						)}
-					></BoxFocus>
-					<BoxFocus
+					/>
+					<Focusable
 						id={Focus.textField}
-						flexGrow={1}
-						autoFocus
-						renderFocusable={({isFocused}) => (
-							<TextField
-								placeholder={category.placeholder || ''}
-								value={content}
-								onChange={value =>
-									dispatch({type: 'syncContent', payload: value})
-								}
-								onSubmit={() => {
-									if (!content) dispatch({type: "setError", payload: "Text field content can't be empty."})
-									else onSubmit(category, content)
-								}}
-								focus={isFocused}
-							/>
+						renderComponent={({isFocused}) => (
+							<Box
+								borderStyle={isFocused ? 'bold' : 'single'}
+								padding={1}
+								flexGrow={1}
+							>
+								<TextField
+									placeholder={category.placeholder || ''}
+									value={content}
+									onChange={value =>
+										dispatch({type: 'syncContent', payload: value})
+									}
+									onSubmit={() => {
+										if (!content)
+											dispatch({
+												type: 'setError',
+												payload: "Text field content can't be empty.",
+											});
+										else onSubmit(category, content);
+									}}
+									focus={isFocused}
+								/>
+							</Box>
 						)}
-					></BoxFocus>
+					/>
 				</Box>
 				<Text color="red" bold>
 					{error}

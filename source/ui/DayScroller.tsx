@@ -1,33 +1,42 @@
-import BoxFocus from '../components/BoxFocus.js';
 import {Focus} from '../Focus.js';
 import Arrow from '../components/Arrow.js';
 import Day from './Day.js';
 import React from 'react';
-import {Box, Key, useFocusManager} from 'ink';
+import {Box} from 'ink';
 import {useDay} from '../context/DayContext.js';
+import Focusable from '../components/Focusable.js';
 
 export default function DayScroller() {
 	const {setPreviousDay, setNextDay} = useDay();
-	const {focus} = useFocusManager();
-
-	const handleInput = (input: string, key: Key) => {
-		if (input === 'k' || input === 'l') {
-			setNextDay();
-		}
-		if (input === 'h' || input === 'j') {
-			setPreviousDay();
-		}
-		if (key.return) focus(Focus.dayTabs)
-	};
 
 	return (
-		<BoxFocus
+		<Focusable
 			id={Focus.dayScroller}
-			flexGrow={1}
-			flexDirection="column"
-			onInput={handleInput}
-			renderFocusable={({isFocused}) => (
-				<Box flexDirection='column' gap={1}>
+			nextFocus={[
+				{
+					to: Focus.dayTabs,
+					when: (_, key) => key.return,
+				},
+			]}
+			actions={[
+				{
+					on: input => input === 'k' || input === 'l',
+					do: () => setNextDay(),
+				},
+				{
+					on: input => input === 'h' || input === 'j',
+					do: () => setPreviousDay(),
+				},
+			]}
+			renderComponent={({isFocused}) => (
+				<Box
+					borderStyle={isFocused ? 'bold' : 'single'}
+					flexDirection="column"
+					gap={1}
+					flexGrow={1}
+					paddingX={2}
+					paddingY={1}
+				>
 					<Box justifyContent="space-between">
 						<Arrow
 							toThe="left"

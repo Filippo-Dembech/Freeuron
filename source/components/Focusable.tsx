@@ -48,7 +48,7 @@ export type FocusableProps = {
 	renderComponent: (args: RenderComponentArgs) => React.ReactNode;
     actions?: ActionType[];
     nextFocus?: NextFocus[];
-    activeWhenFocused?: boolean;
+    alwaysListening?: boolean;
 };
 
 /**
@@ -95,7 +95,7 @@ export type FocusOptionsType = {
 export default function Focusable({
 	id,
 	renderComponent,
-    activeWhenFocused = true,
+    alwaysListening = false,
     actions,
     nextFocus,
 	autoFocus = false,
@@ -104,7 +104,7 @@ export default function Focusable({
         	const {focus, isFocused} = useFocus({id, autoFocus, isActive});
 
 	useInput((input, key) => {
-		if (!isFocused && activeWhenFocused) return;
+		if (!isFocused && !alwaysListening) return;
 
         const action = actions?.find(action => action.on(input, key))
         if (action) action.do(focus);
