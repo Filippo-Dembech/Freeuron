@@ -27,7 +27,7 @@
             "placeholder": "Enter your question..."
           },
           "content": "First question",
-          "checked": true
+          "checked": false
         },
         {
           "id": "c08689c7-2db9-446e-9f27-4adb07a39be5",
@@ -36,7 +36,16 @@
             "placeholder": "Enter your question..."
           },
           "content": "Second question",
-          "checked": true
+          "checked": false
+        },
+        {
+          "id": "0ca84ac1-5bdc-430e-8cc0-3d6c207a8a70",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "new todo",
+          "checked": false
         }
       ]
     }
