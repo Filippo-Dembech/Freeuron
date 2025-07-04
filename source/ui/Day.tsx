@@ -40,7 +40,7 @@ export default function Day({...props}: BoxProps) {
 				colors={{activeTab: {color: 'blue', backgroundColor: 'black'}}}
 				isFocused={isFocused}
 			>
-				{categoryNames.map((categoryName, i) => (
+				{categoryNames.sort((a, b) => a?.toLowerCase().localeCompare(b?.toLowerCase() || "") || 0).map((categoryName, i) => (
 					<Tab key={`category-${i}`} name={categoryName || ''}>
 						{categoryName}
 					</Tab>
