@@ -26,55 +26,6 @@
         },
         {
           "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "s"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "s"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "s"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "s"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "s"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "s"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "s"
-        },
-        {
-          "category": {
             "name": "Question",
             "placeholder": "Enter your question..."
           },
@@ -119,6 +70,32 @@
             "placeholder": "Enter your question..."
           },
           "content": "new todo 03"
+        }
+      ]
+    },
+    {
+      "date": "04/07/2025",
+      "thoughts": [
+        {
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Clean up the room"
+        },
+        {
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "What is a memory leak?"
+        },
+        {
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "UX = User Experience"
         }
       ]
     }

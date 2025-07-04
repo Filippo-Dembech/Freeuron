@@ -28,4 +28,4 @@ const cli = meow(
 );
 */
 
-render(<App />);
+render(<App />, { exitOnCtrlC: true });

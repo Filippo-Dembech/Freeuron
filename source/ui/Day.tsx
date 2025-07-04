@@ -4,10 +4,10 @@ import BigText from 'ink-big-text';
 import {Tab, Tabs} from 'ink-tab';
 import {Focus} from '../Focus.js';
 import {Task, TaskList} from 'ink-task-list';
-import { useDay } from '../context/DayContext.js';
+import {useDay} from '../context/DayContext.js';
 
 export default function Day({...props}: BoxProps) {
-	const { day } = useDay();
+	const {day} = useDay();
 	const [activeTabName, setActiveTabName] = useState<string>();
 
 	const {isFocused} = useFocus({id: Focus.dayTabs});
@@ -20,6 +20,35 @@ export default function Day({...props}: BoxProps) {
 		setActiveTabName(name);
 	}
 
+	function renderNoCategories() {
+		return (
+			<Text italic color="gray">
+				No thoughts yet
+			</Text>
+		);
+	}
+
+	function renderTabs() {
+		return (
+			<Tabs
+				keyMap={{
+					useNumbers: true,
+					previous: ['h', 'j'],
+					next: ['k', 'l'],
+				}}
+				onChange={handleTabChange}
+				colors={{activeTab: {color: 'blue', backgroundColor: 'black'}}}
+				isFocused={isFocused}
+			>
+				{categoryNames.map((categoryName, i) => (
+					<Tab key={`category-${i}`} name={categoryName || ''}>
+						{categoryName}
+					</Tab>
+				))}
+			</Tabs>
+		);
+	}
+
 	return (
 		<Box
 			borderStyle="round"
@@ -29,28 +58,7 @@ export default function Day({...props}: BoxProps) {
 		>
 			<BigText text={day.date} font="tiny" />
 			<Box flexDirection="column" gap={1}>
-				{categoryNames.length ? (
-					<Tabs
-						keyMap={{
-							useNumbers: true,
-							previous: ['h', 'j'],
-							next: ['k', 'l'],
-						}}
-						onChange={handleTabChange}
-						colors={{activeTab: {color: 'blue', backgroundColor: 'black'}}}
-						isFocused={isFocused}
-					>
-						{categoryNames.map((categoryName, i) => (
-							<Tab key={`category-${i}`} name={categoryName || ''}>
-								{categoryName}
-							</Tab>
-						))}
-					</Tabs>
-				) : (
-					<Text italic color="gray">
-						No thoughts yet
-					</Text>
-				)}
+				{categoryNames.length ? renderTabs() : renderNoCategories()}
 				<Box flexDirection="column">
 					{day.thoughts
 						.filter(thought => thought.category?.name === activeTabName)
