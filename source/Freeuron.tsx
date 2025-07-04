@@ -1,19 +1,21 @@
 import {getConfig} from './getConfig.js';
 import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
-import React, {useState} from 'react';
+//import React, {useState} from 'react';
+import React from 'react';
 import InputForm from './ui/InputForm.js';
 import {createThought} from './db.js';
-import {Thought} from './types.js';
+//import {Thought} from './types.js';
 import Heading from './ui/Heading.js';
 import {useFocusManager, useInput} from 'ink';
-import {Focus} from './Focus.js';
+import { Focus } from './Focus.js';
 import DayScroller from './ui/DayScroller.js';
 import { useDay } from './context/DayContext.js';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Freeuron() {
 	const config = getConfig();
 	const { day } = useDay();
-	const [_, setThought] = useState<Thought>();
+	//const [_, setThought] = useState<Thought>();
 	const {focus} = useFocusManager();
 
 	useInput((input, key) => {
@@ -38,8 +40,9 @@ export default function Freeuron() {
 			<Heading />
 			<InputForm
 				onSubmit={(category, content) => {
-					setThought({category, content});
-					createThought(day.date, {category, content});
+					const id = uuidv4();
+					//setThought({id,category, content});
+					createThought(day.date, {id, category, content});
 				}}
 			/>
 			<DayScroller />

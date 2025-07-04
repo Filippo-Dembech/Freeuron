@@ -42,4 +42,10 @@ export function getNextDay(date: string): DayType | undefined {
 	return result;
 }
 
+/*
+export function deleteThought(thought: Thought) {
+	
+}
+*/
+
 export default db;

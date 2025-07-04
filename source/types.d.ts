@@ -5,6 +5,7 @@ export interface Category {
 
 
 export type Thought = {
+	id: string;
 	category?: Category;	// undefined because categories are loaded asyncronously from 'config' file
 	content: string;
 };

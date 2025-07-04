@@ -2,102 +2,15 @@
   "days": [
     {
       "date": "02/07/2025",
-      "thoughts": [
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "check email"
-        },
-        {
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "how the fuck"
-        },
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "blq bla"
-        },
-        {
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "New question in 02"
-        },
-        {
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "Old insight"
-        }
-      ]
+      "thoughts": []
     },
     {
       "date": "03/07/2025",
-      "thoughts": [
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "io"
-        },
-        {
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "New insight"
-        },
-        {
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "New question"
-        },
-        {
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "new todo 03"
-        }
-      ]
+      "thoughts": []
     },
     {
       "date": "04/07/2025",
-      "thoughts": [
-        {
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Clean up the room"
-        },
-        {
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "What is a memory leak?"
-        },
-        {
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "UX = User Experience"
-        }
-      ]
+      "thoughts": []
     }
   ]
 }
