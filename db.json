@@ -2,7 +2,17 @@
   "days": [
     {
       "date": "02/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "28b858cc-46a6-405e-8148-86b268e3c02b",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "First todo",
+          "checked": true
+        }
+      ]
     },
     {
       "date": "03/07/2025",
@@ -18,7 +28,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "first todo",
-          "checked": false
+          "checked": true
         },
         {
           "id": "f3638c5b-5157-4d64-8469-f9e622d5ff7b",
@@ -45,7 +55,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "new todo",
-          "checked": false
+          "checked": true
         },
         {
           "id": "36545cae-432c-409b-9bab-6cdfa8fb72ed",
@@ -54,7 +64,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "super mega todo",
-          "checked": false
+          "checked": true
         }
       ]
     }
