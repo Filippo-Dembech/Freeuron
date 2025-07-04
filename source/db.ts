@@ -60,4 +60,21 @@ export function deleteThought(date: string, thoughtToDelete?: Thought) {
 	db.write();
 }
 
+export function toggleThought(date: string, thoughtToCheck?: Thought) {
+	if (!thoughtToCheck) return;
+
+	db.data.days.forEach(day => {
+		if (day.date === date) {
+			day.thoughts.forEach(thought => {
+				if (thought.id === thoughtToCheck.id) {
+					thought.checked = !thought.checked;
+				}
+			});
+		}
+	});
+
+	db.write();
+}
+
+
 export default db;

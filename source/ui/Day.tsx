@@ -1,14 +1,13 @@
 import {Box, BoxProps, Text, useFocus, useFocusManager, useInput} from 'ink';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import BigText from 'ink-big-text';
 import {Tab, Tabs} from 'ink-tab';
 import {Focus} from '../Focus.js';
-//import {Task} from 'ink-task-list';
 import {useDay} from '../context/DayContext.js';
 import SelectInput from 'ink-select-input';
 import {DayType, Thought} from '../types.js';
 import {Task} from 'ink-task-list';
-import {deleteThought} from '../db.js';
+import {deleteThought, toggleThought} from '../db.js';
 
 function Thoughts({
 	day,
@@ -23,18 +22,28 @@ function Thoughts({
 	const [currentThought, setCurrentThought] = useState<Thought | undefined>(
 		day.thoughts[0] || undefined,
 	);
+	const [updatedUI, setUpdateUI] = useState(false);
 	const [confirmText, setConfirmText] = useState('');
 	const {focus} = useFocusManager();
 
+	useEffect(() => {
+		if (updatedUI) setUpdateUI(false);
+	}, [updatedUI]);
+
 	useInput((input, key) => {
 		if (!isFocused) return;
+		if (!confirmText && key.return) {
+			toggleThought(day.date, currentThought);
+			setUpdateUI(true);
+		}
 		if (confirmText && input === 'n') setConfirmText('');
 		if (confirmText && input === 'y') {
 			deleteThought(day.date, currentThought);
 			setCurrentThought(undefined);
+			setConfirmText('');
 		}
 		if (key.escape) focus(Focus.dayTabs);
-		if (key.delete || input === 'd') {
+		if (key.delete || input === 'd' && !key.ctrl) {
 			setConfirmText('Delete Item? y/n');
 		}
 	});
@@ -43,20 +52,26 @@ function Thoughts({
 		<Box flexDirection="column">
 			<SelectInput
 				isFocused={isFocused}
-				itemComponent={({label: thoughtContent}) => (
-					<Box gap={2}>
-						<Task label={thoughtContent} state="pending" />
-						<Text color="red">
-							{currentThought?.content === thoughtContent && confirmText}
-						</Text>
-					</Box>
-				)}
-				onHighlight={item => setCurrentThought(item.value)}
+				itemComponent={({label: thoughtContent}) => {
+					const content = thoughtContent.replace(/::(un)?checked::$/, '');
+					const isChecked = thoughtContent.includes('unchecked');
+					return (
+						<Box gap={2}>
+							<Task label={content} state={isChecked ? 'pending' : 'success'} />
+							<Text color="red">
+								{currentThought?.content === content && confirmText}
+							</Text>
+						</Box>
+					);
+				}}
+				onHighlight={item => setCurrentThought(item.value || day.thoughts[0] || undefined)} // 'undefined' because the user might delete ALL the thoughts in one category
 				items={day.thoughts
 					.filter(thought => thought.category?.name === activeTab)
 					.map((thought, i) => ({
 						key: `${thought.category}-${thought.content}-${i}`,
-						label: thought.content,
+						label: `${thought.content}::${
+							thought.checked ? 'checked' : 'unchecked'
+						}::`,
 						value: thought,
 					}))}
 			/>

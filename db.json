@@ -2,16 +2,7 @@
   "days": [
     {
       "date": "02/07/2025",
-      "thoughts": [
-        {
-          "id": "a180ec04-8968-4993-b987-c8dd31b6e0bb",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "Question test UUID"
-        }
-      ]
+      "thoughts": []
     },
     {
       "date": "03/07/2025",
@@ -19,7 +10,35 @@
     },
     {
       "date": "04/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "ea34ddbc-41a5-432c-80cc-3e92c16b3831",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "first todo",
+          "checked": true
+        },
+        {
+          "id": "f3638c5b-5157-4d64-8469-f9e622d5ff7b",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "First question",
+          "checked": true
+        },
+        {
+          "id": "c08689c7-2db9-446e-9f27-4adb07a39be5",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "Second question",
+          "checked": true
+        }
+      ]
     }
   ]
 }

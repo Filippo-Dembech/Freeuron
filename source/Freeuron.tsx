@@ -40,8 +40,8 @@ export default function Freeuron() {
 			<InputForm
 				onSubmit={(category, content) => {
 					const id = uuidv4();
-					setThought({id,category, content});
-					createThought(day.date, {id, category, content});
+					setThought({id,category, content, checked: false});
+					createThought(day.date, {id, category, content, checked: false});
 				}}
 			/>
 			<DayScroller />
