@@ -1,8 +1,12 @@
 import {JSONFilePreset} from 'lowdb/node';
 import {DayType, Thought} from './types.js';
 import {Low} from 'lowdb';
-import { dateToString, getNextDayDateString, getPreviousDayDateString } from './utils/date.js';
-import { areDatesEqual } from './utils/areDateEquals.js';
+import {
+	dateToString,
+	getNextDayDateString,
+	getPreviousDayDateString,
+} from './utils/date.js';
+import {areDatesEqual} from './utils/areDateEquals.js';
 
 type Data = {
 	days: DayType[];
@@ -16,7 +20,9 @@ const db: Low<Data> = await JSONFilePreset<Data>('db.json', defaultData);
 
 export function createToday(): DayType {
 	const today: DayType = {date: dateToString(new Date()), thoughts: []};
-	const existingToday = db.data.days.find(day => areDatesEqual(day.date, today.date));
+	const existingToday = db.data.days.find(day =>
+		areDatesEqual(day.date, today.date),
+	);
 	if (existingToday) return existingToday;
 	db.data.days.push(today);
 	db.write();
@@ -42,10 +48,16 @@ export function getNextDay(date: string): DayType | undefined {
 	return result;
 }
 
-/*
-export function deleteThought(thought: Thought) {
-	
+export function deleteThought(date: string, thoughtToDelete?: Thought) {
+	if (!thoughtToDelete) return;
+	db.data.days.forEach(day => {
+		if (day.date === date) {
+			day.thoughts = day.thoughts.filter(
+				thought => thought?.id !== thoughtToDelete.id,
+			);
+		}
+	});
+	db.write();
 }
-*/
 
 export default db;

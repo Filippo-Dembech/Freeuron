@@ -8,6 +8,7 @@ import {useDay} from '../context/DayContext.js';
 import SelectInput from 'ink-select-input';
 import {DayType, Thought} from '../types.js';
 import {Task} from 'ink-task-list';
+import {deleteThought} from '../db.js';
 
 function Thoughts({
 	day,
@@ -19,15 +20,23 @@ function Thoughts({
 	const {isFocused} = useFocus({id: Focus.thoughts});
 
 	// 'undefined' because a day might have no thoughts
-	const [_, setCurrentThought] = useState<Thought | undefined>(
+	const [currentThought, setCurrentThought] = useState<Thought | undefined>(
 		day.thoughts[0] || undefined,
 	);
+	const [confirmText, setConfirmText] = useState('');
 	const {focus} = useFocusManager();
 
 	useInput((input, key) => {
 		if (!isFocused) return;
+		if (confirmText && input === 'n') setConfirmText('');
+		if (confirmText && input === 'y') {
+			deleteThought(day.date, currentThought);
+			setCurrentThought(undefined);
+		}
 		if (key.escape) focus(Focus.dayTabs);
-		if (key.delete || input === 'd') console.log('delete thought?');
+		if (key.delete || input === 'd') {
+			setConfirmText('Delete Item? y/n');
+		}
 	});
 
 	return (
@@ -35,7 +44,12 @@ function Thoughts({
 			<SelectInput
 				isFocused={isFocused}
 				itemComponent={({label: thoughtContent}) => (
-					<Task label={thoughtContent} state="pending" />
+					<Box gap={2}>
+						<Task label={thoughtContent} state="pending" />
+						<Text color="red">
+							{currentThought?.content === thoughtContent && confirmText}
+						</Text>
+					</Box>
 				)}
 				onHighlight={item => setCurrentThought(item.value)}
 				items={day.thoughts

@@ -15,29 +15,11 @@
     },
     {
       "date": "03/07/2025",
-      "thoughts": [
-        {
-          "id": "75b43634-cce0-4bd2-a894-1bc5be137740",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Test for UUID"
-        }
-      ]
+      "thoughts": []
     },
     {
       "date": "04/07/2025",
-      "thoughts": [
-        {
-          "id": "a6593d47-2121-4250-aa01-0e7dc5c0f912",
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "Test for UUID insight"
-        }
-      ]
+      "thoughts": []
     }
   ]
 }
