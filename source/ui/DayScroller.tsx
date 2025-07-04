@@ -5,6 +5,7 @@ import React from 'react';
 import {Box} from 'ink';
 import {useDay} from '../context/DayContext.js';
 import Focusable from '../components/Focusable.js';
+import Container from '../components/Container.js';
 
 export default function DayScroller() {
 	const {setPreviousDay, setNextDay} = useDay();
@@ -29,8 +30,8 @@ export default function DayScroller() {
 				},
 			]}
 			renderComponent={({isFocused}) => (
-				<Box
-					borderStyle={isFocused ? 'bold' : 'single'}
+				<Container
+					isFocused={isFocused}
 					flexDirection="column"
 					gap={1}
 					flexGrow={1}
@@ -52,7 +53,7 @@ export default function DayScroller() {
 						/>
 					</Box>
 					<Day flexGrow={1} />
-				</Box>
+				</Container>
 			)}
 		/>
 	);

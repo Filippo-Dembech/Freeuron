@@ -8,6 +8,7 @@ import TextField from '../components/TextField.js';
 import NoCategoryFoundError from '../ui/NoCategoryFoundError.js';
 import {Focus} from '../Focus.js';
 import Focusable from '../components/Focusable.js';
+import Container from '../components/Container.js';
 
 export type Option = {
 	label: string;
@@ -48,7 +49,7 @@ export default function InputForm({onSubmit}: InputFormProps) {
 							},
 						]}
 						renderComponent={({isFocused}) => (
-							<Box borderStyle={isFocused ? "bold" : "single"} padding={1}>
+							<Container isFocused={isFocused} padding={1}>
 								<SelectInput
 									items={options}
 									initialIndex={0}
@@ -72,14 +73,14 @@ export default function InputForm({onSubmit}: InputFormProps) {
 									}}
 									isFocused={isFocused}
 								/>
-							</Box>
+							</Container>
 						)}
 					/>
 					<Focusable
 						id={Focus.textField}
 						renderComponent={({isFocused}) => (
-							<Box
-								borderStyle={isFocused ? 'bold' : 'single'}
+							<Container
+								isFocused={isFocused}
 								padding={1}
 								flexGrow={1}
 							>
@@ -99,7 +100,7 @@ export default function InputForm({onSubmit}: InputFormProps) {
 									}}
 									focus={isFocused}
 								/>
-							</Box>
+							</Container>
 						)}
 					/>
 				</Box>
