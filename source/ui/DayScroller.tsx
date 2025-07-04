@@ -17,7 +17,7 @@ export default function DayScroller() {
 		if (input === 'h' || input === 'j') {
 			setPreviousDay();
 		}
-		if (key.return) focus(Focus.textField)
+		if (key.return) focus(Focus.dayTabs)
 	};
 
 	return (
