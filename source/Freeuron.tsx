@@ -20,7 +20,7 @@ export default function Freeuron() {
 
 	return (
 		<Focusable
-			alwaysListening={true}
+			alwaysListening
 			id="app" nextFocus={[
 				{ to: Focus.textField, when: (input, key) => key.ctrl && input === "e"},
 				{ to: Focus.categorySelect, when: (input, key) => key.ctrl && input === "o"},
