@@ -21,7 +21,6 @@ interface InputFormProps {
 
 export default function InputForm({onSubmit}: InputFormProps) {
 	const config = getConfig();
-	//const {focus} = useFocusManager();
 	const [{category, content, error}, dispatch] = useReducer(reducer, {
 		category: config.categories[0],
 		content: '',
@@ -38,76 +37,70 @@ export default function InputForm({onSubmit}: InputFormProps) {
 
 	return (
 		<>
-			<Box flexDirection="column" paddingLeft={1} paddingRight={1}>
-				<Box>
-					<Focusable
-						id={Focus.categorySelect}
-						nextFocus={[
-							{
-								to: Focus.textField,
-								when: (_, key) => key.return,
-							},
-						]}
-						renderComponent={({isFocused}) => (
-							<Container isFocused={isFocused} padding={1}>
-								<SelectInput
-									items={options}
-									initialIndex={0}
-									onHighlight={item => {
-										dispatch({
-											type: 'syncCategory',
-											payload: {
-												name: item.label,
-												placeholder: item.value.placeholder,
-											},
-										});
-									}}
-									onSelect={item => {
-										dispatch({
-											type: 'selectCategory',
-											payload: {
-												name: item.label,
-												placeholder: item.value.placeholder,
-											},
-										});
-									}}
-									isFocused={isFocused}
-								/>
-							</Container>
-						)}
-					/>
-					<Focusable
-						id={Focus.textField}
-						renderComponent={({isFocused}) => (
-							<Container
+			<Box>
+				<Focusable
+					id={Focus.categorySelect}
+					nextFocus={[
+						{
+							to: Focus.textField,
+							when: (_, key) => key.return,
+						},
+					]}
+					renderComponent={({isFocused}) => (
+						<Container isFocused={isFocused} padding={1}>
+							<SelectInput
+								items={options}
+								initialIndex={0}
+								onHighlight={item => {
+									dispatch({
+										type: 'syncCategory',
+										payload: {
+											name: item.label,
+											placeholder: item.value.placeholder,
+										},
+									});
+								}}
+								onSelect={item => {
+									dispatch({
+										type: 'selectCategory',
+										payload: {
+											name: item.label,
+											placeholder: item.value.placeholder,
+										},
+									});
+								}}
 								isFocused={isFocused}
-								padding={1}
-								flexGrow={1}
-							>
-								<TextField
-									placeholder={category.placeholder || ''}
-									value={content}
-									onChange={value =>
-										dispatch({type: 'syncContent', payload: value})
-									}
-									onSubmit={() => {
-										if (!content)
-											dispatch({
-												type: 'setError',
-												payload: "Text field content can't be empty.",
-											});
-										else onSubmit(category, content);
-									}}
-									focus={isFocused}
-								/>
-							</Container>
-						)}
-					/>
-				</Box>
-				<Text color="red" bold>
-					{error}
-				</Text>
+							/>
+						</Container>
+					)}
+				/>
+				<Focusable
+					id={Focus.textField}
+					renderComponent={({isFocused}) => (
+						<Container isFocused={isFocused} padding={1} flexGrow={1}>
+							<TextField
+								placeholder={category.placeholder || ''}
+								value={content}
+								onChange={value =>
+									dispatch({type: 'syncContent', payload: value})
+								}
+								onSubmit={() => {
+									if (!content)
+										dispatch({
+											type: 'setError',
+											payload: "Text field content can't be empty.",
+										});
+									else onSubmit(category, content);
+								}}
+								focus={isFocused}
+							/>
+						</Container>
+					)}
+				/>
 			</Box>
+			<Text color="red" bold>
+				{error}
+			</Text>
 		</>
 	);
 }
