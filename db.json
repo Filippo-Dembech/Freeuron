@@ -78,7 +78,7 @@
             "placeholder": "Enter your discovery..."
           },
           "content": "New insight",
-          "checked": false
+          "checked": true
         },
         {
           "id": "4a240790-3d5e-46e9-8c4c-2823ea13b0a1",
@@ -87,7 +87,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "third todo",
-          "checked": false
+          "checked": true
         },
         {
           "id": "1f0297d2-20e6-451b-9138-15a66746b8bc",
@@ -96,7 +96,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "first todo",
-          "checked": false
+          "checked": true
         },
         {
           "id": "fc71d079-3e86-45ee-8ed1-283aaea1f92b",
@@ -105,13 +105,41 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "second todo",
-          "checked": false
+          "checked": true
         }
       ]
     },
     {
       "date": "07/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "e757dcc9-b17c-4a45-82b3-225a55ab9579",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "First todo",
+          "checked": true
+        },
+        {
+          "id": "d0dda1a7-7eda-451d-98de-0cd842ecc4fe",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "second todo",
+          "checked": false
+        },
+        {
+          "id": "24d33e93-d56b-4232-98d5-c280a3a50ef6",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "first question",
+          "checked": true
+        }
+      ]
     }
   ]
 }

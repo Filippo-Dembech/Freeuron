@@ -16,14 +16,16 @@ export default function Thoughts({
 	const activeThoughts = day.thoughts.filter(thought => thought.category?.name === activeTab)
 	// if there are no thoughts a no thoughts feedback component is rendered
 	// so if Thoughts is rendered it means that day MUST have at least one thought
-	const selectedThought = useRef<Thought>(activeThoughts[0]!);
+	const firstActiveThought = activeThoughts[0];
+	console.log("FIRST_ACTIVE_THOUGHT: ", firstActiveThought)
+	const selectedThought = useRef<Thought>(firstActiveThought!);
 	const [confirmText, setConfirmText] = useState('');
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
 	
 	console.log("=============== ACTIVE THOUGHTS ===============")
 	console.log(activeThoughts)
 	
-	console.log("SELECTED THOUGHT: ", selectedThought)
+	console.log("SELECTED THOUGHT: ", selectedThought.current)
 
 	const resetConfirmText = () => {
 		setConfirmText('');
@@ -75,6 +77,7 @@ export default function Thoughts({
 				<Box flexDirection="column">
 					<SelectInput
 						isFocused={isFocused}
+						// don't know why but 'value' isn't seen as an 'item' property
 						itemComponent={({label: thoughtContent}) => {
 							const content = thoughtContent.replace(/::(un)?checked::$/, '');
 							const isChecked = thoughtContent.includes('unchecked');
@@ -90,13 +93,18 @@ export default function Thoughts({
 								</Box>
 							);
 						}}
-						onHighlight={item =>
+						onHighlight={item => {
+							console.log("HIGHLIGHT: ", item);
 							selectedThought.current = item.value
+						}	
 							//setCurrentThought(item.value || day.thoughts[0] || undefined)
 						} // 'undefined' because the user might delete ALL the thoughts in one category
 						items={activeThoughts
 							.map((thought, i) => ({
 								key: `${thought.category}-${thought.content}-${i}`,
+								// because 'value' isn't seen as an 'item' property but label does,
+								// I have decided to use string manipulation to make the backend
+								// understand whether a thought were checked or not
 								label: `${thought.content}::${
 									thought.checked ? 'checked' : 'unchecked'
 								}::`,

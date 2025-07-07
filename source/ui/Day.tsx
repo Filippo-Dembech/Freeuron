@@ -6,6 +6,7 @@ import {Focus} from '../Focus.js';
 import {useDay} from '../context/DayContext.js';
 import Focusable from '../components/Focusable.js';
 import Thoughts from './Thoughts.js';
+import { alphabetically } from '../utils/sort.js';
 
 export default function Day({...props}: BoxProps) {
 	const {day} = useDay();
@@ -41,10 +42,7 @@ export default function Day({...props}: BoxProps) {
 					isFocused={isFocused}
 				>
 					{categoryNames
-						.sort(
-							(a, b) =>
-								a?.toLowerCase().localeCompare(b?.toLowerCase() || '') || 0,
-						)
+						.sort(alphabetically)
 						.map((categoryName, i) => (
 							<Tab key={`category-${i}`} name={categoryName || ''}>
 								{categoryName}
