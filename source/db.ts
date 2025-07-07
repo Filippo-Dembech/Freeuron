@@ -5,7 +5,6 @@ import {
 	dateToString,
 	sameDate,
 } from './utils/date.js';
-import {areDatesEqual} from './utils/areDateEquals.js';
 
 type Data = {
 	days: DayType[];
@@ -30,7 +29,7 @@ const nextDayOf = (i: number) => db.data.days[i + 1];
 export function createToday(): DayType {
 	const today: DayType = {date: dateToString(new Date()), thoughts: []};
 	const existingToday = db.data.days.find(day =>
-		areDatesEqual(day.date, today.date),
+		sameDate(day.date, today.date),
 	);
 	if (existingToday) return existingToday;
 	db.data.days.push(today);

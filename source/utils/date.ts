@@ -35,5 +35,6 @@ export function getNextDayDateString(date: string): string {
 }
 
 export function sameDate(firstDate: string, secondDate: string) {
-  return firstDate === secondDate;
+  const normalize = (str: string) => str.trim(); // extend if needed later
+  return normalize(firstDate) === normalize(secondDate);
 }

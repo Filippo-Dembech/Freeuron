@@ -1,5 +1,4 @@
 import SelectInput from 'ink-select-input';
-import {Thought} from '../types.js';
 import {Task} from 'ink-task-list';
 import React, {useRef, useState} from 'react';
 import Focusable from '../components/Focusable.js';
@@ -16,16 +15,16 @@ export default function Thoughts({
 	const activeThoughts = day.thoughts.filter(thought => thought.category?.name === activeTab)
 	// if there are no thoughts a no thoughts feedback component is rendered
 	// so if Thoughts is rendered it means that day MUST have at least one thought
+	console.log("=============== ACTIVE THOUGHTS ===============")
+	console.log(activeThoughts)
 	const firstActiveThought = activeThoughts[0];
 	console.log("FIRST_ACTIVE_THOUGHT: ", firstActiveThought)
-	const selectedThought = useRef<Thought>(firstActiveThought!);
+	const selectedThought = useRef(firstActiveThought);
+	console.log("SELECTED THOUGHT: ", selectedThought.current)
 	const [confirmText, setConfirmText] = useState('');
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
 	
-	console.log("=============== ACTIVE THOUGHTS ===============")
-	console.log(activeThoughts)
 	
-	console.log("SELECTED THOUGHT: ", selectedThought.current)
 
 	const resetConfirmText = () => {
 		setConfirmText('');
