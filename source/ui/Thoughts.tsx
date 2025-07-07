@@ -1,4 +1,117 @@
 import SelectInput from 'ink-select-input';
+import {Thought} from '../types.js';
+import {Task} from 'ink-task-list';
+import React, {useRef, useState} from 'react';
+import Focusable from '../components/Focusable.js';
+import {Focus} from '../Focus.js';
+import {Box, Text} from 'ink';
+import { useDay } from '../context/DayContext.js';
+
+export default function Thoughts({
+	activeTab,
+}: {
+	activeTab: string | undefined;
+}) {
+	const {day, toggleThought} = useDay();
+	const activeThoughts = day.thoughts.filter(thought => thought.category?.name === activeTab)
+	// if there are no thoughts a no thoughts feedback component is rendered
+	// so if Thoughts is rendered it means that day MUST have at least one thought
+	const selectedThought = useRef<Thought>(activeThoughts[0]!);
+	const [confirmText, setConfirmText] = useState('');
+	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
+	
+	console.log("=============== ACTIVE THOUGHTS ===============")
+	console.log(activeThoughts)
+	
+	console.log("SELECTED THOUGHT: ", selectedThought)
+
+	const resetConfirmText = () => {
+		setConfirmText('');
+	};
+
+	/*
+	const deleteCurrentThought = () => {
+		setActiveThoughts(thoughts =>
+			thoughts.filter(thought => thought.id !== selectedThought.current?.id),
+		);
+	};
+	*/
+
+	return (
+		<Focusable
+			id={Focus.thoughts}
+			nextFocus={[
+				{
+					to: Focus.dayTabs,
+					when: (_, key) => key.escape,
+				},
+			]}
+			actions={[
+				{
+					on: (_, key) => key.return,
+					do: () => {
+						if (canToggle) toggleThought(selectedThought.current!);
+					},
+				},
+				{
+					on: input => input === 'n',
+					do: () => resetConfirmText(),
+				},
+				{
+					on: input => input === 'y',
+					do: () => {
+						if (confirmText) {
+							//deleteCurrentThought();
+							resetConfirmText();
+						}
+					},
+				},
+				{
+					on: (input, key) => key.delete || (input === 'd' && !key.ctrl),
+					do: () => setConfirmText("Delete item? 'y/n'"),
+				},
+			]}
+			renderComponent={({isFocused}) => (
+				<Box flexDirection="column">
+					<SelectInput
+						isFocused={isFocused}
+						itemComponent={({label: thoughtContent}) => {
+							const content = thoughtContent.replace(/::(un)?checked::$/, '');
+							const isChecked = thoughtContent.includes('unchecked');
+							return (
+								<Box gap={2}>
+									<Task
+										label={content}
+										state={isChecked ? 'pending' : 'success'}
+									/>
+									<Text color="white" backgroundColor="red">
+										{selectedThought.current?.content === content && confirmText}
+									</Text>
+								</Box>
+							);
+						}}
+						onHighlight={item =>
+							selectedThought.current = item.value
+							//setCurrentThought(item.value || day.thoughts[0] || undefined)
+						} // 'undefined' because the user might delete ALL the thoughts in one category
+						items={activeThoughts
+							.map((thought, i) => ({
+								key: `${thought.category}-${thought.content}-${i}`,
+								label: `${thought.content}::${
+									thought.checked ? 'checked' : 'unchecked'
+								}::`,
+								value: thought,
+							}))}
+					/>
+				</Box>
+			)}
+		/>
+	);
+}
+
+
+/*
+import SelectInput from 'ink-select-input';
 import {DayType, Thought} from '../types.js';
 import {Task} from 'ink-task-list';
 import {deleteThought, toggleThought} from '../db.js';
@@ -101,3 +214,4 @@ export default function Thoughts({
 		/>
 	);
 }
+*/

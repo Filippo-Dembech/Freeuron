@@ -51,7 +51,7 @@ export default function Day({...props}: BoxProps) {
 							</Tab>
 						))}
 				</Tabs>
-				<Thoughts day={day} activeTab={activeTabName} />
+				<Thoughts activeTab={activeTabName} />
 			</>
 		);
 	}

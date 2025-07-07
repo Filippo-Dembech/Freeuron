@@ -33,3 +33,7 @@ export function getNextDayDateString(date: string): string {
 
   return dateToString(currentDate);
 }
+
+export function sameDate(firstDate: string, secondDate: string) {
+  return firstDate === secondDate;
+}

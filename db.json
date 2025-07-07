@@ -70,6 +70,47 @@
     },
     {
       "date": "05/07/2025",
+      "thoughts": [
+        {
+          "id": "c271fc54-6fd7-43ab-b994-fabe2c6613b7",
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "New insight",
+          "checked": false
+        },
+        {
+          "id": "4a240790-3d5e-46e9-8c4c-2823ea13b0a1",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "third todo",
+          "checked": false
+        },
+        {
+          "id": "1f0297d2-20e6-451b-9138-15a66746b8bc",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "first todo",
+          "checked": false
+        },
+        {
+          "id": "fc71d079-3e86-45ee-8ed1-283aaea1f92b",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "second todo",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "date": "07/07/2025",
       "thoughts": []
     }
   ]
