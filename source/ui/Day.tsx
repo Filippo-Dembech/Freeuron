@@ -10,11 +10,11 @@ import { alphabetically } from '../utils/sort.js';
 
 export default function Day({...props}: BoxProps) {
 	const {day} = useDay();
-	const [activeTabName, setActiveTabName] = useState<string>();
-
 	const categoryNames = [
 		...new Set(day.thoughts.map(thought => thought.category?.name)),
-	];
+	].sort(alphabetically);
+	const [activeTabName, setActiveTabName] = useState<string| undefined>(categoryNames[0]);
+
 
 	function handleTabChange(name: string) {
 		setActiveTabName(name);

@@ -2,7 +2,6 @@ import {getConfig} from './getConfig.js';
 import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
 import React, {useState} from 'react';
 import InputForm from './ui/InputForm.js';
-import {createThought} from './db.js';
 import {Thought} from './types.js';
 import Heading from './ui/Heading.js';
 import DayScroller from './ui/DayScroller.js';
@@ -13,7 +12,7 @@ import { Focus } from './Focus.js';
 
 export default function Freeuron() {
 	const config = getConfig();
-	const {day} = useDay();
+	const {day, createThought} = useDay();
 	const [_, setThought] = useState<Thought>();
 
 	if (config.categories.length === 0) return <NoCategoryFoundError />;

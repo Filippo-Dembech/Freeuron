@@ -1,11 +1,12 @@
 import {createContext, useContext, useState} from 'react';
 import {DayType, Thought} from '../types.js';
-import {createToday, getNextDay, getPreviousDay, syncThoughts} from '../db.js';
+import {createDBThought, createToday, getNextDay, getPreviousDay, syncThoughts} from '../db.js';
 import React from 'react';
 
 type DayContextValueType = {
 	day: DayType;
 	today: DayType;
+	createThought: (date: string, thought: Thought) => void;
 	setPreviousDay: () => void;
 	setNextDay: () => void;
 	toggleThought: (thought: Thought) => void;
@@ -16,6 +17,11 @@ const DayContext = createContext<DayContextValueType | undefined>(undefined);
 function DayProvider({children}: {children: React.ReactNode}) {
 	const today = createToday();
 	const [day, setDay] = useState<DayType>(today);
+	
+	const createThought = (date: string, thought: Thought) => {
+		setDay(day => ({ ...day, thoughts: [ ...day.thoughts, thought ]}))
+		createDBThought(date, thought);
+	}
 
 	const toggleThought = (targetThought: Thought) => {
 		setDay(day => {
@@ -39,7 +45,7 @@ function DayProvider({children}: {children: React.ReactNode}) {
 
 	return (
 		<DayContext.Provider
-			value={{day, setPreviousDay, setNextDay, today, toggleThought}}
+			value={{day, setPreviousDay, setNextDay, today, toggleThought, createThought}}
 		>
 			{children}
 		</DayContext.Provider>

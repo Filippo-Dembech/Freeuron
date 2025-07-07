@@ -1,24 +1,33 @@
 import SelectInput from 'ink-select-input';
 import {Task} from 'ink-task-list';
-import React, {useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import Focusable from '../components/Focusable.js';
 import {Focus} from '../Focus.js';
 import {Box, Text} from 'ink';
-import { useDay } from '../context/DayContext.js';
+import {useDay} from '../context/DayContext.js';
+import {Thought} from '../types.js';
 
-export default function Thoughts({
-	activeTab,
-}: {
-	activeTab: string | undefined;
-}) {
+export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
 	const {day, toggleThought} = useDay();
-	const [activeThoughts] = useState(day.thoughts.filter(thought => thought.category?.name === activeTab));;
+	const activeThoughts = useMemo(() => day.thoughts.filter(
+		thought => thought.category?.name === activeTab,
+	), [day, activeTab]);
+	const [selectedThought, setSelectedThought] = useState<Thought | undefined>();
 	const [confirmText, setConfirmText] = useState('');
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
-	const deleteMode = confirmText !== "";
+	const deleteMode = confirmText !== '';
+
+	useEffect(() => {
+		setSelectedThought(activeThoughts[0]);
+	}, [activeThoughts]);
 
 	const resetConfirmText = () => {
 		setConfirmText('');
+	};
+
+	const deleteSelectedThought = () => {
+		if (!selectedThought) return;
+		console.log('DELETE: ', selectedThought);
 	};
 
 	return (
@@ -32,13 +41,13 @@ export default function Thoughts({
 			]}
 			actions={[
 				{
-					on: (input, key) => key.ctrl && input === "t",
+					on: (input, key) => key.ctrl && input === 't',
 					do: () => resetConfirmText(),
 				},
 				{
-					on: input =>  deleteMode && input === 'y',
+					on: input => deleteMode && input === 'y',
 					do: () => {
-						deleteCurrentThought();
+						deleteSelectedThought();
 						resetConfirmText();
 					},
 				},
@@ -67,28 +76,29 @@ export default function Thoughts({
 								</Box>
 							);
 						}}
-						onHighlight={() => setConfirmText("")}
-						onSelect={({ value }) => {
+						onHighlight={({value}) => {
+							setSelectedThought(value);
+							resetConfirmText();
+						}}
+						onSelect={({value}) => {
 							if (canToggle) toggleThought(value);
 						}}
-						items={activeThoughts
-							.map((thought, i) => ({
-								key: `${thought.category}-${thought.content}-${i}`,
-								// because 'value' isn't seen as an 'item' property but label does,
-								// I have decided to use string manipulation to make the backend
-								// understand whether a thought were checked or not
-								label: `${thought.content}::${
-									thought.checked ? 'checked' : 'unchecked'
-								}::`,
-								value: thought,
-							}))}
+						items={activeThoughts?.map((thought, i) => ({
+							key: `${thought.category}-${thought.content}-${i}`,
+							// because 'value' isn't seen as an 'item' property but label does,
+							// I have decided to use string manipulation to make the backend
+							// understand whether a thought were checked or not
+							label: `${thought.content}::${
+								thought.checked ? 'checked' : 'unchecked'
+							}::`,
+							value: thought,
+						}))}
 					/>
 				</Box>
 			)}
 		/>
 	);
 }
-
 
 /*
 import SelectInput from 'ink-select-input';

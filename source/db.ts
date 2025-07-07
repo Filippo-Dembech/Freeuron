@@ -37,7 +37,7 @@ export function createToday(): DayType {
 	return today;
 }
 
-export function createThought(date: string, thought: Thought) {
+export function createDBThought(date: string, thought: Thought) {
 	db.data.days.map(day =>
 		day.date === date ? day.thoughts.push(thought) : day,
 	);
@@ -66,31 +66,15 @@ export function getNextDay(targetDate: string): DayType | undefined {
 	return;
 }
 
-export function deleteThought(date: string, thoughtToDelete?: Thought) {
+export function deleteThought(targetDay: DayType, thoughtToDelete?: Thought) {
 	if (!thoughtToDelete) return;
 	db.data.days.forEach(day => {
-		if (day.date === date) {
+		if (day.date === targetDay.date) {
 			day.thoughts = day.thoughts.filter(
 				thought => thought?.id !== thoughtToDelete.id,
 			);
 		}
 	});
-	db.write();
-}
-
-export function toggleThought(date: string, thoughtToCheck?: Thought) {
-	if (!thoughtToCheck) return;
-
-	db.data.days.forEach(day => {
-		if (day.date === date) {
-			day.thoughts.forEach(thought => {
-				if (thought.id === thoughtToCheck.id) {
-					thought.checked = !thought.checked;
-				}
-			});
-		}
-	});
-
 	db.write();
 }
 
