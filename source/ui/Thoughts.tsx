@@ -1,6 +1,6 @@
 import SelectInput from 'ink-select-input';
 import {Task} from 'ink-task-list';
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import Focusable from '../components/Focusable.js';
 import {Focus} from '../Focus.js';
 import {Box, Text} from 'ink';
@@ -12,31 +12,14 @@ export default function Thoughts({
 	activeTab: string | undefined;
 }) {
 	const {day, toggleThought} = useDay();
-	const activeThoughts = day.thoughts.filter(thought => thought.category?.name === activeTab)
-	// if there are no thoughts a no thoughts feedback component is rendered
-	// so if Thoughts is rendered it means that day MUST have at least one thought
-	console.log("=============== ACTIVE THOUGHTS ===============")
-	console.log(activeThoughts)
-	const firstActiveThought = activeThoughts[0];
-	console.log("FIRST_ACTIVE_THOUGHT: ", firstActiveThought)
-	const selectedThought = useRef(firstActiveThought);
-	console.log("SELECTED THOUGHT: ", selectedThought.current)
+	const [activeThoughts] = useState(day.thoughts.filter(thought => thought.category?.name === activeTab));;
 	const [confirmText, setConfirmText] = useState('');
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
-	
-	
+	const deleteMode = confirmText !== "";
 
 	const resetConfirmText = () => {
 		setConfirmText('');
 	};
-
-	/*
-	const deleteCurrentThought = () => {
-		setActiveThoughts(thoughts =>
-			thoughts.filter(thought => thought.id !== selectedThought.current?.id),
-		);
-	};
-	*/
 
 	return (
 		<Focusable
@@ -49,22 +32,14 @@ export default function Thoughts({
 			]}
 			actions={[
 				{
-					on: (_, key) => key.return,
-					do: () => {
-						if (canToggle) toggleThought(selectedThought.current!);
-					},
-				},
-				{
-					on: input => input === 'n',
+					on: (input, key) => key.ctrl && input === "t",
 					do: () => resetConfirmText(),
 				},
 				{
-					on: input => input === 'y',
+					on: input =>  deleteMode && input === 'y',
 					do: () => {
-						if (confirmText) {
-							//deleteCurrentThought();
-							resetConfirmText();
-						}
+						deleteCurrentThought();
+						resetConfirmText();
 					},
 				},
 				{
@@ -77,7 +52,7 @@ export default function Thoughts({
 					<SelectInput
 						isFocused={isFocused}
 						// don't know why but 'value' isn't seen as an 'item' property
-						itemComponent={({label: thoughtContent}) => {
+						itemComponent={({label: thoughtContent, isSelected}) => {
 							const content = thoughtContent.replace(/::(un)?checked::$/, '');
 							const isChecked = thoughtContent.includes('unchecked');
 							return (
@@ -87,17 +62,15 @@ export default function Thoughts({
 										state={isChecked ? 'pending' : 'success'}
 									/>
 									<Text color="white" backgroundColor="red">
-										{selectedThought.current?.content === content && confirmText}
+										{isSelected && confirmText}
 									</Text>
 								</Box>
 							);
 						}}
-						onHighlight={item => {
-							console.log("HIGHLIGHT: ", item);
-							selectedThought.current = item.value
-						}	
-							//setCurrentThought(item.value || day.thoughts[0] || undefined)
-						} // 'undefined' because the user might delete ALL the thoughts in one category
+						onHighlight={() => setConfirmText("")}
+						onSelect={({ value }) => {
+							if (canToggle) toggleThought(value);
+						}}
 						items={activeThoughts
 							.map((thought, i) => ({
 								key: `${thought.category}-${thought.content}-${i}`,

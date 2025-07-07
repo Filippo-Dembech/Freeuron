@@ -119,7 +119,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "First todo",
-          "checked": true
+          "checked": false
         },
         {
           "id": "d0dda1a7-7eda-451d-98de-0cd842ecc4fe",
