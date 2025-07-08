@@ -15,9 +15,10 @@ export default function Day({...props}: BoxProps) {
 	const [activeTabName, setActiveTabName] = useState<string | undefined>("");
 	
 	useEffect(() => {
-		setActiveTabName(categoryNames[0])
+		if (!activeTabName)
+			setActiveTabName(categoryNames[0])
 	}, [day, categoryNames])
-
+	
 	return (
 		<Box
 			borderStyle="round"

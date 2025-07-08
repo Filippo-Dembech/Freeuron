@@ -74,9 +74,13 @@
     },
     {
       "date": "07/07/2025",
+      "thoughts": []
+    },
+    {
+      "date": "08/07/2025",
       "thoughts": [
         {
-          "id": "e757dcc9-b17c-4a45-82b3-225a55ab9579",
+          "id": "007cfb22-793f-4125-b051-50abb2d8efb5",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
@@ -85,25 +89,16 @@
           "checked": false
         },
         {
-          "id": "d0dda1a7-7eda-451d-98de-0cd842ecc4fe",
+          "id": "5c660a6d-5dda-435b-9116-138e6dee26af",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
           },
-          "content": "second todo",
+          "content": "Second todo",
           "checked": false
         },
         {
-          "id": "24d33e93-d56b-4232-98d5-c280a3a50ef6",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "first question",
-          "checked": false
-        },
-        {
-          "id": "2908b3df-bbc5-43cd-bdaf-fcab4ee1287d",
+          "id": "7854dc39-26be-4b3b-9840-8e570f354d37",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
@@ -112,100 +107,24 @@
           "checked": false
         },
         {
-          "id": "4d5f8e7f-c3b7-49d5-8e6a-fbbe1f5aa38b",
+          "id": "a15f2608-8746-4439-b777-9660fcb974d0",
           "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
+            "name": "Question",
+            "placeholder": "Enter your question..."
           },
-          "content": "fourth",
+          "content": "First question",
           "checked": false
         },
         {
-          "id": "07a0b9aa-39b0-4965-a4cd-746b62c7d87e",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "New todo",
-          "checked": false
-        },
-        {
-          "id": "7d0b26e6-a9b6-432c-aa5e-90512fdf5d05",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "hi there",
-          "checked": true
-        },
-        {
-          "id": "ec0f5579-a442-4acc-b71e-2bd7c6cd71ab",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "todo test",
-          "checked": false
-        },
-        {
-          "id": "47d4c7c2-fa48-418d-836f-40c61c750e09",
+          "id": "f41ea715-3e0d-4e19-9cb6-0e2916a7cc57",
           "category": {
             "name": "Question",
             "placeholder": "Enter your question..."
           },
           "content": "Second question",
-          "checked": true
-        },
-        {
-          "id": "15db048d-38fe-467e-a346-f7fbfa105a1d",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "New question",
-          "checked": true
-        },
-        {
-          "id": "bd38bd69-444d-4b38-84b6-1267789a8808",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "New uest",
-          "checked": true
-        },
-        {
-          "id": "94e27797-14b4-41e4-838c-cdb2d2d91513",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "New todot",
-          "checked": false
-        },
-        {
-          "id": "6aecb91f-2e3b-4e8e-8ee1-db505aede761",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Super Todo here matet",
-          "checked": false
-        },
-        {
-          "id": "ec4b6784-b65d-4c5d-8229-145e9aa8fc4a",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Test",
           "checked": false
         }
       ]
-    },
-    {
-      "date": "08/07/2025",
-      "thoughts": []
     }
   ]
 }
