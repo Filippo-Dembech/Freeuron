@@ -22,17 +22,7 @@
     },
     {
       "date": "08/07/2025",
-      "thoughts": [
-        {
-          "id": "448fc37f-2478-462f-bfdd-fd0588bbe70d",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "New question",
-          "checked": false
-        }
-      ]
+      "thoughts": []
     }
   ]
 }

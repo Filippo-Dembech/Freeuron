@@ -27,15 +27,18 @@ const DayContext = createContext<DayContextValueType | undefined>(undefined);
 function DayProvider({children}: {children: React.ReactNode}) {
 	const today = createToday();
 	const [day, setDay] = useState<DayType>(today);
-	const [activeTab, setActiveTab] = useState(
-		() =>
-			[...new Set(day.thoughts.map(thought => thought.category?.name))].sort(
-				alphabetically,
-			)[0],
-	);
+	const usedCategories = [
+		...new Set(day.thoughts.map(thought => thought.category?.name)),
+	].sort(alphabetically);
+	const [activeTab, setActiveTab] = useState(usedCategories[0]);
 
 	useEffect(() => {
 		syncDBThoughts(day, day.thoughts);
+		if (
+			!day.thoughts.map(thought => thought.category?.name).includes(activeTab)
+		) {
+			setActiveTab(usedCategories[0]);
+		}
 	}, [day]);
 
 	const createThought = (date: string, thought: Thought) => {

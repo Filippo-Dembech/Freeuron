@@ -12,6 +12,8 @@ type CategoryTypeProps = {
 export default function CategoryTabs({onChange}: CategoryTypeProps) {
     
     const {day, activeTab} = useDay();
+	
+	console.log("ACTIVE TAB: ", activeTab);
 
 	const categoryNames = [
 		...new Set(day.thoughts.map(thought => thought.category?.name)),
