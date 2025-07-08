@@ -191,7 +191,7 @@
             "placeholder": "Enter your question..."
           },
           "content": "Second question",
-          "checked": false
+          "checked": true
         },
         {
           "id": "15db048d-38fe-467e-a346-f7fbfa105a1d",
@@ -200,7 +200,7 @@
             "placeholder": "Enter your question..."
           },
           "content": "New question",
-          "checked": false
+          "checked": true
         },
         {
           "id": "bd38bd69-444d-4b38-84b6-1267789a8808",
@@ -209,7 +209,7 @@
             "placeholder": "Enter your question..."
           },
           "content": "New uest",
-          "checked": false
+          "checked": true
         },
         {
           "id": "94e27797-14b4-41e4-838c-cdb2d2d91513",
@@ -227,6 +227,29 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "Super Todo here matet",
+          "checked": false
+        },
+        {
+          "id": "ec4b6784-b65d-4c5d-8229-145e9aa8fc4a",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Test",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "date": "08/07/2025",
+      "thoughts": [
+        {
+          "id": "7d1a47db-2067-4271-8b8a-9489960af714",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "i there mateH",
           "checked": false
         }
       ]

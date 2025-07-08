@@ -23,11 +23,11 @@ export default function TextField({
 	useInput((input, key) => {
 		if (key.ctrl && input === 'w') {
 			activateDeleteMode();
-			removeLastword();
 		}
 	});
 
 	useEffect(() => {
+		if (isDeleteMode()) removeLastword()
 		onChange(content);
         deactivateDeleteMode();
 	}, [content]);
@@ -37,7 +37,6 @@ export default function TextField({
 			{...props}
 			value={value}
 			onChange={value => {
-				if (isDeleteMode()) return;
 				setContent(value);
 			}}
 			onSubmit={() => {
