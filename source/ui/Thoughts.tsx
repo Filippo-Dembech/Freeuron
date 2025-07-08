@@ -8,11 +8,11 @@ import {useDay} from '../context/DayContext.js';
 import {Thought} from '../types.js';
 
 export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
-	
 	const {day, toggleThought, deleteThought} = useDay();
-	const activeThoughts = useMemo(() => day.thoughts.filter(
-		thought => thought.category?.name === activeTab,
-	), [day, activeTab]);
+	const activeThoughts = useMemo(
+		() => day.thoughts.filter(thought => thought.category?.name === activeTab),
+		[day, activeTab],
+	);
 	const [selectedThought, setSelectedThought] = useState<Thought | undefined>();
 	const [confirmText, setConfirmText] = useState('');
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
@@ -31,6 +31,21 @@ export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
 		deleteThought(selectedThought);
 	};
 
+	const memoizedItems = useMemo(
+		() =>
+			activeThoughts?.map((thought, i) => ({
+				key: `${thought.category}-${thought.content}-${i}`,
+				// because 'value' isn't seen as an 'item' property but label does,
+				// I have decided to use string manipulation to make the backend
+				// understand whether a thought were checked or not
+				label: `${thought.content}::${
+					thought.checked ? 'checked' : 'unchecked'
+				}::`,
+				value: thought,
+			})),
+		[activeThoughts],
+	);
+
 	return (
 		<Focusable
 			id={Focus.thoughts}
@@ -46,8 +61,8 @@ export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
 					do: () => resetConfirmText(),
 				},
 				{
-					on: input => deleteMode && input === "n",
-					do: () => resetConfirmText()
+					on: input => deleteMode && input === 'n',
+					do: () => resetConfirmText(),
 				},
 				{
 					on: input => deleteMode && input === 'y',
@@ -89,16 +104,7 @@ export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
 						onSelect={({value}) => {
 							if (canToggle) toggleThought(value);
 						}}
-						items={activeThoughts?.map((thought, i) => ({
-							key: `${thought.category}-${thought.content}-${i}`,
-							// because 'value' isn't seen as an 'item' property but label does,
-							// I have decided to use string manipulation to make the backend
-							// understand whether a thought were checked or not
-							label: `${thought.content}::${
-								thought.checked ? 'checked' : 'unchecked'
-							}::`,
-							value: thought,
-						}))}
+						items={memoizedItems}
 					/>
 				</Box>
 			)}

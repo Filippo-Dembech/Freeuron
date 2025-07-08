@@ -15,8 +15,7 @@ export default function Day({...props}: BoxProps) {
 	const [activeTabName, setActiveTabName] = useState<string | undefined>("");
 	
 	useEffect(() => {
-		if (!activeTabName)
-			setActiveTabName(categoryNames[0])
+		setActiveTabName(categoryNames[0])
 	}, [day, categoryNames])
 	
 	return (
