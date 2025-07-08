@@ -5,13 +5,16 @@ import {
 	createToday,
 	getNextDay,
 	getPreviousDay,
-	syncThoughts,
+	syncDBThoughts,
 } from '../db.js';
 import React from 'react';
+import {alphabetically} from '../utils/sort.js';
 
 type DayContextValueType = {
 	day: DayType;
 	today: DayType;
+	activeTab: string | undefined;
+	setActiveTab: (activeTab: string) => void;
 	createThought: (date: string, thought: Thought) => void;
 	deleteThought: (thought: Thought) => void;
 	setPreviousDay: () => void;
@@ -24,12 +27,19 @@ const DayContext = createContext<DayContextValueType | undefined>(undefined);
 function DayProvider({children}: {children: React.ReactNode}) {
 	const today = createToday();
 	const [day, setDay] = useState<DayType>(today);
+	const [activeTab, setActiveTab] = useState(
+		() =>
+			[...new Set(day.thoughts.map(thought => thought.category?.name))].sort(
+				alphabetically,
+			)[0],
+	);
 
 	useEffect(() => {
-		syncThoughts(day, day.thoughts);
+		syncDBThoughts(day, day.thoughts);
 	}, [day]);
 
 	const createThought = (date: string, thought: Thought) => {
+		setActiveTab(thought.category?.name);
 		setDay(day => ({...day, thoughts: [...day.thoughts, thought]}));
 		createDBThought(date, thought);
 	};
@@ -48,10 +58,8 @@ function DayProvider({children}: {children: React.ReactNode}) {
 	function deleteThought(targetThought: Thought) {
 		setDay(day => ({
 			...day,
-			thoughts: day.thoughts.filter(thought =>
-				thought.id !== targetThought.id
-			)
-		}))
+			thoughts: day.thoughts.filter(thought => thought.id !== targetThought.id),
+		}));
 	}
 
 	function setPreviousDay() {
@@ -67,8 +75,10 @@ function DayProvider({children}: {children: React.ReactNode}) {
 			value={{
 				day,
 				setPreviousDay,
+				setActiveTab,
 				setNextDay,
 				today,
+				activeTab,
 				toggleThought,
 				createThought,
 				deleteThought,

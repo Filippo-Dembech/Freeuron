@@ -1,10 +1,7 @@
 import {JSONFilePreset} from 'lowdb/node';
 import {DayType, Thought} from './types.js';
 import {Low} from 'lowdb';
-import {
-	dateToString,
-	sameDate,
-} from './utils/date.js';
+import {dateToString, sameDate} from './utils/date.js';
 
 type Data = {
 	days: DayType[];
@@ -38,9 +35,15 @@ export function createToday(): DayType {
 }
 
 export function createDBThought(date: string, thought: Thought) {
-	db.data.days.map(day =>
-		day.date === date ? day.thoughts.push(thought) : day,
-	);
+	db.data.days = db.data.days.map(day => {
+		if (day.date === date) {
+			return {
+				...day,
+				thoughts: [...day.thoughts, thought],
+			};
+		}
+		return day;
+	});
 	db.write();
 }
 
@@ -78,7 +81,7 @@ export function deleteThought(targetDay: DayType, thoughtToDelete?: Thought) {
 	db.write();
 }
 
-export function syncThoughts(targetDay: DayType, thoughts: Thought[]) {
+export function syncDBThoughts(targetDay: DayType, thoughts: Thought[]) {
 	db.data.days.forEach(day => {
 		if (day.date === targetDay.date) {
 			day.thoughts = thoughts;

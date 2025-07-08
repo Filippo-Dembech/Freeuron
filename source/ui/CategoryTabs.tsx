@@ -11,7 +11,7 @@ type CategoryTypeProps = {
 
 export default function CategoryTabs({onChange}: CategoryTypeProps) {
     
-    const {day} = useDay();
+    const {day, activeTab} = useDay();
 
 	const categoryNames = [
 		...new Set(day.thoughts.map(thought => thought.category?.name)),
@@ -28,6 +28,7 @@ export default function CategoryTabs({onChange}: CategoryTypeProps) {
 			]}
             renderComponent={({isFocused}) => (
 				<Tabs
+					defaultValue={activeTab}
 					keyMap={{
 						useNumbers: true,
 						previous: ['h', 'j'],

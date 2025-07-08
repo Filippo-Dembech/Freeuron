@@ -7,8 +7,8 @@ import {Box, Text} from 'ink';
 import {useDay} from '../context/DayContext.js';
 import {Thought} from '../types.js';
 
-export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
-	const {day, toggleThought, deleteThought} = useDay();
+export default function Thoughts() {
+	const {day, toggleThought, deleteThought, activeTab} = useDay();
 	const activeThoughts = useMemo(
 		() => day.thoughts.filter(thought => thought.category?.name === activeTab),
 		[day, activeTab],
