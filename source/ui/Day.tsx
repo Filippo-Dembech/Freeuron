@@ -1,5 +1,5 @@
 import {Box, BoxProps} from 'ink';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import BigText from 'ink-big-text';
 import {useDay} from '../context/DayContext.js';
 import Thoughts from './Thoughts.js';
@@ -12,9 +12,11 @@ export default function Day({...props}: BoxProps) {
 	const categoryNames = [
 		...new Set(day.thoughts.map(thought => thought.category?.name)),
 	].sort(alphabetically);
-	const [activeTabName, setActiveTabName] = useState<string | undefined>(
-		categoryNames[0],
-	);
+	const [activeTabName, setActiveTabName] = useState<string | undefined>("");
+	
+	useEffect(() => {
+		setActiveTabName(categoryNames[0])
+	}, [day, categoryNames])
 
 	return (
 		<Box
@@ -25,7 +27,7 @@ export default function Day({...props}: BoxProps) {
 		>
 			<BigText text={day.date} font="tiny" />
 			<Box flexDirection="column" gap={1}>
-				{categoryNames.length ? (
+				{activeTabName ? (
 					<>
 						<CategoryTabs onChange={setActiveTabName} />
 						<Thoughts activeTab={activeTabName} />

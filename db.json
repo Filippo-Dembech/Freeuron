@@ -70,44 +70,7 @@
     },
     {
       "date": "05/07/2025",
-      "thoughts": [
-        {
-          "id": "c271fc54-6fd7-43ab-b994-fabe2c6613b7",
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "New insight",
-          "checked": true
-        },
-        {
-          "id": "4a240790-3d5e-46e9-8c4c-2823ea13b0a1",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "third todo",
-          "checked": true
-        },
-        {
-          "id": "1f0297d2-20e6-451b-9138-15a66746b8bc",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "first todo",
-          "checked": true
-        },
-        {
-          "id": "fc71d079-3e86-45ee-8ed1-283aaea1f92b",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "second todo",
-          "checked": true
-        }
-      ]
+      "thoughts": []
     },
     {
       "date": "07/07/2025",
@@ -146,7 +109,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "Third todo",
-          "checked": true
+          "checked": false
         },
         {
           "id": "4d5f8e7f-c3b7-49d5-8e6a-fbbe1f5aa38b",
@@ -155,7 +118,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "fourth",
-          "checked": true
+          "checked": false
         },
         {
           "id": "07a0b9aa-39b0-4965-a4cd-746b62c7d87e",
@@ -242,26 +205,7 @@
     },
     {
       "date": "08/07/2025",
-      "thoughts": [
-        {
-          "id": "7d1a47db-2067-4271-8b8a-9489960af714",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "i there mateH",
-          "checked": false
-        },
-        {
-          "id": "62e246dd-ded9-49a4-85a6-019c5005d443",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "t",
-          "checked": false
-        }
-      ]
+      "thoughts": []
     }
   ]
 }
