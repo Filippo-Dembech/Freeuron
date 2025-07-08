@@ -15,7 +15,7 @@ export default function DayScroller() {
 			id={Focus.dayScroller}
 			nextFocus={[
 				{
-					to: Focus.dayTabs,
+					to: Focus.categoryTabs,
 					when: (_, key) => key.return,
 				},
 			]}

@@ -24,7 +24,7 @@ export default function Freeuron() {
 				{ to: Focus.textField, when: (input, key) => key.ctrl && input === "e"},
 				{ to: Focus.categorySelect, when: (input, key) => key.ctrl && input === "o"},
 				{ to: Focus.dayScroller, when: (input, key) => key.ctrl && input === "d"},
-				{ to: Focus.dayTabs, when: (input, key) => key.ctrl && input === "t"},
+				{ to: Focus.categoryTabs, when: (input, key) => key.ctrl && input === "t"},
 			]}
 			renderComponent={() => (
 				<>

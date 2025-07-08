@@ -8,7 +8,7 @@ import {useDay} from '../context/DayContext.js';
 import {Thought} from '../types.js';
 
 export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
-	const {day, toggleThought} = useDay();
+	const {day, toggleThought, deleteThought} = useDay();
 	const activeThoughts = useMemo(() => day.thoughts.filter(
 		thought => thought.category?.name === activeTab,
 	), [day, activeTab]);
@@ -27,7 +27,7 @@ export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
 
 	const deleteSelectedThought = () => {
 		if (!selectedThought) return;
-		console.log('DELETE: ', selectedThought);
+		deleteThought(selectedThought);
 	};
 
 	return (
@@ -35,7 +35,7 @@ export default function Thoughts({activeTab}: {activeTab: string | undefined}) {
 			id={Focus.thoughts}
 			nextFocus={[
 				{
-					to: Focus.dayTabs,
+					to: Focus.categoryTabs,
 					when: (_, key) => key.escape,
 				},
 			]}

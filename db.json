@@ -128,7 +128,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "second todo",
-          "checked": true
+          "checked": false
         },
         {
           "id": "24d33e93-d56b-4232-98d5-c280a3a50ef6",
@@ -155,7 +155,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "fourth",
-          "checked": false
+          "checked": true
         },
         {
           "id": "07a0b9aa-39b0-4965-a4cd-746b62c7d87e",
@@ -173,7 +173,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "hi there",
-          "checked": false
+          "checked": true
         },
         {
           "id": "ec0f5579-a442-4acc-b71e-2bd7c6cd71ab",
@@ -250,6 +250,15 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "i there mateH",
+          "checked": false
+        },
+        {
+          "id": "62e246dd-ded9-49a4-85a6-019c5005d443",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "t",
           "checked": false
         }
       ]
