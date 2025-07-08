@@ -24,22 +24,13 @@
       "date": "08/07/2025",
       "thoughts": [
         {
-          "id": "93be1845-734b-4569-b458-e8fb81e27d09",
+          "id": "448fc37f-2478-462f-bfdd-fd0588bbe70d",
           "category": {
             "name": "Question",
             "placeholder": "Enter your question..."
           },
           "content": "New question",
           "checked": false
-        },
-        {
-          "id": "56922943-1266-4003-b133-0cd8b3594681",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "Second question",
-          "checked": true
         }
       ]
     }

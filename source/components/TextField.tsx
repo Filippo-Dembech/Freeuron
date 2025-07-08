@@ -48,7 +48,6 @@ export default function TextField({
 			{...props}
 			value={value}
 			onChange={value => {
-				console.log("on Change")
 				setContent(value);
 			}}
 			onSubmit={() => {
