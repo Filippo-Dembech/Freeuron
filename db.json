@@ -10,7 +10,17 @@
     },
     {
       "date": "04/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "f0903df9-edf0-4737-ae9d-dc94d3f15119",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "First todo",
+          "checked": true
+        }
+      ]
     },
     {
       "date": "05/07/2025",
@@ -22,6 +32,110 @@
     },
     {
       "date": "08/07/2025",
+      "thoughts": [
+        {
+          "id": "4e1a518d-a510-43d7-a788-2b72caf649b7",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "First todo",
+          "checked": false
+        },
+        {
+          "id": "3459ae97-f100-4e7e-878e-b0e7f6fe6d6d",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Second todo",
+          "checked": false
+        },
+        {
+          "id": "e58165e5-476f-4016-9b4b-e4f423812218",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Third todo",
+          "checked": false
+        },
+        {
+          "id": "8365e358-8fca-41e3-aad1-d8698dfe7ab4",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "First question",
+          "checked": false
+        },
+        {
+          "id": "8d7373b0-4ac2-4ca7-80ef-0b2d38ccbc6b",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "Second question",
+          "checked": false
+        },
+        {
+          "id": "cf38b854-68a2-49d0-80dc-e84fa484611d",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "Third question",
+          "checked": false
+        },
+        {
+          "id": "0b530c0f-c601-44c5-a5f1-af4fa0c1c26d",
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "First insight",
+          "checked": false
+        },
+        {
+          "id": "1995c1a2-e24f-453a-8e3c-e0dd62247641",
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "Second insight",
+          "checked": false
+        },
+        {
+          "id": "3a2c44e5-2c85-43db-9404-26860ed15d81",
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "Third insight",
+          "checked": false
+        },
+        {
+          "id": "46a8f0e5-b07a-4daa-bf2d-10f5a2a42886",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "New todo",
+          "checked": false
+        },
+        {
+          "id": "c05a81ce-d08b-40d2-acb8-407e34c65e57",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "Hi there from question",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "date": "09/07/2025",
       "thoughts": []
     }
   ]

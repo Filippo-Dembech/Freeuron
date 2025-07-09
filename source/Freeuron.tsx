@@ -11,7 +11,7 @@ import {Focus} from './Focus.js';
 
 export default function Freeuron() {
 	const config = getConfig();
-	const {day, createThought} = useDay();
+	const {createThought} = useDay();
 
 	if (config.categories.length === 0) return <NoCategoryFoundError />;
 
@@ -33,6 +33,10 @@ export default function Freeuron() {
 					to: Focus.categoryTabs,
 					when: (input, key) => key.ctrl && input === 't',
 				},
+				{
+					to: Focus.searchDayField,
+					when: (input, key) => key.ctrl && input === 's',
+				},
 			]}
 			renderComponent={() => (
 				<>
@@ -40,7 +44,7 @@ export default function Freeuron() {
 					<InputForm
 						onSubmit={(category, content) => {
 							const id = uuidv4();
-							createThought(day.date, {id, category, content, checked: false});
+							createThought({id, category, content, checked: false});
 						}}
 					/>
 					<DayScroller />

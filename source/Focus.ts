@@ -4,4 +4,5 @@ export enum Focus {
     categoryTabs = "categoryTabs",
     dayScroller = "dayScroller",
     thoughts = "thoughts",
+    searchDayField = "searchDayField",
 }

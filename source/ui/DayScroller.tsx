@@ -6,6 +6,7 @@ import {Box} from 'ink';
 import {useDay} from '../context/DayContext.js';
 import Focusable from '../components/Focusable.js';
 import Container from '../components/Container.js';
+import SearchField from './SearchField.js';
 
 export default function DayScroller() {
 	const {setPreviousDay, setNextDay} = useDay();
@@ -38,7 +39,7 @@ export default function DayScroller() {
 					paddingX={2}
 					paddingY={1}
 				>
-					<Box justifyContent="space-between">
+					<Box justifyContent="space-between" alignItems="center">
 						<Arrow
 							toThe="left"
 							label="PREVIOUS"
@@ -53,6 +54,7 @@ export default function DayScroller() {
 						/>
 					</Box>
 					<Day flexGrow={1} />
+					<SearchField onSubmit={(date) => console.log(date)}/>
 				</Container>
 			)}
 		/>

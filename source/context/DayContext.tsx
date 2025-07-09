@@ -15,7 +15,7 @@ type DayContextValueType = {
 	today: DayType;
 	activeTab: string | undefined;
 	setActiveTab: (activeTab: string) => void;
-	createThought: (date: string, thought: Thought) => void;
+	createThought: (thought: Thought) => void;
 	deleteThought: (thought: Thought) => void;
 	setPreviousDay: () => void;
 	setNextDay: () => void;
@@ -41,10 +41,10 @@ function DayProvider({children}: {children: React.ReactNode}) {
 		}
 	}, [day]);
 
-	const createThought = (date: string, thought: Thought) => {
+	const createThought = (thought: Thought) => {
 		setActiveTab(thought.category?.name);
 		setDay(day => ({...day, thoughts: [...day.thoughts, thought]}));
-		createDBThought(date, thought);
+		createDBThought(day.date, thought);
 	};
 
 	const toggleThought = (targetThought: Thought) => {
