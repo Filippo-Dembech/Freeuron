@@ -3,12 +3,17 @@ import TextInput, {Props as TextInputProps} from 'ink-text-input';
 import React, {useEffect} from 'react';
 import {useRef, useState} from 'react';
 
+type TextFieldProps = {
+	flushWhenSubmit?: boolean
+}
+
 export default function TextField({
 	value,
 	onChange,
 	onSubmit,
+	flushWhenSubmit = true,
 	...props
-}: TextInputProps) {
+}: TextFieldProps & TextInputProps) {
 	const [content, setContent] = useState(value);
 	const deleteMode = useRef(false);
 	const removeLetter = useRef(false);
@@ -34,7 +39,8 @@ export default function TextField({
 		if (
 			(key.ctrl && input === 'o') ||
 			(key.ctrl && input === 't') ||
-			(key.ctrl && input === 'd')
+			(key.ctrl && input === 'd') ||
+			(key.ctrl && input === "s")
 		) {
 			activateRemoveLetter();
 		}
@@ -49,7 +55,7 @@ export default function TextField({
 	return (
 		<TextInput
 			{...props}
-			value={content}
+			value={value}
 			onChange={value => {
 				setContent(value);
 			}}
@@ -57,7 +63,7 @@ export default function TextField({
 				onSubmit?.(content);
 				deactivateDeleteMode();
 				deactivateRemoveLetter();
-				resetContent();
+				if (flushWhenSubmit) resetContent();
 			}}
 		/>
 	);

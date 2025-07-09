@@ -136,7 +136,35 @@
     },
     {
       "date": "09/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "c91b9233-e9c6-41b6-95c2-93bf99aeb43c",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "enter todo",
+          "checked": false
+        },
+        {
+          "id": "c5da864a-1cbf-4646-919d-1cdbd93fd80f",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "asdf",
+          "checked": false
+        },
+        {
+          "id": "fe6f72ea-c4b7-4d09-a05b-73f346b1b1c0",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Super Format",
+          "checked": false
+        }
+      ]
     }
   ]
 }
