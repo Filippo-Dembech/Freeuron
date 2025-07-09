@@ -4,6 +4,8 @@ import Focusable from '../components/Focusable.js';
 import {Focus} from '../Focus.js';
 import Container from '../components/Container.js';
 import {Box, Text} from 'ink';
+import { useDay } from '../context/DayContext.js';
+import { getDay } from '../db.js';
 
 function formatDateString(digits: string): string {
 	const day = digits.slice(0, 2);
@@ -26,11 +28,8 @@ function Caret() {
 	return <Text bold>&#9602;</Text>;
 }
 
-type SearchFieldProps = {
-	onSubmit: (date: string) => void;
-};
-
-export default function SearchField({onSubmit}: SearchFieldProps) {
+export default function SearchField() {
+	const {setDay} = useDay();
 	const [dayQuery, setDayQuery] = useState('');
 	const [error, setError] = useState('');
 
@@ -70,9 +69,16 @@ export default function SearchField({onSubmit}: SearchFieldProps) {
 									onSubmit={() => {
 										if (!hasCompleteDayQuery) setError(errorMessage);
 										else {
-											onSubmit(formattedDate);
-											resetError();
-											resetDayQuery(); // do it manually because of <TextField> 'flushWhenSubmit={false}' prop
+											setDay(day => {
+												const fetchedDay = getDay(formattedDate);
+												if (fetchedDay) {
+													resetError();
+													resetDayQuery(); // do it manually because of <TextField> 'flushWhenSubmit={false}' prop
+													return fetchedDay;
+												}
+												setError(`Day '${formattedDate}' not found.`);
+												return day;
+											});
 										}
 									}}
 								/>

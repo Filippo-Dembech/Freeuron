@@ -54,7 +54,7 @@ export default function DayScroller() {
 						/>
 					</Box>
 					<Day flexGrow={1} />
-					<SearchField onSubmit={(date) => console.log(date)}/>
+					<SearchField />
 				</Container>
 			)}
 		/>
