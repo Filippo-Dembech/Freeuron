@@ -11,10 +11,7 @@ export default function Arrow({
 	label,
 	...props
 }: ArrowProps & TextProps) {
-
 	return (
-		<Text {...props}>
-			{toThe === 'left' ? `< ${label}` : `${label} >`}
-		</Text>
+		<Text {...props}>{toThe === 'left' ? `< ${label}` : `${label} >`}</Text>
 	);
 }

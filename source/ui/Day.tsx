@@ -13,7 +13,7 @@ export default function Day({...props}: BoxProps) {
 		...new Set(day.thoughts.map(thought => thought.category?.name)),
 	].sort(alphabetically);
 	const noCategory = categoryNames.length === 0;
-	
+
 	return (
 		<Box
 			borderStyle="round"

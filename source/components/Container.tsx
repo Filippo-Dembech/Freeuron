@@ -15,6 +15,8 @@ export default function Container({
 			borderStyle={isFocused ? 'bold' : 'single'}
 			borderColor={isFocused ? 'whiteBright' : 'white'}
 			{...props}
-		>{children}</Box>
+		>
+			{children}
+		</Box>
 	);
 }

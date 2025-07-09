@@ -13,7 +13,7 @@ import {alphabetically} from '../utils/sort.js';
 type DayContextValueType = {
 	day: DayType;
 	today: DayType;
-	setDay: React.Dispatch<React.SetStateAction<DayType>>
+	setDay: React.Dispatch<React.SetStateAction<DayType>>;
 	activeTab: string | undefined;
 	setActiveTab: (activeTab: string) => void;
 	createThought: (thought: Thought) => void;

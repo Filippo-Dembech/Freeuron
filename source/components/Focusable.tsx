@@ -27,15 +27,14 @@ export type RenderComponentArgs = {
 };
 
 type NextFocus = {
-    to: string;
-    when: (input: string, key: Key) => boolean;
-}
-
+	to: string;
+	when: (input: string, key: Key) => boolean;
+};
 
 type ActionType = {
-    on: (input: string, key: Key) => boolean;
-    do: (focus: (id: string) => void) => void;
-}
+	on: (input: string, key: Key) => boolean;
+	do: (focus: (id: string) => void) => void;
+};
 
 /**
  * Handlers and render function for the focusable component.
@@ -46,9 +45,9 @@ export type FocusableProps = {
 	 * Receives `isFocused` and `focus` to control behavior.
 	 */
 	renderComponent: (args: RenderComponentArgs) => React.ReactNode;
-    actions?: ActionType[];
-    nextFocus?: NextFocus[];
-    alwaysListening?: boolean;
+	actions?: ActionType[];
+	nextFocus?: NextFocus[];
+	alwaysListening?: boolean;
 };
 
 /**
@@ -95,26 +94,25 @@ export type FocusOptionsType = {
 export default function Focusable({
 	id,
 	renderComponent,
-    alwaysListening = false,
-    actions,
-    nextFocus,
+	alwaysListening = false,
+	actions,
+	nextFocus,
 	autoFocus = false,
 	isActive = true,
 }: FocusableProps & FocusOptionsType): React.ReactNode {
-        	const {focus, isFocused} = useFocus({id, autoFocus, isActive});
+	const {focus, isFocused} = useFocus({id, autoFocus, isActive});
 
 	useInput((input, key) => {
 		if (!isFocused && !alwaysListening) return;
 
-        const action = actions?.find(action => action.on(input, key))
-        if (action) action.do(focus);
+		const action = actions?.find(action => action.on(input, key));
+		if (action) action.do(focus);
 
 		// Handle Next Focus
 		const next = nextFocus?.find(({when}) => when(input, key));
 		if (next) {
-            focus(next.to);
-        }
-
+			focus(next.to);
+		}
 	});
 
 	return renderComponent({isFocused, focus});

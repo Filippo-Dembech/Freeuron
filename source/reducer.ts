@@ -11,7 +11,7 @@ export type Action =
 	| {type: 'syncContent'; payload: string}
 	| {type: 'syncCategory'; payload: Category}
 	| {type: 'selectCategory'; payload: Category}
-	| {type: "deleteContentWord" }
+	| {type: 'deleteContentWord'};
 
 export function reducer(state: State, action: Action): State {
 	if (action.type === 'syncContent')
@@ -42,12 +42,12 @@ export function reducer(state: State, action: Action): State {
 				placeholder: action.payload.placeholder,
 			},
 		};
-		
-	if (action.type === "deleteContentWord")
+
+	if (action.type === 'deleteContentWord')
 		return {
 			...state,
-			content: state.content.trim().split(" ").slice(0, -1).join(" ")
-		}
-			
+			content: state.content.trim().split(' ').slice(0, -1).join(' '),
+		};
+
 	return state;
 }

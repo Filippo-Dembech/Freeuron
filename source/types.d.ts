@@ -1,17 +1,16 @@
 export interface Category {
-	name: string,
-	placeholder?: string,
+	name: string;
+	placeholder?: string;
 }
-
 
 export type Thought = {
 	id: string;
 	checked: boolean;
-	category?: Category;	// undefined because categories are loaded asyncronously from 'config' file
+	category?: Category; // undefined because categories are loaded asyncronously from 'config' file
 	content: string;
 };
 
 export type DayType = {
 	date: string;
 	thoughts: Thought[];
-}
+};

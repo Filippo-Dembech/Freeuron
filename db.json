@@ -1,105 +1,32 @@
 {
-  "days": [
-    {
-      "date": "02/07/2025",
-      "thoughts": []
-    },
-    {
-      "date": "03/07/2025",
-      "thoughts": []
-    },
-    {
-      "date": "04/07/2025",
-      "thoughts": []
-    },
-    {
-      "date": "05/07/2025",
-      "thoughts": []
-    },
-    {
-      "date": "07/07/2025",
-      "thoughts": []
-    },
-    {
-      "date": "08/07/2025",
-      "thoughts": []
-    },
-    {
-      "date": "09/07/2025",
-      "thoughts": [
-        {
-          "id": "dae7c2e7-e348-4053-b93f-f7f05bfe2d94",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "First todo",
-          "checked": false
-        },
-        {
-          "id": "ac5cce0a-4eec-4e36-b740-2398ad28bc1f",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Second todo",
-          "checked": false
-        },
-        {
-          "id": "2b4a760c-ce16-4333-bcc5-52898e8f4dca",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Third todo",
-          "checked": false
-        },
-        {
-          "id": "fca20dfe-ffd8-4469-b5fd-5874948078bf",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "First question",
-          "checked": false
-        },
-        {
-          "id": "5faa65e0-6c5e-48fb-b8cc-96b7083b4d2f",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "Second question",
-          "checked": false
-        },
-        {
-          "id": "69e1c748-d3c6-45aa-b6c3-31d46b2dea53",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "Third question",
-          "checked": false
-        },
-        {
-          "id": "67ad03dc-bb67-4b5b-8950-129a8f0ec501",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "Super mega death",
-          "checked": false
-        },
-        {
-          "id": "39e324de-f567-43e7-8609-24ca02ebb06d",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Super mega man",
-          "checked": false
-        }
-      ]
-    }
-  ]
+	"days": [
+		{
+			"date": "02/07/2025",
+			"thoughts": []
+		},
+		{
+			"date": "03/07/2025",
+			"thoughts": []
+		},
+		{
+			"date": "04/07/2025",
+			"thoughts": []
+		},
+		{
+			"date": "05/07/2025",
+			"thoughts": []
+		},
+		{
+			"date": "07/07/2025",
+			"thoughts": []
+		},
+		{
+			"date": "08/07/2025",
+			"thoughts": []
+		},
+		{
+			"date": "09/07/2025",
+			"thoughts": []
+		}
+	]
 }

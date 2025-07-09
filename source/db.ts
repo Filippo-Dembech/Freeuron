@@ -49,8 +49,8 @@ export function createDBThought(date: string, thought: Thought) {
 
 export function getDay(targetDate: string): DayType | undefined {
 	if (noDays) return;
-	
-	return db.data.days.find(day => sameDate(day.date, targetDate))
+
+	return db.data.days.find(day => sameDate(day.date, targetDate));
 }
 
 export function getPreviousDay(targetDate: string): DayType | undefined {

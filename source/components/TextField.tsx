@@ -4,8 +4,8 @@ import React, {useEffect} from 'react';
 import {useRef, useState} from 'react';
 
 type TextFieldProps = {
-	flushWhenSubmit?: boolean
-}
+	flushWhenSubmit?: boolean;
+};
 
 export default function TextField({
 	value,
@@ -40,8 +40,8 @@ export default function TextField({
 			(key.ctrl && input === 'o') ||
 			(key.ctrl && input === 't') ||
 			(key.ctrl && input === 'd') ||
-			(key.ctrl && input === "s") ||
-			(key.meta && input === "1")
+			(key.ctrl && input === 's') ||
+			(key.meta && input === '1')
 		) {
 			activateRemoveLetter();
 		}

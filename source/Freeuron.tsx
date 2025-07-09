@@ -23,7 +23,8 @@ export default function Freeuron() {
 				{to: Focus.textField, when: (input, key) => key.ctrl && input === 'e'},
 				{
 					to: Focus.categorySelect,
-					when: (input, key) => key.ctrl && input === 'o' || key.meta && input === "1",
+					when: (input, key) =>
+						(key.ctrl && input === 'o') || (key.meta && input === '1'),
 				},
 				{
 					to: Focus.dayScroller,
