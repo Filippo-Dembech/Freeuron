@@ -1,5 +1,5 @@
 import {useInput} from 'ink';
-import TextInput, { Props as TextInputProps } from 'ink-text-input';
+import TextInput, {Props as TextInputProps} from 'ink-text-input';
 import React, {useEffect} from 'react';
 import {useRef, useState} from 'react';
 
@@ -21,24 +21,27 @@ export default function TextField({
 
 	const removeLastword = () =>
 		setContent(curr => curr.trim().split(' ').slice(0, -1).join(' '));
-	const removeLastLetter = () => 
-		setContent(curr => curr.slice(0, -1))
+	const removeLastLetter = () => setContent(curr => curr.slice(0, -1));
 
-    const resetContent = () => setContent("");
-    
+	const resetContent = () => setContent('');
+
 	useInput((input, key) => {
-        deactivateDeleteMode();
+		deactivateDeleteMode();
 		deactivateRemoveLetter();
 		if (key.ctrl && input === 'w') {
 			activateDeleteMode();
 		}
-		if ((key.ctrl && input === "o") || (key.ctrl && input === "t" || (key.ctrl && input === "d" ))) {
+		if (
+			(key.ctrl && input === 'o') ||
+			(key.ctrl && input === 't') ||
+			(key.ctrl && input === 'd')
+		) {
 			activateRemoveLetter();
 		}
 	});
 
 	useEffect(() => {
-		if (isDeleteMode()) removeLastword()
+		if (isDeleteMode()) removeLastword();
 		if (isRemoveLetter()) removeLastLetter();
 		onChange(content);
 	}, [content]);
@@ -46,15 +49,15 @@ export default function TextField({
 	return (
 		<TextInput
 			{...props}
-			value={value}
+			value={content}
 			onChange={value => {
 				setContent(value);
 			}}
 			onSubmit={() => {
 				onSubmit?.(content);
-                deactivateDeleteMode();
+				deactivateDeleteMode();
 				deactivateRemoveLetter();
-                resetContent();
+				resetContent();
 			}}
 		/>
 	);
