@@ -10,17 +10,7 @@
     },
     {
       "date": "04/07/2025",
-      "thoughts": [
-        {
-          "id": "f0903df9-edf0-4737-ae9d-dc94d3f15119",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "First todo",
-          "checked": true
-        }
-      ]
+      "thoughts": []
     },
     {
       "date": "05/07/2025",
@@ -32,9 +22,13 @@
     },
     {
       "date": "08/07/2025",
+      "thoughts": []
+    },
+    {
+      "date": "09/07/2025",
       "thoughts": [
         {
-          "id": "4e1a518d-a510-43d7-a788-2b72caf649b7",
+          "id": "dae7c2e7-e348-4053-b93f-f7f05bfe2d94",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
@@ -43,7 +37,7 @@
           "checked": false
         },
         {
-          "id": "3459ae97-f100-4e7e-878e-b0e7f6fe6d6d",
+          "id": "ac5cce0a-4eec-4e36-b740-2398ad28bc1f",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
@@ -52,7 +46,7 @@
           "checked": false
         },
         {
-          "id": "e58165e5-476f-4016-9b4b-e4f423812218",
+          "id": "2b4a760c-ce16-4333-bcc5-52898e8f4dca",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
@@ -61,7 +55,7 @@
           "checked": false
         },
         {
-          "id": "8365e358-8fca-41e3-aad1-d8698dfe7ab4",
+          "id": "fca20dfe-ffd8-4469-b5fd-5874948078bf",
           "category": {
             "name": "Question",
             "placeholder": "Enter your question..."
@@ -70,7 +64,7 @@
           "checked": false
         },
         {
-          "id": "8d7373b0-4ac2-4ca7-80ef-0b2d38ccbc6b",
+          "id": "5faa65e0-6c5e-48fb-b8cc-96b7083b4d2f",
           "category": {
             "name": "Question",
             "placeholder": "Enter your question..."
@@ -79,7 +73,7 @@
           "checked": false
         },
         {
-          "id": "cf38b854-68a2-49d0-80dc-e84fa484611d",
+          "id": "69e1c748-d3c6-45aa-b6c3-31d46b2dea53",
           "category": {
             "name": "Question",
             "placeholder": "Enter your question..."
@@ -88,80 +82,21 @@
           "checked": false
         },
         {
-          "id": "0b530c0f-c601-44c5-a5f1-af4fa0c1c26d",
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "First insight",
-          "checked": false
-        },
-        {
-          "id": "1995c1a2-e24f-453a-8e3c-e0dd62247641",
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "Second insight",
-          "checked": false
-        },
-        {
-          "id": "3a2c44e5-2c85-43db-9404-26860ed15d81",
-          "category": {
-            "name": "Insight",
-            "placeholder": "Enter your discovery..."
-          },
-          "content": "Third insight",
-          "checked": false
-        },
-        {
-          "id": "46a8f0e5-b07a-4daa-bf2d-10f5a2a42886",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "New todo",
-          "checked": false
-        },
-        {
-          "id": "c05a81ce-d08b-40d2-acb8-407e34c65e57",
+          "id": "67ad03dc-bb67-4b5b-8950-129a8f0ec501",
           "category": {
             "name": "Question",
             "placeholder": "Enter your question..."
           },
-          "content": "Hi there from question",
-          "checked": true
-        }
-      ]
-    },
-    {
-      "date": "09/07/2025",
-      "thoughts": [
-        {
-          "id": "c91b9233-e9c6-41b6-95c2-93bf99aeb43c",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "enter todo",
+          "content": "Super mega death",
           "checked": false
         },
         {
-          "id": "c5da864a-1cbf-4646-919d-1cdbd93fd80f",
+          "id": "39e324de-f567-43e7-8609-24ca02ebb06d",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
           },
-          "content": "asdf",
-          "checked": false
-        },
-        {
-          "id": "fe6f72ea-c4b7-4d09-a05b-73f346b1b1c0",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Super Format",
+          "content": "Super mega man",
           "checked": false
         }
       ]

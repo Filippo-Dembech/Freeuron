@@ -40,7 +40,8 @@ export default function TextField({
 			(key.ctrl && input === 'o') ||
 			(key.ctrl && input === 't') ||
 			(key.ctrl && input === 'd') ||
-			(key.ctrl && input === "s")
+			(key.ctrl && input === "s") ||
+			(key.meta && input === "1")
 		) {
 			activateRemoveLetter();
 		}
@@ -56,9 +57,7 @@ export default function TextField({
 		<TextInput
 			{...props}
 			value={value}
-			onChange={value => {
-				setContent(value);
-			}}
+			onChange={setContent}
 			onSubmit={() => {
 				onSubmit?.(content);
 				deactivateDeleteMode();
