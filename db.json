@@ -30,7 +30,26 @@
     },
     {
       "date": "10/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "da4b8fc1-54ab-427e-a9c9-c3f660d342ec",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "First todo",
+          "checked": true
+        },
+        {
+          "id": "9c06fa0b-64bc-4b2f-9063-55db734bcd62",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Second todo",
+          "checked": true
+        }
+      ]
     }
   ]
 }

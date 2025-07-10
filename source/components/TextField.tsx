@@ -20,7 +20,7 @@ export default function TextField({
 
 	const getMode = (input: string, key: Key): string => {
 		if (key.ctrl && input === 'w' && content !== '') return 'delete';
-		if (input && key.ctrl) return 'idle';
+		if (input && (key.ctrl || key.meta)) return 'idle';
 		return 'write';
 	};
 
@@ -47,7 +47,6 @@ export default function TextField({
 			onSubmit={() => {
 				onSubmit(content);
 				if (flushOnSubmit) setContent('');
-				mode.current = "write";
 			}}
 		/>
 	);
