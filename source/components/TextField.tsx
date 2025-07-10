@@ -8,6 +8,12 @@ type FieldProps = {
 	flushOnSubmit?: boolean;
 };
 
+enum Mode {
+	delete,
+	idle,
+	write
+}
+
 export default function TextField({
 	value,
 	onChange,
@@ -16,12 +22,12 @@ export default function TextField({
 	...props
 }: FieldProps & TextInputProps) {
 	const [content, setContent] = useState(value);
-	const mode = useRef('write');
+	const mode = useRef(Mode.write);
 
-	const getMode = (input: string, key: Key): string => {
-		if (key.ctrl && input === 'w' && content !== '') return 'delete';
-		if (input && (key.ctrl || key.meta)) return 'idle';
-		return 'write';
+	const getMode = (input: string, key: Key): Mode => {
+		if (key.ctrl && input === 'w' && content !== '') return Mode.delete;
+		if (input && (key.ctrl || key.meta)) return Mode.idle;
+		return Mode.write;
 	};
 
 	useInput((input, key) => {
@@ -29,8 +35,8 @@ export default function TextField({
 	});
 
 	const handleInput = (input: string): string => {
-		if (mode.current === 'delete') return deleteLastWord(input);
-		if (mode.current === 'idle') return removeLastLetter(input);
+		if (mode.current === Mode.delete) return deleteLastWord(input);
+		if (mode.current === Mode.idle) return removeLastLetter(input);
 		return input;
 	};
 
