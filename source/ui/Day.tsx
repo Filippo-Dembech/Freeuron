@@ -17,6 +17,7 @@ export default function Day({...props}: BoxProps) {
 	return (
 		<Box
 			borderStyle="round"
+			borderColor="grey"
 			alignItems={noCategory ? 'center' : 'stretch'}
 			gap={8}
 			{...props}
