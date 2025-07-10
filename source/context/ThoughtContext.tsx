@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
 import React from 'react';
 import { Category } from '../types.js';
 import { getConfig } from '../getConfig.js';
@@ -23,6 +23,11 @@ function ThoughtProvider({children}: {children: React.ReactNode}) {
 	const [content, setContent] = useState('');
 	const [category, setCategory] = useState<Category | undefined>(categories[0]);
     const [error, setError] = useState("");
+    const resetError = () => setError("");
+    
+    useEffect(() => {
+        resetError();
+    }, [content])
 
 	return (
 		<ThoughtContext.Provider
