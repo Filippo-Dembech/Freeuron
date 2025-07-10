@@ -1,3 +1,4 @@
+
 import {Key, useInput} from 'ink';
 import TextInput, {Props as TextInputProps} from 'ink-text-input';
 import React, {useRef, useState} from 'react';
@@ -6,18 +7,20 @@ import { deleteLastWord, removeLastLetter } from '../utils/string.js';
 type FieldProps = {
 	onSubmit: (input: string) => void;
 	flushOnSubmit?: boolean;
+	validation?: (input: string) => boolean;
 };
 
 enum Mode {
-	delete,
-	idle,
-	write
+	delete = "delete",
+	idle = "idle",
+	write = "write"
 }
 
 export default function TextField({
 	value,
 	onChange,
 	onSubmit,
+	validation,
 	flushOnSubmit = true,
 	...props
 }: FieldProps & TextInputProps) {
@@ -37,6 +40,7 @@ export default function TextField({
 	const handleInput = (input: string): string => {
 		if (mode.current === Mode.delete) return deleteLastWord(input);
 		if (mode.current === Mode.idle) return removeLastLetter(input);
+		if (validation && !validation(input)) return removeLastLetter(input);
 		return input;
 	};
 

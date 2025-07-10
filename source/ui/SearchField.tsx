@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import TextField from '../components/TextField.js';
 import Focusable from '../components/Focusable.js';
 import {Focus} from '../Focus.js';
@@ -42,6 +42,10 @@ export default function SearchField() {
 
 	const resetError = () => setError('');
 	const resetDayQuery = () => setDayQuery('');
+	
+	useEffect(() => {
+		resetError();
+	}, [dayQuery])
 
 	return (
 		<Focusable
@@ -59,13 +63,10 @@ export default function SearchField() {
 								<TextField
 									focus={isFocused}
 									value={dayQuery}
-									flushOnSubmit={false}
-									onChange={value => {
-										resetError();
-										if (value.length > 8) return;
-										if (value && !isOnlyDigits(value)) return;
-										setDayQuery(value);
-									}}
+									validation={input =>
+										input.length <= 8 && input !== '' && isOnlyDigits(input)
+									}
+									onChange={setDayQuery}
 									onSubmit={() => {
 										if (!hasCompleteDayQuery) setError(errorMessage);
 										else {

@@ -5,4 +5,5 @@ export enum Focus {
 	dayScroller = 'dayScroller',
 	thoughts = 'thoughts',
 	searchDayField = 'searchDayField',
+	uiFilters = 'uiFilters',
 }
