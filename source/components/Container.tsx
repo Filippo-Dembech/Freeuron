@@ -13,7 +13,7 @@ export default function Container({
 	return (
 		<Box
 			borderStyle={isFocused ? 'bold' : 'single'}
-			borderColor={isFocused ? 'whiteBright' : 'white'}
+			borderColor={isFocused ? 'whiteBright' : 'gray'}
 			{...props}
 		>
 			{children}

@@ -59,7 +59,7 @@ export default function SearchField() {
 								<TextField
 									focus={isFocused}
 									value={dayQuery}
-									flushWhenSubmit={false}
+									flushOnSubmit={false}
 									onChange={value => {
 										resetError();
 										if (value.length > 8) return;
