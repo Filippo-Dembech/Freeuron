@@ -1,4 +1,4 @@
-import {getConfig} from './getConfig.js';
+//import {getConfig} from './getConfig.js';
 import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
 import React, {useState} from 'react';
 import InputForm from './ui/InputForm.js';
@@ -11,8 +11,10 @@ import {Focus} from './Focus.js';
 import {ThoughtProvider} from './context/ThoughtContext.js';
 import {Box, Text} from 'ink';
 import {Tab, Tabs} from 'ink-tab';
+import { getConfig } from './getConfig.js';
 
 export default function Freeuron() {
+	//const config = getConfig(); // keep it for debug purposes
 	const config = getConfig();
 	const {createThought} = useDay();
 	const [activeUI, setActiveUI] = useState('dashboard');

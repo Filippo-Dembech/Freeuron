@@ -15,9 +15,9 @@ const db: Low<Data> = await JSONFilePreset<Data>('db.json', defaultData);
 
 // =============================== UTILS ===============================
 
-const noDays = db.data.days.length === 0;
-const onlyOneDay = db.data.days.length === 1;
-const onlyDay = db.data.days[0];
+const noDays = () => db.data.days.length === 0;
+const onlyOneDay = () => db.data.days.length === 1;
+const onlyDay = () => db.data.days[0];
 const previousDayOf = (i: number) => db.data.days[i - 1];
 const nextDayOf = (i: number) => db.data.days[i + 1];
 
@@ -48,28 +48,28 @@ export function createDBThought(date: string, thought: Thought) {
 }
 
 export function getDay(targetDate: string): DayType | undefined {
-	if (noDays) return;
+	if (noDays()) return;
 
 	return db.data.days.find(day => sameDate(day.date, targetDate));
 }
 
 export function getPreviousDay(targetDate: string): DayType | undefined {
-	if (noDays) return;
+	if (noDays()) return;
 
 	for (let i = 0; i < db.data.days.length; i++) {
 		let day = db.data.days[i]!; // must have at least one day because of initial guarde clause
-		if (sameDate(day.date, targetDate) && onlyOneDay) return onlyDay;
+		if (sameDate(day.date, targetDate) && onlyOneDay()) return onlyDay();
 		if (sameDate(day.date, targetDate)) return previousDayOf(i);
 	}
 	return;
 }
 
 export function getNextDay(targetDate: string): DayType | undefined {
-	if (noDays) return;
+	if (noDays()) return;
 
 	for (let i = 0; i < db.data.days.length - 1; i++) {
 		let day = db.data.days[i]!; // must have at least one day because of initial guarde clause
-		if (sameDate(day.date, targetDate) && onlyOneDay) return onlyDay;
+		if (sameDate(day.date, targetDate) && onlyOneDay()) return onlyDay();
 		if (sameDate(day.date, targetDate)) return nextDayOf(i);
 	}
 	return;
