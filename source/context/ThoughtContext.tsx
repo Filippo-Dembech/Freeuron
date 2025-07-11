@@ -1,7 +1,8 @@
 import {createContext, useContext, useEffect, useState} from 'react';
 import React from 'react';
 import { Category } from '../types.js';
-import { getConfig } from '../getConfig.js';
+// import { getConfig } from '../getConfig.js';			// FOR DEBUG PURPOSES
+import { getConfig } from '../config.js';
 
 type ThoughtContextValue = {
 	content: string;
@@ -20,10 +21,11 @@ const ThoughtContext = createContext<ThoughtContextValue | undefined>(
 function ThoughtProvider({children}: {children: React.ReactNode}) {
 	const config = getConfig();
     const {categories} = config;
-	const [content, setContent] = useState('');
 	const [category, setCategory] = useState<Category | undefined>(categories[0]);
+	const [content, setContent] = useState('');
     const [error, setError] = useState("");
     const resetError = () => setError("");
+	
     
     useEffect(() => {
         resetError();

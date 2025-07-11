@@ -1,4 +1,3 @@
-//import {getConfig} from './getConfig.js';
 import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
 import React, {useState} from 'react';
 import InputForm from './ui/InputForm.js';
@@ -11,13 +10,21 @@ import {Focus} from './Focus.js';
 import {ThoughtProvider} from './context/ThoughtContext.js';
 import {Box, Text} from 'ink';
 import {Tab, Tabs} from 'ink-tab';
-import { getConfig } from './getConfig.js';
+// import { getConfig } from './getConfig.js';			// FOR DEBUG PURPOSES
+import { getConfig } from './config.js';
+import { EventEmitter } from 'events';
+
+// NOTE: Increase max listeners per EventEmitter
+// WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
+//       The default limit is 10, and we go beyond that in complex UIs.
+// TODO: Ideally, reduce number of listeners per emitter to stay within the default limit (10)
+EventEmitter.defaultMaxListeners = 30;
 
 export default function Freeuron() {
-	//const config = getConfig(); // keep it for debug purposes
 	const config = getConfig();
 	const {createThought} = useDay();
 	const [activeUI, setActiveUI] = useState('dashboard');
+	
 
 	if (config.categories.length === 0) return <NoCategoryFoundError />;
 

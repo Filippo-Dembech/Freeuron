@@ -15,8 +15,7 @@ const config = await JSONFilePreset<Data>(
 );
 
 export function getConfig() {
-	const {categories} = config.data;
-	return categories;
+	return config.data;
 }
 
 export async function createCategory(category: Category) {
