@@ -1,5 +1,5 @@
 import {JSONFilePreset} from 'lowdb/node';
-import {DayType, Thought} from './types.js';
+import {Category, DayType, Thought} from './types.js';
 import {Low} from 'lowdb';
 import {dateToString, sameDate} from './utils/date.js';
 
@@ -94,6 +94,12 @@ export function syncDBThoughts(targetDay: DayType, thoughts: Thought[]) {
 		}
 	});
 	db.write();
+}
+
+export function getAll(category: Category) {
+	return db.data.days
+		.flatMap(day => day.thoughts)
+		.filter(thought => thought.category?.name === category.name);
 }
 
 export default db;

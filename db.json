@@ -2,11 +2,31 @@
   "days": [
     {
       "date": "02/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "b815b3bc-820e-42db-8bac-96f943d200d7",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Really old todo",
+          "checked": false
+        }
+      ]
     },
     {
       "date": "03/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "4952ed86-f14f-41cf-826e-c15489645894",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Old todo",
+          "checked": false
+        }
+      ]
     },
     {
       "date": "04/07/2025",
@@ -22,7 +42,17 @@
     },
     {
       "date": "08/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "b716b71d-78c0-4737-9f5d-d87a28a90ba6",
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "New super insight here today",
+          "checked": false
+        }
+      ]
     },
     {
       "date": "09/07/2025",
@@ -44,7 +74,26 @@
     },
     {
       "date": "11/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "77aea639-f1f4-42b0-b502-8c2f52da3b28",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Today todo",
+          "checked": false
+        },
+        {
+          "id": "6ab2b17e-df9c-4f06-8804-217276eb59f2",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "New question here",
+          "checked": false
+        }
+      ]
     }
   ]
 }

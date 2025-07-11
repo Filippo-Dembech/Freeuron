@@ -3,12 +3,13 @@ import React, {useState} from 'react';
 import Heading from './ui/Heading.js';
 import Focusable from './components/Focusable.js';
 import {Focus} from './Focus.js';
-import {Box, Text} from 'ink';
+import {Box} from 'ink';
 // import { getConfig } from './getConfig.js';			// FOR DEBUG PURPOSES
 import {getConfig} from './config.js';
 import {EventEmitter} from 'events';
 import Dashboard from './pages/Dashboard.js';
 import PageSwitcher from './ui/PageSwitcher.js';
+import BrowsePage from './pages/BrowsePage.js';
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -49,20 +50,18 @@ export default function Freeuron() {
 					to: Focus.uiFilters,
 					when: (input, key) => key.ctrl && input === 'f',
 				},
+					{
+						to: activePage === "dashboard" ? Focus.textField : Focus.filterTabs,
+						when: (_, key) => key.return,
+					}
 			]}
 			renderComponent={() => (
 				<>
 					<Box alignItems="center" gap={4}>
 						<Heading />
-						<PageSwitcher setPage={setActivePage}/>
+						<PageSwitcher setPage={setActivePage} />
 					</Box>
-					{activePage === 'dashboard' ? (
-						<Dashboard />
-					) : (
-						<Box>
-							<Text>Test here</Text>
-						</Box>
-					)}
+					{activePage === 'dashboard' ? <Dashboard /> : <BrowsePage />}
 				</>
 			)}
 		/>
