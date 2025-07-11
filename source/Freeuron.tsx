@@ -4,11 +4,11 @@ import Heading from './ui/Heading.js';
 import Focusable from './components/Focusable.js';
 import {Focus} from './Focus.js';
 import {Box, Text} from 'ink';
-import {Tab, Tabs} from 'ink-tab';
 // import { getConfig } from './getConfig.js';			// FOR DEBUG PURPOSES
 import {getConfig} from './config.js';
 import {EventEmitter} from 'events';
 import Dashboard from './pages/Dashboard.js';
+import PageSwitcher from './ui/PageSwitcher.js';
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -18,7 +18,7 @@ EventEmitter.defaultMaxListeners = 30;
 
 export default function Freeuron() {
 	const config = getConfig();
-	const [activeUI, setActiveUI] = useState('dashboard');
+	const [activePage, setActivePage] = useState('dashboard');
 
 	if (config.categories.length === 0) return <NoCategoryFoundError />;
 
@@ -54,31 +54,9 @@ export default function Freeuron() {
 				<>
 					<Box alignItems="center" gap={4}>
 						<Heading />
-						<Focusable
-							id={Focus.uiFilters}
-							renderComponent={({isFocused}) => (
-								<Tabs
-									colors={{
-										activeTab: {color: 'black', backgroundColor: 'blue'},
-									}}
-									isFocused={isFocused}
-									flexDirection="column"
-									keyMap={{
-										useNumbers: true,
-										previous: ['h', 'j'],
-										next: ['k', 'l'],
-									}}
-									onChange={name => {
-										setActiveUI(name);
-									}}
-								>
-									<Tab name="dashboard">Dashboard</Tab>
-									<Tab name="all">All</Tab>
-								</Tabs>
-							)}
-						/>
+						<PageSwitcher setPage={setActivePage}/>
 					</Box>
-					{activeUI === 'dashboard' ? (
+					{activePage === 'dashboard' ? (
 						<Dashboard />
 					) : (
 						<Box>
