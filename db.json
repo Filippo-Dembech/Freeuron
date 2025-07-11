@@ -30,39 +30,21 @@
     },
     {
       "date": "10/07/2025",
-      "thoughts": []
-    },
-    {
-      "date": "11/07/2025",
       "thoughts": [
         {
-          "id": "cf2beda4-4803-402d-bea7-cca3204f2420",
-          "category": {
-            "name": "Babbarabba",
-            "placeholder": "Enter your Bubbababba..."
-          },
-          "content": "Babbaaaa",
-          "checked": false
-        },
-        {
-          "id": "99973d8c-6469-48a2-8580-a6a5ea7596ba",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "Super mate",
-          "checked": false
-        },
-        {
-          "id": "346abc21-85a8-4c18-a566-83bfe338a6da",
+          "id": "88497cc9-faae-44fe-8464-1652a1c0db15",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
           },
-          "content": "dd",
-          "checked": false
+          "content": "First todo",
+          "checked": true
         }
       ]
+    },
+    {
+      "date": "11/07/2025",
+      "thoughts": []
     }
   ]
 }

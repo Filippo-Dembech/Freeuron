@@ -1,18 +1,14 @@
 import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
 import React, {useState} from 'react';
-import InputForm from './ui/InputForm.js';
 import Heading from './ui/Heading.js';
-import DayScroller from './ui/DayScroller.js';
-import {useDay} from './context/DayContext.js';
-import {v4 as uuidv4} from 'uuid';
 import Focusable from './components/Focusable.js';
 import {Focus} from './Focus.js';
-import {ThoughtProvider} from './context/ThoughtContext.js';
 import {Box, Text} from 'ink';
 import {Tab, Tabs} from 'ink-tab';
 // import { getConfig } from './getConfig.js';			// FOR DEBUG PURPOSES
-import { getConfig } from './config.js';
-import { EventEmitter } from 'events';
+import {getConfig} from './config.js';
+import {EventEmitter} from 'events';
+import Dashboard from './pages/Dashboard.js';
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -22,9 +18,7 @@ EventEmitter.defaultMaxListeners = 30;
 
 export default function Freeuron() {
 	const config = getConfig();
-	const {createThought} = useDay();
 	const [activeUI, setActiveUI] = useState('dashboard');
-	
 
 	if (config.categories.length === 0) return <NoCategoryFoundError />;
 
@@ -85,17 +79,7 @@ export default function Freeuron() {
 						/>
 					</Box>
 					{activeUI === 'dashboard' ? (
-						<>
-							<ThoughtProvider>
-								<InputForm
-									onSubmit={(category, content) => {
-										const id = uuidv4();
-										createThought({id, category, content, checked: false});
-									}}
-								/>
-							</ThoughtProvider>
-							<DayScroller />
-						</>
+						<Dashboard />
 					) : (
 						<Box>
 							<Text>Test here</Text>
