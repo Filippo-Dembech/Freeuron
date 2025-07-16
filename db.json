@@ -82,7 +82,7 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "Today todo",
-          "checked": false
+          "checked": true
         },
         {
           "id": "6ab2b17e-df9c-4f06-8804-217276eb59f2",
@@ -91,9 +91,13 @@
             "placeholder": "Enter your question..."
           },
           "content": "New question here",
-          "checked": false
+          "checked": true
         }
       ]
+    },
+    {
+      "date": "16/07/2025",
+      "thoughts": []
     }
   ]
 }

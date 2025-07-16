@@ -50,10 +50,10 @@ export default function Freeuron() {
 					to: Focus.uiFilters,
 					when: (input, key) => key.ctrl && input === 'f',
 				},
-					{
-						to: activePage === "dashboard" ? Focus.textField : Focus.filterTabs,
-						when: (_, key) => key.return,
-					}
+				{
+					to: Focus.filterTabs,
+					when: (_, key) => key.tab,
+				},
 			]}
 			renderComponent={() => (
 				<>
