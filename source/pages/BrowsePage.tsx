@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import {getConfig} from '../config.js';
 import {Tab, Tabs} from 'ink-tab';
 import {getAll} from '../db.js';
-import {Task} from 'ink-task-list';
 import {Focus} from '../Focus.js';
 import BigText from 'ink-big-text';
 
@@ -46,11 +45,11 @@ export default function BrowsePage() {
 					<Box flexDirection="column" paddingLeft={3} paddingBottom={2}>
 						<BigText text={category.name} font="tiny" />
 						{getAll(category).map(thought => (
-							<Task
-								key={thought.id}
-								label={thought.content}
-								state={thought.checked ? 'success' : 'pending'}
-							/>
+							<Text key={thought.id}>
+								<Text color="gray">{"["}<Text color="green">{thought.checked ? 'X' : ' '}</Text>{"]"}</Text>
+								{" "}
+								<Text strikethrough={thought.checked}>{thought.content}</Text>
+							</Text>
 						))}
 					</Box>
 				) : (
