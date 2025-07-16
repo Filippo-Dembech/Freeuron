@@ -17,7 +17,6 @@ export default function PageSwitcher({setPage}: PageSwitcherProps) {
 						activeTab: {color: 'black', backgroundColor: 'blue'},
 					}}
 					isFocused={isFocused}
-					flexDirection="column"
 					keyMap={{
 						useNumbers: true,
 						previous: ['h', 'j'],
@@ -27,6 +26,7 @@ export default function PageSwitcher({setPage}: PageSwitcherProps) {
 				>
 					<Tab name="dashboard">Dashboard</Tab>
 					<Tab name="browse">Browse</Tab>
+					<Tab name="helpPage">Help</Tab>
 				</Tabs>
 			)}
 		/>

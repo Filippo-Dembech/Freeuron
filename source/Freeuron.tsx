@@ -10,6 +10,7 @@ import {EventEmitter} from 'events';
 import Dashboard from './pages/Dashboard.js';
 import PageSwitcher from './ui/PageSwitcher.js';
 import BrowsePage from './pages/BrowsePage.js';
+import HelpPage from './pages/HelpPage.js';
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -28,10 +29,19 @@ export default function Freeuron() {
 		<Focusable
 			alwaysListening
 			id="app"
+			actions={[
+				{
+					on: (input, key) => key.ctrl && input === "q",
+					do: () => setActivePage("helpPage")
+				}
+			]}
 			nextFocus={[
 				{to: Focus.textField, when: (input, key) => key.ctrl && input === 'e'},
 				{
-					to: activePage === "dashboard" ? Focus.categorySelect : Focus.filterTabs,
+					to:
+						activePage === 'dashboard'
+							? Focus.categorySelect
+							: Focus.filterTabs,
 					when: (input, key) =>
 						(key.ctrl && input === 'o') || (key.meta && input === '1'),
 				},
@@ -40,7 +50,7 @@ export default function Freeuron() {
 					when: (input, key) => key.ctrl && input === 'd',
 				},
 				{
-					to: activePage === "dashboard" ? Focus.categoryTabs : Focus.thoughts,
+					to: activePage === 'dashboard' ? Focus.categoryTabs : Focus.thoughts,
 					when: (input, key) => key.ctrl && input === 't',
 				},
 				{
@@ -58,7 +68,13 @@ export default function Freeuron() {
 						<Heading />
 						<PageSwitcher setPage={setActivePage} />
 					</Box>
-					{activePage === 'dashboard' ? <Dashboard /> : <BrowsePage />}
+					{activePage === 'dashboard' ? (
+						<Dashboard />
+					) : activePage === 'helpPage' ? (
+						<HelpPage />
+					) : (
+						<BrowsePage />
+					)}
 				</>
 			)}
 		/>
