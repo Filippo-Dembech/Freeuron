@@ -31,7 +31,7 @@ export default function Freeuron() {
 			nextFocus={[
 				{to: Focus.textField, when: (input, key) => key.ctrl && input === 'e'},
 				{
-					to: Focus.categorySelect,
+					to: activePage === "dashboard" ? Focus.categorySelect : Focus.filterTabs,
 					when: (input, key) =>
 						(key.ctrl && input === 'o') || (key.meta && input === '1'),
 				},
@@ -50,10 +50,6 @@ export default function Freeuron() {
 				{
 					to: Focus.uiFilters,
 					when: (input, key) => key.ctrl && input === 'f',
-				},
-				{
-					to: Focus.filterTabs,
-					when: (_, key) => key.tab,
 				},
 			]}
 			renderComponent={() => (

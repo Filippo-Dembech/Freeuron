@@ -1,14 +1,21 @@
 import {Box, Text, useFocus} from 'ink';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {getConfig} from '../config.js';
 import {Tab, Tabs} from 'ink-tab';
-import {getAll} from '../db.js';
+import {deleteThought, getAll, toggleThought} from '../db.js';
 import {Focus} from '../Focus.js';
 import BigText from 'ink-big-text';
+import SelectThoughts from '../ui/SelectThoughts.js';
+//import Checkbox from '../components/Checkbox.js';
 
 export default function BrowsePage() {
 	const {categories} = getConfig();
 	const [category, setCategory] = useState(categories[0]);
+	const [updateUI, setUpdateUI] = useState(false);
+
+	useEffect(() => {
+		setUpdateUI(false);
+	}, [updateUI])
 
 	const {isFocused} = useFocus({id: Focus.filterTabs});
 
@@ -44,13 +51,18 @@ export default function BrowsePage() {
 				{category ? (
 					<Box flexDirection="column" paddingLeft={3} paddingBottom={2}>
 						<BigText text={category.name} font="tiny" />
-						{getAll(category).map(thought => (
-							<Text key={thought.id}>
-								<Text color="gray">{"["}<Text color="green">{thought.checked ? 'X' : ' '}</Text>{"]"}</Text>
-								{" "}
-								<Text strikethrough={thought.checked}>{thought.content}</Text>
-							</Text>
-						))}
+						<SelectThoughts
+							thoughts={getAll(category)}
+							showDate
+							onDelete={thought => {
+								deleteThought(thought.date, thought)
+								setUpdateUI(true);
+							}}
+							onToggle={thought => {
+								toggleThought(thought)
+								setUpdateUI(true);
+							}}
+						/>
 					</Box>
 				) : (
 					<Text>No thought</Text>

@@ -75,10 +75,10 @@ export function getNextDay(targetDate: string): DayType | undefined {
 	return;
 }
 
-export function deleteThought(targetDay: DayType, thoughtToDelete?: Thought) {
+export function deleteThought(targetDate: string, thoughtToDelete?: Thought) {
 	if (!thoughtToDelete) return;
 	db.data.days.forEach(day => {
-		if (day.date === targetDay.date) {
+		if (day.date === targetDate) {
 			day.thoughts = day.thoughts.filter(
 				thought => thought?.id !== thoughtToDelete.id,
 			);
@@ -101,5 +101,19 @@ export function getAll(category: Category) {
 		.flatMap(day => day.thoughts)
 		.filter(thought => thought.category?.name === category.name);
 }
+
+export function toggleThought(thoughtToToggle: Thought) {
+	if (!thoughtToToggle) return;
+
+	for (const day of db.data.days) {
+		const thought = day.thoughts.find(t => t.id === thoughtToToggle.id);
+		if (thought) {
+			thought.checked = !thought.checked;
+			db.write();
+			return;
+		}
+	}
+}
+
 
 export default db;
