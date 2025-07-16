@@ -6,5 +6,5 @@ export enum Focus {
 	thoughts = 'thoughts',
 	searchDayField = 'searchDayField',
 	uiFilters = 'uiFilters',
-	filterTabs = "filterTabs"
+	filterTabs = "filterTabs",
 }

@@ -40,7 +40,7 @@ export default function Freeuron() {
 					when: (input, key) => key.ctrl && input === 'd',
 				},
 				{
-					to: Focus.categoryTabs,
+					to: activePage === "dashboard" ? Focus.categoryTabs : Focus.thoughts,
 					when: (input, key) => key.ctrl && input === 't',
 				},
 				{

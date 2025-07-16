@@ -6,10 +6,12 @@ import { Focus } from "../Focus.js";
 import { Box, Text } from "ink";
 import SelectInput from "ink-select-input";
 import { Task } from "ink-task-list";
+import Container from "../components/Container.js";
 
 interface SelectThoughtsProps {
     thoughts: Thought[];
     showDate?: boolean;
+	//isFocused?: boolean;
     onToggle?: (thought: Thought) => void
     onDelete?: (thought: Thought) => void
 }
@@ -79,7 +81,7 @@ export default function SelectThoughts({ thoughts, showDate = false, onToggle, o
 				},
 			]}
 			renderComponent={({isFocused}) => (
-				<Box flexDirection="column">
+				<Container isFocused={isFocused} flexGrow={1} paddingX={2} paddingY={1}>
 					<SelectInput
 						items={memoizedItems}
 						isFocused={isFocused}
@@ -107,7 +109,7 @@ export default function SelectThoughts({ thoughts, showDate = false, onToggle, o
 							if (canToggle) onToggle?.(value);
 						}}
 					/>
-				</Box>
+				</Container>
 			)}
 		/>
 	);
