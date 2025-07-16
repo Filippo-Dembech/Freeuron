@@ -26,7 +26,7 @@ export default function PageSwitcher({setPage}: PageSwitcherProps) {
 					onChange={setPage}
 				>
 					<Tab name="dashboard">Dashboard</Tab>
-					<Tab name="all">All</Tab>
+					<Tab name="browse">Browse</Tab>
 				</Tabs>
 			)}
 		/>
