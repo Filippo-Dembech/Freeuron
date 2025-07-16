@@ -4,12 +4,12 @@
       "date": "02/07/2025",
       "thoughts": [
         {
-          "id": "b815b3bc-820e-42db-8bac-96f943d200d7",
+          "id": "cca652c8-a36c-4758-b749-6acec6fab591",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
           },
-          "content": "Really old todo",
+          "content": "New todo today",
           "checked": false
         }
       ]

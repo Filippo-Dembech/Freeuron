@@ -3,14 +3,15 @@ import React, {useState} from 'react';
 import {getConfig} from '../config.js';
 import {Tab, Tabs} from 'ink-tab';
 import {getAll} from '../db.js';
-import { Task } from 'ink-task-list';
-import { Focus } from '../Focus.js';
+import {Task} from 'ink-task-list';
+import {Focus} from '../Focus.js';
+import BigText from 'ink-big-text';
 
 export default function BrowsePage() {
 	const {categories} = getConfig();
 	const [category, setCategory] = useState(categories[0]);
-    
-    const {isFocused} = useFocus({id: Focus.filterTabs})
+
+	const {isFocused} = useFocus({id: Focus.filterTabs});
 
 	return (
 		<Box>
@@ -20,7 +21,7 @@ export default function BrowsePage() {
 						colors={{
 							activeTab: {color: 'blue', backgroundColor: 'black'},
 						}}
-                        isFocused={isFocused}
+						isFocused={isFocused}
 						flexDirection="column"
 						keyMap={{
 							useNumbers: true,
@@ -41,11 +42,16 @@ export default function BrowsePage() {
 						))}
 					</Tabs>
 				</Box>
-				<Box padding={2} borderStyle="single" width="100%">
+				<Box  borderStyle="single" width="100%">
 					{category ? (
-						<Box flexDirection="column">
+						<Box flexDirection="column" paddingLeft={3} paddingBottom={2}>
+							<BigText text={category.name} font='tiny'/>
 							{getAll(category).map(thought => (
-								<Task key={thought.id} label={thought.content} state={thought.checked ? "success" : "pending"}/>
+								<Task
+									key={thought.id}
+									label={thought.content}
+									state={thought.checked ? 'success' : 'pending'}
+								/>
 							))}
 						</Box>
 					) : (
