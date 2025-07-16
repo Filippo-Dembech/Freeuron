@@ -19,9 +19,10 @@ EventEmitter.defaultMaxListeners = 30;
 
 export default function Freeuron() {
 	const config = getConfig();
+	const hasCategories = config.categories.length !== 0;
 	const [activePage, setActivePage] = useState('dashboard');
 
-	if (config.categories.length === 0) return <NoCategoryFoundError />;
+	if (!hasCategories) return <NoCategoryFoundError />;
 
 	return (
 		<Focusable
