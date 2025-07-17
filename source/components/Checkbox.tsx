@@ -25,10 +25,10 @@ export default function Checkbox({label, checked = false, onCheck}: CheckboxProp
 		<Text bold={isFocused}>
 			<Text color="gray">
 				{'['}
-				<Text color="green">{checked ? 'X' : ' '}</Text>
+				<Text color="green">{isChecked ? 'X' : ' '}</Text>
 				{']'}
 			</Text>{' '}
-			<Text strikethrough={checked}>{label}</Text>
+			<Text strikethrough={isChecked}>{label}</Text>
 		</Text>
 	);
 }
