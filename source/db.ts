@@ -34,6 +34,21 @@ export function createToday(): DayType {
 	return today;
 }
 
+export function getAllThoughts(): Thought[] {
+	const allThoughts = db.data.days.flatMap(day => day.thoughts);
+	return allThoughts;
+}
+
+export function getThoughtsByDay(date: string) {
+	return getDay(date)?.thoughts;
+}
+
+export function getThoughtsByCategory(category: Category) {
+	return db.data.days
+		.flatMap(day => day.thoughts)
+		.filter(thought => thought.category?.name === category.name);
+}
+
 export function createDBThought(date: string, thought: Thought) {
 	db.data.days = db.data.days.map(day => {
 		if (day.date === date) {
@@ -96,11 +111,6 @@ export function syncDBThoughts(targetDay: DayType, thoughts: Thought[]) {
 	db.write();
 }
 
-export function getAll(category: Category) {
-	return db.data.days
-		.flatMap(day => day.thoughts)
-		.filter(thought => thought.category?.name === category.name);
-}
 
 export function toggleThought(thoughtToToggle: Thought) {
 	if (!thoughtToToggle) return;

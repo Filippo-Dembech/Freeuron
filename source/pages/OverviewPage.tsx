@@ -2,7 +2,7 @@ import {Box, Text} from 'ink';
 import React, {useEffect, useState} from 'react';
 import {getConfig} from '../config.js';
 import {Tab, Tabs} from 'ink-tab';
-import {deleteThought, getAll, toggleThought} from '../db.js';
+import {deleteThought, getThoughtsByCategory, toggleThought} from '../db.js';
 import {Focus} from '../Focus.js';
 import BigText from 'ink-big-text';
 import SelectThought from '../ui/SelectThought.js';
@@ -57,11 +57,11 @@ export default function OverviewPage() {
 				/>
 			</Box>
 			<Box flexDirection="column" paddingX={3} flexGrow={1} paddingBottom={2}>
-				{category && getAll(category).length !== 0 ? (
+				{category && getThoughtsByCategory(category).length !== 0 ? (
 					<>
 						<BigText text={category.name} font="tiny" />
 						<SelectThought
-							thoughts={getAll(category)}
+							thoughts={getThoughtsByCategory(category)}
 							showDate
 							onDelete={thought => {
 								deleteThought(thought.date, thought);
