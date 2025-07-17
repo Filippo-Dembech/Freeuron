@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard.js';
 import PageSwitcher from './ui/PageSwitcher.js';
 import BrowsePage from './pages/BrowsePage.js';
 import HelpPage from './pages/HelpPage.js';
+import { usePage } from './context/PageContext.js';
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -21,7 +22,7 @@ EventEmitter.defaultMaxListeners = 30;
 export default function Freeuron() {
 	const config = getConfig();
 	const hasCategories = config.categories.length !== 0;
-	const [activePage, setActivePage] = useState('dashboard');
+	const {activePage, setActivePage} = usePage()
 
 	if (!hasCategories) return <NoCategoryFoundError />;
 
@@ -67,7 +68,7 @@ export default function Freeuron() {
 					<Box justifyContent="space-between" alignItems='center'>
 						<Box alignItems="center"  gap={4}>
 							<Heading />
-							<PageSwitcher setPage={setActivePage} />
+							<PageSwitcher />
 						</Box>
 						<Box>
 							<Text bold>HELP: press <Text color="yellow" underline>'Ctrl + q'</Text></Text>

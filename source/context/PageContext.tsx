@@ -2,7 +2,7 @@ import React, { createContext, ReactNode, useContext, useState } from "react"
 
 interface PageContextValue {
     activePage: string;
-    setActivePage?: React.Dispatch<React.SetStateAction<string>>;
+    setActivePage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const PageContext = createContext<PageContextValue | undefined>(undefined);

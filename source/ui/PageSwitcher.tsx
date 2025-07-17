@@ -2,12 +2,10 @@ import React from 'react';
 import Focusable from '../components/Focusable.js';
 import {Focus} from '../Focus.js';
 import {Tab, Tabs} from 'ink-tab';
+import {usePage} from '../context/PageContext.js';
 
-type PageSwitcherProps = {
-	setPage: React.Dispatch<React.SetStateAction<string>>;
-};
-
-export default function PageSwitcher({setPage}: PageSwitcherProps) {
+export default function PageSwitcher() {
+	const {setActivePage} = usePage();
 	return (
 		<Focusable
 			id={Focus.uiFilters}
@@ -22,7 +20,7 @@ export default function PageSwitcher({setPage}: PageSwitcherProps) {
 						previous: ['h', 'j'],
 						next: ['k', 'l'],
 					}}
-					onChange={setPage}
+					onChange={setActivePage}
 				>
 					<Tab name="dashboard">Dashboard</Tab>
 					<Tab name="browse">Browse</Tab>
