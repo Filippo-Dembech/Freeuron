@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Heading from './ui/Heading.js';
 import Focusable from './components/Focusable.js';
 import {Focus} from './Focus.js';
-import {Box} from 'ink';
+import {Box, Text} from 'ink';
 // import { getConfig } from './getConfig.js';			// FOR DEBUG PURPOSES
 import {getConfig} from './config.js';
 import {EventEmitter} from 'events';
@@ -64,9 +64,14 @@ export default function Freeuron() {
 			]}
 			renderComponent={() => (
 				<>
-					<Box alignItems="center" gap={4}>
-						<Heading />
-						<PageSwitcher setPage={setActivePage} />
+					<Box justifyContent="space-between" alignItems='center'>
+						<Box alignItems="center"  gap={4}>
+							<Heading />
+							<PageSwitcher setPage={setActivePage} />
+						</Box>
+						<Box>
+							<Text bold>HELP: press <Text color="yellow" underline>'Ctrl + q'</Text></Text>
+						</Box>
 					</Box>
 					{activePage === 'dashboard' ? (
 						<Dashboard />

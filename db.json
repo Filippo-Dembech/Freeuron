@@ -51,7 +51,28 @@
     },
     {
       "date": "10/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "6520c0cd-5dcf-4698-8437-dd9d20948ae6",
+          "date": "10/07/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "10 tdo",
+          "checked": false
+        },
+        {
+          "id": "4a597b63-d39e-4208-b566-2536ddc08be2",
+          "date": "10/07/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Second todo 10",
+          "checked": false
+        }
+      ]
     },
     {
       "date": "11/07/2025",
@@ -59,7 +80,38 @@
     },
     {
       "date": "16/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "01e2e2b9-4671-4f41-b0e9-446bfbe5b2a9",
+          "date": "16/07/2025",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "Perché Albina ha messo quei pntaloni?",
+          "checked": false
+        },
+        {
+          "id": "c1109669-2058-47d7-bb62-c54d58cb27f0",
+          "date": "16/07/2025",
+          "category": {
+            "name": "Insight",
+            "placeholder": "Enter your discovery..."
+          },
+          "content": "Il past perfect lo uso per passato indefinito!",
+          "checked": false
+        },
+        {
+          "id": "b375fd71-9510-4f1a-b46b-a5884b0eebbd",
+          "date": "16/07/2025",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "New questions",
+          "checked": true
+        }
+      ]
     }
   ]
 }
