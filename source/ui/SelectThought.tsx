@@ -8,7 +8,7 @@ import SelectInput from "ink-select-input";
 import { Task } from "ink-task-list";
 import Container from "../components/Container.js";
 
-interface SelectThoughtsProps {
+interface SelectThoughtProps {
     thoughts: Thought[];
     showDate?: boolean;
 	//isFocused?: boolean;
@@ -16,7 +16,7 @@ interface SelectThoughtsProps {
     onDelete?: (thought: Thought) => void
 }
 
-export default function SelectThoughts({ thoughts, showDate = false, onToggle, onDelete }: SelectThoughtsProps) {
+export default function SelectThought({ thoughts, showDate = false, onToggle, onDelete }: SelectThoughtProps) {
 	const [selectedThought, setSelectedThought] = useState<Thought | undefined>();
 	const [confirmText, setConfirmText] = useState('');
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought

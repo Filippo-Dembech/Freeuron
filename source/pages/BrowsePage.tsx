@@ -5,7 +5,7 @@ import {Tab, Tabs} from 'ink-tab';
 import {deleteThought, getAll, toggleThought} from '../db.js';
 import {Focus} from '../Focus.js';
 import BigText from 'ink-big-text';
-import SelectThoughts from '../ui/SelectThoughts.js';
+import SelectThought from '../ui/SelectThought.js';
 import Focusable from '../components/Focusable.js';
 
 export default function BrowsePage() {
@@ -60,7 +60,7 @@ export default function BrowsePage() {
 				{category && getAll(category).length !== 0 ? (
 					<>
 						<BigText text={category.name} font="tiny" />
-						<SelectThoughts
+						<SelectThought
 							thoughts={getAll(category)}
 							showDate
 							onDelete={thought => {
