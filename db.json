@@ -2,28 +2,7 @@
   "days": [
     {
       "date": "02/07/2025",
-      "thoughts": [
-        {
-          "id": "f8f3ac04-0f25-452b-98f9-c46153d31ef5",
-          "date": "02/07/2025",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "First todo 02",
-          "checked": false
-        },
-        {
-          "id": "208580a3-2b52-4787-a9e4-12bf05af03ec",
-          "date": "02/07/2025",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "First question 02",
-          "checked": false
-        }
-      ]
+      "thoughts": []
     },
     {
       "date": "03/07/2025",
@@ -51,28 +30,7 @@
     },
     {
       "date": "10/07/2025",
-      "thoughts": [
-        {
-          "id": "6520c0cd-5dcf-4698-8437-dd9d20948ae6",
-          "date": "10/07/2025",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "10 tdo",
-          "checked": false
-        },
-        {
-          "id": "4a597b63-d39e-4208-b566-2536ddc08be2",
-          "date": "10/07/2025",
-          "category": {
-            "name": "Todo",
-            "placeholder": "Enter what you have to do..."
-          },
-          "content": "Second todo 10",
-          "checked": false
-        }
-      ]
+      "thoughts": []
     },
     {
       "date": "11/07/2025",
@@ -81,16 +39,6 @@
     {
       "date": "16/07/2025",
       "thoughts": [
-        {
-          "id": "01e2e2b9-4671-4f41-b0e9-446bfbe5b2a9",
-          "date": "16/07/2025",
-          "category": {
-            "name": "Question",
-            "placeholder": "Enter your question..."
-          },
-          "content": "Perché Albina ha messo quei pntaloni?",
-          "checked": false
-        },
         {
           "id": "c1109669-2058-47d7-bb62-c54d58cb27f0",
           "date": "16/07/2025",
@@ -115,7 +63,38 @@
     },
     {
       "date": "17/07/2025",
-      "thoughts": []
+      "thoughts": [
+        {
+          "id": "5d62d3ff-be48-4f8b-a7bd-61881501fce9",
+          "date": "17/07/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "First todo",
+          "checked": false
+        },
+        {
+          "id": "c734e835-782c-46af-b804-418da8eb542f",
+          "date": "17/07/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Second todo",
+          "checked": false
+        },
+        {
+          "id": "ede37053-3f05-472e-ac70-5fc46136c0ea",
+          "date": "17/07/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Third todo",
+          "checked": false
+        }
+      ]
     }
   ]
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Thought } from "../types.js"
 import Focusable from "../components/Focusable.js";
@@ -16,24 +16,23 @@ interface SelectThoughtProps {
     onDelete?: (thought: Thought) => void
 }
 
-export default function SelectThought({ thoughts, showDate = false, onToggle }: SelectThoughtProps) {
+export default function SelectThought({ thoughts, showDate = false, onToggle, onDelete }: SelectThoughtProps) {
 	const [confirmText, setConfirmText] = useState('');
+	const [selectedThought, setSelectedThought] = useState<Thought | undefined>()
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
 	const deleteMode = confirmText !== '';
+	
+	useEffect(() => {
+		setSelectedThought(thoughts[0])
+	}, [thoughts])
 
 	const resetConfirmText = () => {
 		setConfirmText('');
 	};
-
+	
 	return (
 		<Focusable
 			id={Focus.thoughts}
-			nextFocus={[
-				{
-					to: Focus.categoryTabs,
-					when: (_, key) => key.escape,
-				},
-			]}
 			actions={[
 				{
 					on: (input, key) => key.ctrl && input === 't',
@@ -46,8 +45,7 @@ export default function SelectThought({ thoughts, showDate = false, onToggle }: 
 				{
 					on: input => deleteMode && input === 'y',
 					do: () => {
-						//deleteSelectedThought();
-						console.log("delete thought")
+						if (selectedThought) onDelete?.(selectedThought);
 						resetConfirmText();
 					},
 				},
@@ -76,7 +74,10 @@ export default function SelectThought({ thoughts, showDate = false, onToggle }: 
 								</Box>
 							);
 						}}
-						onHighlight={() => resetConfirmText()}
+						onHighlight={(thought) => {
+							setSelectedThought(thought)
+							resetConfirmText()
+						}}
 						onSelect={(thought) => {
 							if (canToggle) onToggle?.(thought);
 						}}
