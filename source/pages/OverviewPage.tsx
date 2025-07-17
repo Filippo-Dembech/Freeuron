@@ -8,7 +8,7 @@ import BigText from 'ink-big-text';
 import SelectThought from '../ui/SelectThought.js';
 import Focusable from '../components/Focusable.js';
 
-export default function BrowsePage() {
+export default function OverviewPage() {
 	const {categories} = getConfig();
 	const [category, setCategory] = useState(categories[0]);
 	const [updateUI, setUpdateUI] = useState(false);

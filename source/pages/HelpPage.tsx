@@ -65,7 +65,7 @@ export default function HelpPage() {
 			</Text>
 			<Box justifyContent="space-between" paddingX={5}>
 				<PageShortcuts
-					pageName="dashboard"
+					pageName="Dashboard"
 					shortcuts={[
 						{keys: 'Ctrl + f', description: 'pages tabs'},
 						{keys: 'Ctrl + o | alt + 1', description: 'categories selection'},
@@ -75,7 +75,7 @@ export default function HelpPage() {
 					]}
 				/>
 				<PageShortcuts
-					pageName="Browse"
+					pageName="Overview"
 					shortcuts={[
 						{keys: 'Ctrl + f', description: 'pages tabs'},
 						{keys: 'Ctrl + o', description: 'categories selection'},

@@ -23,7 +23,7 @@ export default function PageSwitcher() {
 					onChange={setActivePage}
 				>
 					<Tab name="dashboard">Dashboard</Tab>
-					<Tab name="browse">Browse</Tab>
+					<Tab name="overview">Overview</Tab>
 					<Tab name="helpPage">Help</Tab>
 				</Tabs>
 			)}

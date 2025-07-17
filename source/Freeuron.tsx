@@ -9,7 +9,7 @@ import {getConfig} from './config.js';
 import {EventEmitter} from 'events';
 import Dashboard from './pages/Dashboard.js';
 import PageSwitcher from './ui/PageSwitcher.js';
-import BrowsePage from './pages/BrowsePage.js';
+import OverviewPage from './pages/OverviewPage.js';
 import HelpPage from './pages/HelpPage.js';
 import { usePage } from './context/PageContext.js';
 import HelpHint from './ui/presentation/HelpHint.js';
@@ -78,7 +78,7 @@ export default function Freeuron() {
 					) : activePage === 'helpPage' ? (
 						<HelpPage />
 					) : (
-						<BrowsePage />
+						<OverviewPage />
 					)}
 				</>
 			)}
