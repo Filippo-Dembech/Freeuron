@@ -1,14 +1,18 @@
 import {Box, BoxProps} from 'ink';
-import React from 'react';
+import React, { useMemo } from 'react';
 import BigText from 'ink-big-text';
 import {useDay} from '../context/DayContext.js';
-import Thoughts from './Thoughts.js';
 import {alphabetically} from '../utils/sort.js';
 import NoCategories from './NoCategories.js';
 import CategoryTabs from './CategoryTabs.js';
+import SelectThought from './SelectThought.js';
 
 export default function Day({...props}: BoxProps) {
-	const {day, setActiveTab} = useDay();
+	const {day, activeTab, setActiveTab, deleteThought, toggleThought} = useDay();
+	const activeThoughts = useMemo(
+		() => day.thoughts.filter(thought => thought.category?.name === activeTab),
+		[day, activeTab],
+	);
 	const categoryNames = [
 		...new Set(day.thoughts.map(thought => thought.category?.name)),
 	].sort(alphabetically);
@@ -16,18 +20,24 @@ export default function Day({...props}: BoxProps) {
 
 	return (
 		<Box
-			borderStyle="round"
-			borderColor="grey"
 			alignItems={noCategory ? 'center' : 'stretch'}
 			gap={8}
 			{...props}
 		>
 			<BigText text={day.date} font="tiny" />
-			<Box flexDirection="column" gap={1}>
+			<Box flexDirection="column" flexGrow={1} gap={1}>
 				{!noCategory ? (
 					<>
 						<CategoryTabs onChange={setActiveTab} />
-						<Thoughts />
+						<SelectThought
+							thoughts={activeThoughts}
+							onDelete={thought => {
+								deleteThought(thought);
+							}}
+							onToggle={thought => {
+								toggleThought(thought);
+							}}
+						/>
 					</>
 				) : (
 					<NoCategories />
