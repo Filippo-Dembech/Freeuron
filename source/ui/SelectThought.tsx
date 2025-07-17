@@ -1,12 +1,12 @@
 import React from "react";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { Thought } from "../types.js"
 import Focusable from "../components/Focusable.js";
 import { Focus } from "../Focus.js";
 import { Box, Text } from "ink";
-import SelectInput from "ink-select-input";
 import { Task } from "ink-task-list";
 import Container from "../components/Container.js";
+import Select from "../components/Select.js";
 
 interface SelectThoughtProps {
     thoughts: Thought[];
@@ -16,39 +16,14 @@ interface SelectThoughtProps {
     onDelete?: (thought: Thought) => void
 }
 
-export default function SelectThought({ thoughts, showDate = false, onToggle, onDelete }: SelectThoughtProps) {
-	const [selectedThought, setSelectedThought] = useState<Thought | undefined>();
+export default function SelectThought({ thoughts, showDate = false, onToggle }: SelectThoughtProps) {
 	const [confirmText, setConfirmText] = useState('');
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
 	const deleteMode = confirmText !== '';
 
-	useEffect(() => {
-		setSelectedThought(thoughts[0]);
-	}, [thoughts]);
-
 	const resetConfirmText = () => {
 		setConfirmText('');
 	};
-
-	const deleteSelectedThought = () => {
-		if (!selectedThought) return;
-        onDelete?.(selectedThought)
-	};
-
-	const memoizedItems = useMemo(
-		() =>
-			thoughts?.map((thought, i) => ({
-				key: `${thought.category}-${thought.content}-${i}`,
-				// because 'value' isn't seen as an 'item' property but label does,
-				// I have decided to use string manipulation to make the backend
-				// understand whether a thought were checked or not
-				label: `${thought.content}::${
-					thought.checked ? 'X' : '_'
-				}::${thought.date}`,
-				value: thought,
-			})),
-		[thoughts],
-	);
 
 	return (
 		<Focusable
@@ -71,7 +46,8 @@ export default function SelectThought({ thoughts, showDate = false, onToggle, on
 				{
 					on: input => deleteMode && input === 'y',
 					do: () => {
-						deleteSelectedThought();
+						//deleteSelectedThought();
+						console.log("delete thought")
 						resetConfirmText();
 					},
 				},
@@ -82,31 +58,27 @@ export default function SelectThought({ thoughts, showDate = false, onToggle, on
 			]}
 			renderComponent={({isFocused}) => (
 				<Container isFocused={isFocused} flexGrow={1} paddingX={2} paddingY={1}>
-					<SelectInput
-						items={memoizedItems}
+					<Select
+						items={thoughts}
+						labelFrom={thought => thought.id}
 						isFocused={isFocused}
 						// don't know why but 'value' isn't seen as an 'item' property
 						// So modified 'label' is used instead
-						itemComponent={({label: thoughtContent, isSelected}) => {
-                            const [content, check, date] = thoughtContent.split("::");
-							const isChecked = check === "X";
+						renderItem={(thought, isSelected) => {
 							return (
 								<Box gap={2}>
                                     <Task
-                                        label={content ?? ""}
-                                        state={isChecked ? 'success' : 'pending'}
+                                        label={thought?.content ?? ""}
+                                        state={thought?.checked ? 'success' : 'pending'}
 									/>
-                                    {showDate && <Text color="gray" italic>{date}</Text>}
+                                    {showDate && <Text color="gray" italic>{thought?.date}</Text>}
                                     {isSelected && <Text color="white" backgroundColor="red">{confirmText}</Text>}
 								</Box>
 							);
 						}}
-						onHighlight={({value}) => {
-							setSelectedThought(value);
-							resetConfirmText();
-						}}
-						onSelect={({value}) => {
-							if (canToggle) onToggle?.(value);
+						onHighlight={() => resetConfirmText()}
+						onSelect={(thought) => {
+							if (canToggle) onToggle?.(thought);
 						}}
 					/>
 				</Container>
