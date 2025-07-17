@@ -25,7 +25,6 @@ function ThoughtProvider({children}: {children: React.ReactNode}) {
 	const [content, setContent] = useState('');
     const [error, setError] = useState("");
     const resetError = () => setError("");
-	
     
     useEffect(() => {
         resetError();
