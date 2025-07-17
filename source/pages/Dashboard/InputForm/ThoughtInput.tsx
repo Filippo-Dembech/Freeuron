@@ -1,7 +1,7 @@
 import React from "react";
-import Container from "../components/Container.js";
-import TextField from "../components/TextField.js";
-import { useThought } from "../context/ThoughtContext.js";
+import Container from "../../../components/Container.js";
+import TextField from "../../../components/TextField.js";
+import { useThought } from "../../../context/ThoughtContext.js";
 
 type ThoughtInputProps = {
     isFocused?: boolean;

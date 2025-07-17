@@ -7,7 +7,7 @@ import {Box} from 'ink';
 // import { getConfig } from './getConfig.js';			// FOR DEBUG PURPOSES
 import {getConfig} from './config.js';
 import {EventEmitter} from 'events';
-import Dashboard from './pages/Dashboard.js';
+import Dashboard from './pages/Dashboard/Dashboard.js';
 import PageSwitcher from './ui/PageSwitcher.js';
 import OverviewPage from './pages/OverviewPage.js';
 import HelpPage from './pages/HelpPage.js';

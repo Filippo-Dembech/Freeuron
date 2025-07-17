@@ -73,6 +73,16 @@
           },
           "content": "First todo",
           "checked": true
+        },
+        {
+          "id": "f1d73495-84af-43eb-939e-37c63fd8215d",
+          "date": "17/07/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Second todo",
+          "checked": false
         }
       ]
     }

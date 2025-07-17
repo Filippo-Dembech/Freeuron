@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import TextField from '../components/TextField.js';
-import Focusable from '../components/Focusable.js';
-import {Focus} from '../Focus.js';
-import Container from '../components/Container.js';
+import TextField from '../../../components/TextField.js';
+import Focusable from '../../../components/Focusable.js';
+import {Focus} from '../../../Focus.js';
+import Container from '../../../components/Container.js';
 import {Box, Text} from 'ink';
-import {useDay} from '../context/DayContext.js';
-import {getDay} from '../db.js';
+import {useDay} from '../../../context/DayContext.js';
+import {getDay} from '../../../db.js';
 
 function formatDateString(digits: string): string {
 	const day = digits.slice(0, 2);

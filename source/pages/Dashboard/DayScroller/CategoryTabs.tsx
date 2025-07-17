@@ -1,9 +1,9 @@
 import React from 'react';
-import Focusable from '../components/Focusable.js';
-import {Focus} from '../Focus.js';
+import Focusable from '../../../components/Focusable.js';
+import {Focus} from '../../../Focus.js';
 import {Tab, Tabs} from 'ink-tab';
-import {useDay} from '../context/DayContext.js';
-import {alphabetically} from '../utils/sort.js';
+import {useDay} from '../../../context/DayContext.js';
+import {alphabetically} from '../../../utils/sort.js';
 
 type CategoryTypeProps = {
 	onChange: (tabName: string) => void;

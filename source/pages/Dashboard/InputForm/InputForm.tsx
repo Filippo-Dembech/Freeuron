@@ -1,10 +1,10 @@
 import React from 'react';
 import {Box, Text} from 'ink';
-import {Category} from '../types.js';
-import NoCategoryFoundError from '../ui/NoCategoryFoundError.js';
-import {Focus} from '../Focus.js';
-import Focusable from '../components/Focusable.js';
-import {useThought} from '../context/ThoughtContext.js';
+import {Category} from '../../../types.js';
+import NoCategoryFoundError from '../../../ui/NoCategoryFoundError.js';
+import {Focus} from '../../../Focus.js';
+import Focusable from '../../../components/Focusable.js';
+import {useThought} from '../../../context/ThoughtContext.js';
 import CategoryInput from './CategoryInput.js';
 import ThoughtInput from './ThoughtInput.js';
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import {Focus} from '../Focus.js';
-import Arrow from '../components/Arrow.js';
+import {Focus} from '../../../Focus.js';
+import Arrow from '../../../components/Arrow.js';
 import Day from './Day.js';
 import {Box} from 'ink';
-import {useDay} from '../context/DayContext.js';
-import Focusable from '../components/Focusable.js';
-import Container from '../components/Container.js';
+import {useDay} from '../../../context/DayContext.js';
+import Focusable from '../../../components/Focusable.js';
+import Container from '../../../components/Container.js';
 import SearchField from './SearchField.js';
 
 export default function DayScroller() {

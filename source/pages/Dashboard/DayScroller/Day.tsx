@@ -1,11 +1,11 @@
 import {Box, BoxProps} from 'ink';
 import React, { useMemo } from 'react';
 import BigText from 'ink-big-text';
-import {useDay} from '../context/DayContext.js';
-import {alphabetically} from '../utils/sort.js';
+import {useDay} from '../../../context/DayContext.js';
+import {alphabetically} from '../../../utils/sort.js';
 import NoCategories from './NoCategories.js';
 import CategoryTabs from './CategoryTabs.js';
-import SelectThought from './SelectThought.js';
+import SelectThought from '../../../ui/SelectThought.js';
 
 export default function Day({...props}: BoxProps) {
 	const {day, activeTab, setActiveTab, deleteThought, toggleThought} = useDay();

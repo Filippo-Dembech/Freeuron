@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "../components/Container.js";
+import Container from "../../../components/Container.js";
 import SelectInput from "ink-select-input";
-import { useThought } from "../context/ThoughtContext.js";
-import { Category } from "../types.js";
+import { useThought } from "../../../context/ThoughtContext.js";
+import { Category } from "../../../types.js";
 
 type CategoryInputProps = {
     isFocused?: boolean
