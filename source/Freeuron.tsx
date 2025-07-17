@@ -1,5 +1,5 @@
 import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
-import React, {useState} from 'react';
+import React from 'react';
 import Heading from './ui/Heading.js';
 import Focusable from './components/Focusable.js';
 import {Focus} from './Focus.js';
@@ -34,7 +34,7 @@ export default function Freeuron() {
 				{
 					on: (input, key) => key.ctrl && input === "q",
 					do: () => setActivePage("helpPage")
-				}
+				},
 			]}
 			nextFocus={[
 				{to: Focus.textField, when: (input, key) => key.ctrl && input === 'e'},
