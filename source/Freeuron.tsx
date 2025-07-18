@@ -40,6 +40,10 @@ export default function Freeuron() {
 	}
 	
 	useEffect(() => {
+		setFocusEntity(undefined)
+	}, [activePage])
+	
+	useEffect(() => {
 		if (focusEntity) focus(focusEntity);
 	}, [focusEntity, activePage])
 
@@ -54,6 +58,7 @@ export default function Freeuron() {
 				getCtrlNavigation('e', 'dashboard', Focus.textField),
 				getCtrlNavigation("s", "dashboard", Focus.searchDayField),
 				getCtrlNavigation("o", "dashboard", Focus.categorySelect),
+				getCtrlNavigation("n", "dashboard", Focus.categoryTabs),
 				getCtrlNavigation("d", "dashboard", Focus.dayScroller),
 				getCtrlNavigation("a", "overviewPage", Focus.thoughts),
 				getCtrlNavigation("p", "overviewPage", Focus.filterTabs),

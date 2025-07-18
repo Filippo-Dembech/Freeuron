@@ -7,6 +7,7 @@ import { Box, Text } from "ink";
 import { Task } from "ink-task-list";
 import Container from "../components/Container.js";
 import Select from "../components/Select.js";
+import { usePage } from "../context/PageContext.js";
 
 interface SelectThoughtProps {
     thoughts: Thought[];
@@ -19,6 +20,7 @@ interface SelectThoughtProps {
 export default function SelectThought({ thoughts, showDate = false, onToggle, onDelete }: SelectThoughtProps) {
 	const [confirmText, setConfirmText] = useState('');
 	const [selectedThought, setSelectedThought] = useState<Thought | undefined>()
+	const {activePage} = usePage()
 	const canToggle = !confirmText; // if there is no confirm text user can toggle thought
 	const deleteMode = confirmText !== '';
 	
@@ -33,6 +35,12 @@ export default function SelectThought({ thoughts, showDate = false, onToggle, on
 	return (
 		<Focusable
 			id={Focus.thoughts}
+			nextFocus={[
+				{
+					to: activePage === "dashboard" ? Focus.categoryTabs : Focus.filterTabs,
+					when: (_, key) => key.escape,
+				}
+			]}
 			actions={[
 				{
 					on: (input, key) => key.ctrl && input === 't',
