@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Text} from 'ink';
 import BigText from 'ink-big-text';
-
+import { useTerminalSize } from '../hooks/useTerminalSize.js';
 interface Shortcut {
 	keys: string;
 	description: string;
@@ -14,9 +14,13 @@ interface PageCardProps {
 }
 
 function PageCard({pageName, description, shortcuts}: PageCardProps) {
+	
+	const [width] = useTerminalSize();
+	const isSmallTerminal = width < 140
+
 	return (
 		<Box flexDirection="column" width="25%">
-			<BigText text={pageName} font="tiny" />
+			{isSmallTerminal ? <Text underline bold>{pageName.toUpperCase()}</Text> : <BigText text={pageName} font="tiny" />}
 			<Box marginBottom={1}>
 				<Text color="whiteBright" bold>{description}</Text>
 			</Box>
@@ -33,9 +37,13 @@ function PageCard({pageName, description, shortcuts}: PageCardProps) {
 }
 
 export default function HelpPage() {
+	
+	const [width] = useTerminalSize();
+	const isSmallTerminal = width < 140
+
 	return (
 		<Box flexDirection="column" gap={1}>
-			<BigText text="Shortcuts" font="block" />
+			<BigText text="Shortcuts" font={isSmallTerminal ? "tiny" : "block"} />
 			<Text>
 				If you want, to can navigate throughout a page elements with just the{' '}
 				<Text color="blue" bold>
@@ -67,7 +75,7 @@ export default function HelpPage() {
 				Use shortcuts to get the job done faster. Each shortcut brings the focus
 				to a certain interface element:
 			</Text>
-			<Box justifyContent="space-around">
+			<Box justifyContent="space-around" flexWrap="wrap">
 				<PageCard
 					pageName="Dashboard"
 					description="Here you can create new thoughts, check day thoughts by category or search a specific day."
