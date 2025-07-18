@@ -1,9 +1,9 @@
 import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Heading from './ui/Heading.js';
-import Focusable from './components/Focusable.js';
+import Focusable, { ActionType } from './components/Focusable.js';
 import {Focus} from './Focus.js';
-import {Box} from 'ink';
+import {Box, useFocus} from 'ink';
 // import { getConfig } from './getConfig.js';			// FOR DEBUG PURPOSES
 import {getConfig} from './config.js';
 import {EventEmitter} from 'events';
@@ -13,6 +13,7 @@ import OverviewPage from './pages/OverviewPage.js';
 import HelpPage from './pages/HelpPage.js';
 import { usePage } from './context/PageContext.js';
 import HelpHint from './ui/presentation/HelpHint.js';
+
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -24,6 +25,23 @@ export default function Freeuron() {
 	const config = getConfig();
 	const hasCategories = config.categories.length !== 0;
 	const {activePage, setActivePage} = usePage()
+	const [focusEntity, setFocusEntity] = useState<Focus>();
+	
+	const {focus} = useFocus();
+	
+	const getCtrlNavigation = (inputKey: string, page: string, focusElement: Focus): ActionType => {
+		return {
+			on: (input, key) => key.ctrl && input === inputKey,
+			do: () => {
+				setActivePage(page)
+				setFocusEntity(focusElement);
+			}
+		}
+	}
+	
+	useEffect(() => {
+		if (focusEntity) focus(focusEntity);
+	}, [focusEntity, activePage])
 
 	if (!hasCategories) return <NoCategoryFoundError />;
 
@@ -32,37 +50,20 @@ export default function Freeuron() {
 			alwaysListening
 			id="app"
 			actions={[
-				{
-					on: (input, key) => key.ctrl && input === "q",
-					do: () => setActivePage("helpPage")
-				},
+				getCtrlNavigation('q', "helpPage", Focus.pageSwitcher),
+				getCtrlNavigation('e', 'dashboard', Focus.textField),
+				getCtrlNavigation("s", "dashboard", Focus.searchDayField),
+				getCtrlNavigation("o", "dashboard", Focus.categorySelect),
+				getCtrlNavigation("d", "dashboard", Focus.dayScroller),
+				getCtrlNavigation("a", "overviewPage", Focus.thoughts),
+				getCtrlNavigation("p", "overviewPage", Focus.filterTabs),
+				getCtrlNavigation("t", "dashboard", Focus.thoughts),
 			]}
 			nextFocus={[
-				{to: Focus.textField, when: (input, key) => key.ctrl && input === 'e'},
 				{
-					to:
-						activePage === 'dashboard'
-							? Focus.categorySelect
-							: Focus.filterTabs,
-					when: (input, key) =>
-						(key.ctrl && input === 'o') || (key.meta && input === '1'),
-				},
-				{
-					to: Focus.dayScroller,
-					when: (input, key) => key.ctrl && input === 'd',
-				},
-				{
-					to: activePage === 'dashboard' ? Focus.categoryTabs : Focus.thoughts,
-					when: (input, key) => key.ctrl && input === 't',
-				},
-				{
-					to: Focus.searchDayField,
-					when: (input, key) => key.ctrl && input === 's',
-				},
-				{
-					to: Focus.uiFilters,
-					when: (input, key) => key.ctrl && input === 'f',
-				},
+					to: Focus.pageSwitcher,
+					when: (input, key) => key.ctrl && input === "f"
+				}
 			]}
 			renderComponent={() => (
 				<>

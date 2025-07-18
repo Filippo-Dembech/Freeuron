@@ -8,7 +8,7 @@ export default function PageSwitcher() {
 	const {setActivePage} = usePage();
 	return (
 		<Focusable
-			id={Focus.uiFilters}
+			id={Focus.pageSwitcher}
 			renderComponent={({isFocused}) => (
 				<Tabs
 					colors={{

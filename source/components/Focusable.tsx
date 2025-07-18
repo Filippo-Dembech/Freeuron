@@ -26,12 +26,12 @@ export type RenderComponentArgs = {
 	focus: (id: string) => void;
 };
 
-type NextFocus = {
+type NextFocusType = {
 	to: string;
 	when: (input: string, key: Key) => boolean;
 };
 
-type ActionType = {
+export type ActionType = {
 	on: (input: string, key: Key) => boolean;
 	do: (focus: (id: string) => void) => void;
 };
@@ -46,7 +46,7 @@ export type FocusableProps = {
 	 */
 	renderComponent: (args: RenderComponentArgs) => React.ReactNode;
 	actions?: ActionType[];
-	nextFocus?: NextFocus[];
+	nextFocus?: NextFocusType[];
 	alwaysListening?: boolean;
 };
 

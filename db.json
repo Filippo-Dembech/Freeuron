@@ -82,9 +82,13 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "Second todo",
-          "checked": false
+          "checked": true
         }
       ]
+    },
+    {
+      "date": "18/07/2025",
+      "thoughts": []
     }
   ]
 }

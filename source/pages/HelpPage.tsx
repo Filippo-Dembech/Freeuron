@@ -7,15 +7,19 @@ interface Shortcut {
 	description: string;
 }
 
-interface PageShortcutsProps {
+interface PageCardProps {
 	pageName: string;
+	description: string;
 	shortcuts: Shortcut[];
 }
 
-function PageShortcuts({pageName, shortcuts}: PageShortcutsProps) {
+function PageCard({pageName, description, shortcuts}: PageCardProps) {
 	return (
-		<Box flexDirection="column">
+		<Box flexDirection="column" width="25%">
 			<BigText text={pageName} font="tiny" />
+			<Box marginBottom={1}>
+				<Text color="whiteBright" bold>{description}</Text>
+			</Box>
 			{shortcuts.map((shortcut, i) => (
 				<Box justifyContent="space-between" gap={2} key={`${shortcut.keys}-${i}`}>
 					<Text color="gray" bold>
@@ -63,28 +67,34 @@ export default function HelpPage() {
 				Use shortcuts to get the job done faster. Each shortcut brings the focus
 				to a certain interface element:
 			</Text>
-			<Box justifyContent="space-between" paddingX={5}>
-				<PageShortcuts
+			<Box justifyContent="space-around">
+				<PageCard
 					pageName="Dashboard"
+					description="Here you can create new thoughts, check day thoughts by category or search a specific day."
 					shortcuts={[
 						{keys: 'Ctrl + f', description: 'pages tabs'},
-						{keys: 'Ctrl + o | alt + 1', description: 'categories selection'},
+						{keys: 'Ctrl + o | alt + 1', description: 'category selection'},
 						{keys: 'Ctrl + e', description: 'thought content textfield'},
 						{keys: 'Ctrl + d', description: 'days scroller'},
 						{keys: 'Ctrl + t', description: 'current day categories'},
 					]}
 				/>
-				<PageShortcuts
+				<PageCard
 					pageName="Overview"
+					description='Overview page here mate'
 					shortcuts={[
 						{keys: 'Ctrl + f', description: 'pages tabs'},
-						{keys: 'Ctrl + o', description: 'categories selection'},
-						{keys: 'Ctrl + t', description: 'current category thoughts'},
+						{keys: 'Ctrl + p', description: 'categories selection'},
+						{keys: 'Ctrl + a', description: 'current category thoughts'},
 					]}
 				/>
-				<PageShortcuts
+				<PageCard
 					pageName="Help"
-					shortcuts={[{keys: 'Tab', description: 'pages tabs'}]}
+					description="Help page to understand what's going on here."
+					shortcuts={[
+						{keys: 'Ctrl + f', description: 'page tabs'},
+						{keys: 'Tab', description: 'page tabs'}
+					]}
 				/>
 			</Box>
 		</Box>
