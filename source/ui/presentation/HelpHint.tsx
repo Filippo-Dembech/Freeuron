@@ -6,8 +6,8 @@ export default function HelpHint() {
 		<Box>
 			<Text bold>
 				HELP: press{' '}
-				<Text color="yellow" underline>
-					'Ctrl + q'
+				<Text backgroundColor="yellowBright" color="black">
+					{" Ctrl + q "}
 				</Text>
 			</Text>
 		</Box>
