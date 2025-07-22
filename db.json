@@ -72,11 +72,46 @@
             "placeholder": "Enter what you have to do..."
           },
           "content": "First todo",
-          "checked": true
+          "checked": false
         },
         {
           "id": "f1d73495-84af-43eb-939e-37c63fd8215d",
           "date": "17/07/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Second todo",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "date": "18/07/2025",
+      "thoughts": [
+        {
+          "id": "ee446bab-4c8c-406c-b8ff-b13fbe76a89f",
+          "date": "18/07/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Disdire appuntamento moto",
+          "checked": true
+        },
+        {
+          "id": "f46e332a-1f1e-4fe8-a757-6419f1557a32",
+          "date": "18/07/2025",
+          "category": {
+            "name": "Question",
+            "placeholder": "Enter your question..."
+          },
+          "content": "Oggi chissà com'è il tempo in montagna",
+          "checked": true
+        },
+        {
+          "id": "16466450-278f-439c-a8b4-0d9a6d2185d0",
+          "date": "18/07/2025",
           "category": {
             "name": "Todo",
             "placeholder": "Enter what you have to do..."
@@ -87,7 +122,7 @@
       ]
     },
     {
-      "date": "18/07/2025",
+      "date": "22/07/2025",
       "thoughts": []
     }
   ]

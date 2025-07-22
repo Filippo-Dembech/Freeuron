@@ -5,7 +5,7 @@ export default function NoCategoryFoundError() {
 	return (
 		<>
 			<Text color="yellow">
-				No category has been found in 'freeuron.config.json' file.
+				No category has been found in 'config.json' file.
 			</Text>
 			<Text color="yellow">
 				Please populate it with categories. For example:
