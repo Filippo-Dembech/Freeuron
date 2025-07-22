@@ -2,6 +2,8 @@ import React from 'react';
 import {Box, Text} from 'ink';
 import BigText from 'ink-big-text';
 import {useTerminalSize} from '../hooks/useTerminalSize.js';
+import Code from '../components/Code.js';
+import Em from '../components/Em.js';
 interface Shortcut {
 	keys: string;
 	description: string;
@@ -50,35 +52,23 @@ function PageCard({pageName, description, shortcuts}: PageCardProps) {
 export default function HelpPage() {
 	return (
 		<Box flexDirection="column" gap={1} paddingX={4}>
-			<Box alignItems='center' justifyContent='center' gap={3}>
-				<Box flexDirection='column' gap={1} width="80%" borderStyle="round" paddingY={1} paddingX={4}>
+			<Box alignItems="center" justifyContent="center" gap={3}>
+				<Box
+					flexDirection="column"
+					gap={1}
+					width="80%"
+					borderStyle="round"
+					paddingY={1}
+					paddingX={4}
+				>
 					<Text>
-						If you want, to can navigate throughout a page elements with just
-						the{' '}
-						<Text color="blue" bold>
-							[Tab]
-						</Text>{' '}
-						button.
+						If you want, you can navigate throughout a page elements with just
+						the <Code>[Tab]</Code> button.
 					</Text>
 					<Text>
-						DIRECTIONS: to select a specific <Text italic>Tab</Text> or{' '}
-						<Text italic>Option</Text> press{' '}
-						<Text color="blue" bold>
-							j
-						</Text>
-						,{' '}
-						<Text color="blue" bold>
-							h
-						</Text>{' '}
-						to move forward (vertically or horizontally),{' '}
-						<Text color="blue" bold>
-							k
-						</Text>
-						,{' '}
-						<Text color="blue" bold>
-							l
-						</Text>{' '}
-						to move backward (vertically or horizontally)
+						DIRECTIONS: to select a specific <Em>Tab</Em> or <Em>Option</Em>{' '}
+						press <Code>j</Code>, <Code>h</Code> to move forward (vertically or
+						horizontally), <Code>k</Code>, <Code>l</Code> to move backward (vertically or horizontally)
 					</Text>
 					<Text>
 						Use shortcuts to get the job done faster. Each shortcut brings the
