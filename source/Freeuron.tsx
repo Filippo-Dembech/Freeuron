@@ -1,7 +1,7 @@
 import NoCategoryFoundError from './ui/NoCategoryFoundError.js';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Heading from './ui/Heading.js';
-import Focusable, { ActionType } from './components/Focusable.js';
+import Focusable, {ActionType} from './components/Focusable.js';
 import {Focus} from './Focus.js';
 import {Box, useFocus} from 'ink';
 // import { getConfig } from './getConfig.js';			// FOR DEBUG PURPOSES
@@ -11,9 +11,8 @@ import Dashboard from './pages/Dashboard/Dashboard.js';
 import PageSwitcher from './ui/PageSwitcher.js';
 import OverviewPage from './pages/OverviewPage.js';
 import HelpPage from './pages/HelpPage.js';
-import { usePage } from './context/PageContext.js';
+import {usePage} from './context/PageContext.js';
 import HelpHint from './ui/presentation/HelpHint.js';
-
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -24,28 +23,32 @@ EventEmitter.defaultMaxListeners = 30;
 export default function Freeuron() {
 	const config = getConfig();
 	const hasCategories = config.categories.length !== 0;
-	const {activePage, setActivePage} = usePage()
+	const {activePage, setActivePage} = usePage();
 	const [focusEntity, setFocusEntity] = useState<Focus>();
-	
+
 	const {focus} = useFocus();
-	
-	const getCtrlNavigation = (inputKey: string, page: string, focusElement: Focus): ActionType => {
+
+	const getCtrlNavigation = (
+		inputKey: string,
+		page: string,
+		focusElement: Focus,
+	): ActionType => {
 		return {
 			on: (input, key) => key.ctrl && input === inputKey,
 			do: () => {
-				setActivePage(page)
+				setActivePage(page);
 				setFocusEntity(focusElement);
-			}
-		}
-	}
-	
+			},
+		};
+	};
+
 	useEffect(() => {
-		setFocusEntity(undefined)
-	}, [activePage])
-	
+		setFocusEntity(undefined);
+	}, [activePage]);
+
 	useEffect(() => {
 		if (focusEntity) focus(focusEntity);
-	}, [focusEntity, activePage])
+	}, [focusEntity, activePage]);
 
 	if (!hasCategories) return <NoCategoryFoundError />;
 
@@ -54,26 +57,26 @@ export default function Freeuron() {
 			alwaysListening
 			id="app"
 			actions={[
-				getCtrlNavigation('q', "helpPage", Focus.pageSwitcher),
+				getCtrlNavigation('q', 'helpPage', Focus.pageSwitcher),
 				getCtrlNavigation('e', 'dashboard', Focus.textField),
-				getCtrlNavigation("s", "dashboard", Focus.searchDayField),
-				getCtrlNavigation("o", "dashboard", Focus.categorySelect),
-				getCtrlNavigation("n", "dashboard", Focus.categoryTabs),
-				getCtrlNavigation("d", "dashboard", Focus.dayScroller),
-				getCtrlNavigation("a", "overviewPage", Focus.thoughts),
-				getCtrlNavigation("p", "overviewPage", Focus.filterTabs),
-				getCtrlNavigation("t", "dashboard", Focus.thoughts),
+				getCtrlNavigation('s', 'dashboard', Focus.searchDayField),
+				getCtrlNavigation('o', 'dashboard', Focus.categorySelect),
+				getCtrlNavigation('n', 'dashboard', Focus.categoryTabs),
+				getCtrlNavigation('d', 'dashboard', Focus.dayScroller),
+				getCtrlNavigation('a', 'overviewPage', Focus.thoughts),
+				getCtrlNavigation('p', 'overviewPage', Focus.filterTabs),
+				getCtrlNavigation('t', 'dashboard', Focus.thoughts),
 			]}
 			nextFocus={[
 				{
 					to: Focus.pageSwitcher,
-					when: (input, key) => key.ctrl && input === "f"
-				}
+					when: (input, key) => key.ctrl && input === 'f',
+				},
 			]}
 			renderComponent={() => (
 				<>
-					<Box justifyContent="space-between" alignItems='center'>
-						<Box alignItems="center"  gap={4}>
+					<Box justifyContent="space-between" alignItems="center">
+						<Box alignItems="center" gap={4}>
 							<Heading />
 							<PageSwitcher />
 						</Box>

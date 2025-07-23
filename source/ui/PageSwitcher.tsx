@@ -25,6 +25,7 @@ export default function PageSwitcher() {
 					<Tab name="dashboard">Dashboard</Tab>
 					<Tab name="overview">Overview</Tab>
 					<Tab name="helpPage">Help</Tab>
+					<Tab name="howToPage">HowTo</Tab>
 				</Tabs>
 			)}
 		/>

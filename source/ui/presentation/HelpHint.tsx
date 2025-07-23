@@ -5,7 +5,7 @@ export default function HelpHint() {
 	return (
 		<Box>
 			<Text bold>
-				HELP: press{' '}
+				HELP:{" "}
 				<Text backgroundColor="yellowBright" color="black">
 					{" Ctrl + q "}
 				</Text>
