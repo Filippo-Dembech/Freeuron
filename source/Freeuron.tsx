@@ -13,6 +13,7 @@ import OverviewPage from './pages/OverviewPage.js';
 import HelpPage from './pages/HelpPage.js';
 import {usePage} from './context/PageContext.js';
 import HelpHint from './ui/presentation/HelpHint.js';
+import HowToPage from './pages/HowToPage.js';
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -86,6 +87,8 @@ export default function Freeuron() {
 						<Dashboard />
 					) : activePage === 'helpPage' ? (
 						<HelpPage />
+					) : activePage === "howToPage" ? (
+						<HowToPage />
 					) : (
 						<OverviewPage />
 					)}
