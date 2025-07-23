@@ -58,7 +58,7 @@ export default function SearchField() {
 						justifyContent="space-between"
 					>
 						<Box>
-							<Text>Search: </Text>
+							<Text>Search day: </Text>
 							<Box width={0} height={0} overflow="hidden">
 								<TextField
 									focus={isFocused}
