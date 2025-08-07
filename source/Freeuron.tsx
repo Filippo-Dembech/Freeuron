@@ -14,6 +14,7 @@ import HelpPage from './pages/HelpPage.js';
 import {usePage} from './context/PageContext.js';
 import HelpHint from './ui/presentation/HelpHint.js';
 import HowToPage from './pages/HowToPage.js';
+import { useTerminalSize } from './hooks/useTerminalSize.js';
 
 // NOTE: Increase max listeners per EventEmitter
 // WHY?  Because <Focusable> and other components use useInput(), which adds input listeners.
@@ -26,6 +27,9 @@ export default function Freeuron() {
 	const hasCategories = config.categories.length !== 0;
 	const {activePage, setActivePage} = usePage();
 	const [focusEntity, setFocusEntity] = useState<Focus>();
+	
+	// without 'height' specification the UI is messed up when content is too high
+	const [_, height] = useTerminalSize()
 
 	const {focus} = useFocus();
 
@@ -75,7 +79,7 @@ export default function Freeuron() {
 				},
 			]}
 			renderComponent={() => (
-				<>
+				<Box flexDirection='column' height={height}>
 					<Box justifyContent="space-between" alignItems="center">
 						<Box alignItems="center" gap={4}>
 							<Heading />
@@ -92,7 +96,7 @@ export default function Freeuron() {
 					) : (
 						<OverviewPage />
 					)}
-				</>
+				</Box>
 			)}
 		/>
 	);

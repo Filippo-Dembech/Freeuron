@@ -58,10 +58,11 @@ export default function HelpPage() {
 			<Box alignItems="center" justifyContent="center" gap={3}>
 				<Box
 					flexDirection="column"
-					width="80%"
-					borderStyle="round"
+					borderStyle="singleDouble"
+					borderTop={false}
+					borderLeft={false}
+					borderRight={false}
 					paddingY={1}
-					paddingX={4}
 				>
 					<Box>
 						<Box flexBasis="70%">
