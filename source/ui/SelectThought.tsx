@@ -63,7 +63,7 @@ export default function SelectThought({ thoughts, showDate = false, onToggle, on
 				},
 			]}
 			renderComponent={({isFocused}) => (
-				<Container isFocused={isFocused} flexGrow={1} paddingX={2} paddingY={1}>
+				<Container isFocused={isFocused} width="90%" paddingX={2} paddingY={1}>
 					<Select
 						items={thoughts}
 						labelFrom={thought => thought.id}

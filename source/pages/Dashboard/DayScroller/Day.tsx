@@ -16,17 +16,19 @@ export default function Day({...props}: BoxProps) {
 	const categoryNames = [
 		...new Set(day.thoughts.map(thought => thought.category?.name)),
 	].sort(alphabetically);
-	const noCategory = categoryNames.length === 0;
+	const hasCategory = categoryNames.length !== 0;
 
 	return (
 		<Box
-			alignItems={noCategory ? 'center' : 'stretch'}
-			gap={8}
+			alignItems={hasCategory ? 'stretch' : 'center'}
+			justifyContent='space-between'
 			{...props}
 		>
-			<BigText text={day.date} font="tiny" />
-			<Box flexDirection="column" flexGrow={1} gap={1}>
-				{!noCategory ? (
+			<Box minWidth={50}>
+				<BigText text={day.date} font="tiny" />
+			</Box>
+			<Box flexDirection="column" flexGrow={1}  gap={1}>
+				{hasCategory ? (
 					<>
 						<CategoryTabs onChange={setActiveTab} />
 						<SelectThought
