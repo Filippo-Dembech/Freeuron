@@ -2,6 +2,17 @@ import {JSONFilePreset} from 'lowdb/node';
 import {Category, DayType, Thought} from './types.js';
 import {Low} from 'lowdb';
 import {dateToString, sameDate} from './utils/date.js';
+import { join } from 'path';
+import os from 'os';
+import fs from 'fs';
+
+function getDBDir() {
+	const dir = join(os.homedir(), '.freeuron');
+	if (!fs.existsSync(dir)) {
+		fs.mkdirSync(dir, {recursive: true});
+	}
+	return join(dir, 'db.json');
+}
 
 type Data = {
 	days: DayType[];
@@ -11,7 +22,12 @@ const defaultData: Data = {
 	days: [],
 };
 
-const db: Low<Data> = await JSONFilePreset<Data>('db.json', defaultData);
+console.log("getting DB dir...")
+const dbDir = getDBDir();
+
+console.log("dbDir = ", dbDir);
+
+const db: Low<Data> = await JSONFilePreset<Data>(dbDir, defaultData);
 
 // =============================== UTILS ===============================
 

@@ -131,6 +131,21 @@
     {
       "date": "07/08/2025",
       "thoughts": []
+    },
+    {
+      "date": "27/08/2025",
+      "thoughts": [
+        {
+          "id": "9d296705-fc08-47ea-9967-1e2eef89e976",
+          "date": "27/08/2025",
+          "category": {
+            "name": "Todo",
+            "placeholder": "Enter what you have to do..."
+          },
+          "content": "Test new db",
+          "checked": false
+        }
+      ]
     }
   ]
 }
