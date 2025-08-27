@@ -6,8 +6,24 @@ Free your brain, free your neurons...
 
 ![freeuron-logo](static/freeuron-logo.png)
 
+## Table of Content
+
 - [Purpose](#purpose)
+- [Requirements](#requirements)
 - [Install](#install)
+- [Design](#design)
+- [Help](#help)
+- [Pages](#pages)
+  - [How to Navigate Pages](#how-to-navigate-pages)
+  - [Dashboard Page (Default)](#dashboard-page-default)
+  - [Overview Page](#overview-page)
+  - [Help Page](#help-page)
+  - [How-To Page](#how-to-page)
+- [Customize Categories](#customize-categories)
+  - [Known Bugs](#known-bugs)
+    - [Limitations](#limitations)
+- [Contributing](#contributing)
+
 
 ## Purpose
 
