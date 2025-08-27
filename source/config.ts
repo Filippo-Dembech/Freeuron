@@ -16,7 +16,7 @@ function getConfigDir() {
             categories: [
                 { name: "todo", placeholder: "Enter your todo here..." },
                 { name: "question", placeholder: "Enter your question here..." },
-                { name: "insight", placeholder: "Enter what your insight here..." }
+                { name: "insight", placeholder: "Enter your insight here..." }
             ]
         };
         fs.writeFileSync(configPath, JSON.stringify(defaultData, null, 4)); // pretty print
