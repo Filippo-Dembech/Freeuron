@@ -5,11 +5,24 @@ import os from 'os';
 import fs from 'fs';
 
 function getConfigDir() {
-	const dir = join(os.homedir(), '.freeuron');
-	if (!fs.existsSync(dir)) {
-		fs.mkdirSync(dir, {recursive: true});
-	}
-	return join(dir, 'config.json');
+    const dir = join(os.homedir(), '.freeuron');
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+    }
+
+    const configPath = join(dir, 'config.json');
+    if (!fs.existsSync(configPath)) {
+        const defaultData = {
+            categories: [
+                { name: "todo", placeholder: "Enter your todo here..." },
+                { name: "question", placeholder: "Enter your question here..." },
+                { name: "insight", placeholder: "Enter what your insight here..." }
+            ]
+        };
+        fs.writeFileSync(configPath, JSON.stringify(defaultData, null, 4)); // pretty print
+    }
+
+    return configPath;
 }
 
 
