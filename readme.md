@@ -24,7 +24,6 @@ Free your brain, free your neurons...
     - [Limitations](#limitations)
 - [Contributing](#contributing)
 
-
 ## Purpose
 
 I built this app because I get distracted easily. Whenever a thought pops up, I feel the urge to follow it. I needed a way to give dignity to those intrusive thoughts while still keeping my workflow free from interruptions.
