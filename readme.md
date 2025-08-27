@@ -4,7 +4,7 @@ Don't stop your workflow to write a note on a piece of paper, just switch a wind
 
 Free your brain, free your neurons...
 
-![freeuron-logo](static/freeuron-logo.png)
+![freeuron-logo](https://github.com/Filippo-Dembech/Freeuron/blob/main/static/freeuron-logo.png)
 
 ## Table of Content
 
@@ -71,25 +71,25 @@ This is the first page you see when entering Freeuron. On this page you can:
 - navigate through days to check previous thoughts
 - visualize all the thoughts of a specific day by searching for that day
 
-![dashboard-page](static/dashboard-page.png)
+![dashboard-page](./static/dashboard-page.png)
 
 ### Overview Page
 
 On this page you can visualize _ALL_ the thoughts by category. You can view all your todos, all your questions or all your insights.
 
-![overview-page](static/overview-page.png)
+![overview-page](./static/overview-page.png)
 
 ### Help Page
 
 On this page you can view all the shortcuts and how to navigate Freeuron. You can access this page everywhere in the app just by pressing `Ctrl + q`.
 
-![help-page](static/help-page.png)
+![help-page](./static/help-page.png)
 
 ### How-To Page
 
 Here you’ll find step-by-step explanations for common actions.
 
-![howto-page](static/howto-page.png)
+![howto-page](./static/howto-page.png)
 
 ## Customize Categories
 

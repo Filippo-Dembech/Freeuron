@@ -1,6 +1,31 @@
 {
 	"name": "freeuron",
-	"version": "0.0.0",
+		"description": "A CLI app to capture and categorize your thoughts without breaking your workflow.",
+	"author": {
+		"name": "Filippo Dembech",
+		"email": "filippodembechwork@gmail.com",
+		"url": "https://filippo-dembech.github.io/portfolio/"
+	},
+	"keywords": [
+	  "cli",
+	  "terminal",
+	  "ink",
+	  "react",
+	  "typescript",
+	  "productivity",
+	  "notes",
+	  "todo",
+	  "thoughts",
+	  "workflow",
+	  "brain-dump",
+	  "organize",
+	  "freeuron"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Filippo-Dembech/Freeuron"
+	},
+	"version": "0.0.3",
 	"license": "MIT",
 	"bin": "dist/cli.js",
 	"type": "module",
@@ -13,7 +38,8 @@
 		"test": "prettier --check . && xo && ava"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"static"
 	],
 	"dependencies": {
 		"ink": "^4.1.0",
