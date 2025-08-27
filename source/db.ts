@@ -22,10 +22,7 @@ const defaultData: Data = {
 	days: [],
 };
 
-console.log("getting DB dir...")
 const dbDir = getDBDir();
-
-console.log("dbDir = ", dbDir);
 
 const db: Low<Data> = await JSONFilePreset<Data>(dbDir, defaultData);
 
