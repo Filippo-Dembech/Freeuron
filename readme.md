@@ -106,8 +106,6 @@ Category example:
 }
 ```
 
-> WARNING: Be
-
 ## Known Bugs
 
 Unfortunately, I haven’t been able to replicate the following bugs, so I couldn’t fix them:
@@ -119,6 +117,7 @@ Unfortunately, I haven’t been able to replicate the following bugs, so I could
 
 - Checking or deleting a thought in the Dashboard resets the pointer to the beginning of the list.
 - Creating too many thoughts in a single day can break the interface (re-rendering glitch). Possible fix: add pagination.
+- Letting the user customize the thought categories by giving them access to a .json file is quite a concern regarding data integrity, I know. I thought the standard categories were quite enough, so I didn't create a new feature just for some hypothetical users. If you want me to implement a category management form, please text me.
 
 ## Contributing
 
