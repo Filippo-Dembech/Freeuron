@@ -1,5 +1,17 @@
 import {JSONFilePreset} from 'lowdb/node';
 import {Category} from './types.js';
+import { join } from 'path';
+import os from 'os';
+import fs from 'fs';
+
+function getConfigDir() {
+	const dir = join(os.homedir(), '.freeuron');
+	if (!fs.existsSync(dir)) {
+		fs.mkdirSync(dir, {recursive: true});
+	}
+	return join(dir, 'config.json');
+}
+
 
 type Data = {
 	categories: Category[];
@@ -9,8 +21,10 @@ const defaultData: Data = {
 	categories: [],
 };
 
+const configDir = getConfigDir();
+
 const config = await JSONFilePreset<Data>(
-	'config.json',
+	configDir,
 	defaultData,
 );
 

@@ -76,6 +76,12 @@ Here you’ll find step-by-step explanations for common actions.
 
 ![howto-page](static/howto-page.png)
 
+## Customize Categories
+
+All categories are stored in the `~/.freeuron/config.json` file. To add or remove a category, simply edit this file and restart Freeuron.
+
+Each category must have a `name` and a `placeholder`, which is displayed in the empty text field.
+
 ## Known Bugs
 
 Unfortunately, I haven’t been able to replicate the following bugs, so I couldn’t fix them:
