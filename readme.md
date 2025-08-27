@@ -20,8 +20,8 @@ Free your brain, free your neurons...
   - [Help Page](#help-page)
   - [How-To Page](#how-to-page)
 - [Customize Categories](#customize-categories)
-  - [Known Bugs](#known-bugs)
-    - [Limitations](#limitations)
+- [Known Bugs](#known-bugs)
+  - [Limitations](#limitations)
 - [Contributing](#contributing)
 
 ## Purpose
@@ -96,6 +96,17 @@ Here you’ll find step-by-step explanations for common actions.
 All categories are stored in the `~/.freeuron/config.json` file. To add or remove a category, simply edit this file and restart Freeuron.
 
 Each category must have a `name` and a `placeholder`, which is displayed in the empty text field.
+
+Category example:
+
+```json
+{
+	"name": "call",
+	"placeholder": "Enter who you want to call..."
+}
+```
+
+> WARNING: Be
 
 ## Known Bugs
 
