@@ -25,7 +25,7 @@
 		"type": "git",
 		"url": "git+https://github.com/Filippo-Dembech/Freeuron"
 	},
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"license": "MIT",
 	"bin": "dist/cli.js",
 	"type": "module",
