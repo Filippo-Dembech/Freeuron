@@ -1,4 +1,19 @@
-node_modules
-dist
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
 
-todo.md
+# TypeScript
+dist/
+*.tsbuildinfo
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
